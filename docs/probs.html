@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="bayes.html"/>
-<link rel="next" href="model.html"/>
+<link rel="next" href="gibbs-sampler-gibbs.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -186,9 +186,10 @@ div.csl-indent {
 <li class="chapter" data-level="3.2.3" data-path="probs.html"><a href="probs.html#observation-model"><i class="fa fa-check"></i><b>3.2.3</b> Observation model</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>4</b> Modeling</a>
+<li class="chapter" data-level="4" data-path="gibbs-sampler-gibbs.html"><a href="gibbs-sampler-gibbs.html"><i class="fa fa-check"></i><b>4</b> Gibbs sampler {gibbs}</a></li>
+<li class="chapter" data-level="5" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>5</b> Modeling</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>4.1</b> Excercise 1</a></li>
+<li class="chapter" data-level="5.1" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>5.1</b> Excercise 1</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://iraparsons.com" target="blank">Ira Parsons</a></li>
@@ -314,19 +315,19 @@ div.csl-indent {
 ## lm(formula = ui ~ x)
 ## 
 ## Residuals:
-##    Min     1Q Median     3Q    Max 
-## -7.820 -4.356 -2.974  3.494 16.461 
+##     Min      1Q  Median      3Q     Max 
+## -9.1375 -3.6155  0.0147  3.0692 10.6044 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   4.9734     4.3629   1.140  0.28088    
-## x             2.9473     0.5928   4.972  0.00056 ***
+## (Intercept)   2.4192     3.5634   0.679    0.513    
+## x             3.1344     0.4842   6.474 7.13e-05 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 7.089 on 10 degrees of freedom
-## Multiple R-squared:  0.712,  Adjusted R-squared:  0.6832 
-## F-statistic: 24.72 on 1 and 10 DF,  p-value: 0.0005601</code></pre>
+## Residual standard error: 5.79 on 10 degrees of freedom
+## Multiple R-squared:  0.8074, Adjusted R-squared:  0.7881 
+## F-statistic: 41.91 on 1 and 10 DF,  p-value: 7.129e-05</code></pre>
 </div>
 <div id="observation-model" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Observation model<a href="probs.html#observation-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -347,7 +348,7 @@ Hobbs, N. Thompson, and Mevin B. Hooten. 2015. <em>Bayesian <span>Models</span>:
         </div>
       </div>
 <a href="bayes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gibbs-sampler-gibbs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

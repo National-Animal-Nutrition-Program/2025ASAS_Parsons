@@ -13,5 +13,6 @@ establishing-inference
 process-model
 sampling-model
 observation-model
+gibbs-sampler-gibbs
 model
 excercise-1

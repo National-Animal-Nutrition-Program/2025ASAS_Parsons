@@ -17,7 +17,7 @@ github-repo: rstudio/bookdown-demo
 
 > "How do you know what you know, and how do you show what you know is really so?"
 >
-> --- Storytime with Ira  
+> --- Unknown 
 
 The ability to ask important questions and provide compelling answers will determine the impact of your scientific research. Bayes Theorem provides foundational principles for developing full mathematical expressions that incorporate process models, sampling methods, observational error, and prior knowledge of the biological system. This workshop’s goal is to provide participants with an avenue to free themselves from the inadequacies of procedural, outcome-oriented statistical methods and facilitate scientists to ask important questions using a first principles approach to biological questions. Application of inverse probability theory can be found across disciplines such as epidemiology, social science, computer science, artificial intelligence, and life sciences. In preparation for the workshop, participants should ensure they have R and their favorite R GUI installed, along with the packages rjags. By providing a comprehensive overview of developing and implementing process-based Bayesian models, participants should gain practical insight into the utility of first principles-based statistical modeling methodology and greater confidence to embark on their own quest to ask insightful scientific questions.  
 
