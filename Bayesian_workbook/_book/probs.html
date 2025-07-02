@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Probability Distributions | NANP Bayesian Workbook</title>
+  <meta name="description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Probability Distributions | NANP Bayesian Workbook" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
+  <meta name="github-repo" content="rstudio/bookdown-demo" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Probability Distributions | NANP Bayesian Workbook" />
+  
+  <meta name="twitter:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
+  
+
+<meta name="author" content="Ira L. Parsons" />
+
+
+<meta name="date" content="2025-07-02" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="bayes.html"/>
+<link rel="next" href="model.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">NANP Bayesian Workbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>2</b> Bayes Theory</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="bayes.html"><a href="bayes.html#bayes-theorem"><i class="fa fa-check"></i><b>2.1</b> Bayes Theorem</a></li>
+<li class="chapter" data-level="2.2" data-path="bayes.html"><a href="bayes.html#random-variables"><i class="fa fa-check"></i><b>2.2</b> Random variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="probs.html"><a href="probs.html"><i class="fa fa-check"></i><b>3</b> Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="probs.html"><a href="probs.html#three-rules-of-probability"><i class="fa fa-check"></i><b>3.1</b> Three rules of probability</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="probs.html"><a href="probs.html#conditional-probability"><i class="fa fa-check"></i><b>3.1.1</b> Conditional Probability</a></li>
+<li class="chapter" data-level="3.1.2" data-path="probs.html"><a href="probs.html#total-probability"><i class="fa fa-check"></i><b>3.1.2</b> Total Probability</a></li>
+<li class="chapter" data-level="3.1.3" data-path="probs.html"><a href="probs.html#chain-rule-of-probability"><i class="fa fa-check"></i><b>3.1.3</b> Chain Rule of Probability</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="probs.html"><a href="probs.html#establishing-inference"><i class="fa fa-check"></i><b>3.2</b> Establishing inference</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="probs.html"><a href="probs.html#process-model"><i class="fa fa-check"></i><b>3.2.1</b> Process model</a></li>
+<li class="chapter" data-level="3.2.2" data-path="probs.html"><a href="probs.html#sampling-model"><i class="fa fa-check"></i><b>3.2.2</b> Sampling model</a></li>
+<li class="chapter" data-level="3.2.3" data-path="probs.html"><a href="probs.html#observation-model"><i class="fa fa-check"></i><b>3.2.3</b> Observation model</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>4</b> Modeling</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>4.1</b> Excercise 1</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://iraparsons.com" target="blank">Ira Parsons</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">NANP Bayesian Workbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="probs" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Probability Distributions<a href="probs.html#probs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="three-rules-of-probability" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Three rules of probability<a href="probs.html#three-rules-of-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conditional-probability" class="section level3 hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Conditional Probability<a href="probs.html#conditional-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="figures/03-ConditionalProbability.png" width="422" /></p>
+</div>
+<div id="total-probability" class="section level3 hasAnchor" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Total Probability<a href="probs.html#total-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="figures/03-TotalProbability.png" width="422" /></p>
+</div>
+<div id="chain-rule-of-probability" class="section level3 hasAnchor" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Chain Rule of Probability<a href="probs.html#chain-rule-of-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="figures/03-ChainProbability.png" width="421" /></p>
+</div>
+</div>
+<div id="establishing-inference" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Establishing inference<a href="probs.html#establishing-inference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Establishing inference involves understanding how the state of our ecological system changes over time, between individuals, or across space. Our results rely upon observations drawn from the system, because the system (total space) is to large to observe in totality <span class="citation">(<a href="#ref-hobbsBayesianModelsStatistical2015">Hobbs and Hooten 2015</a>)</span>. Thus, we have three sources of variation which may be driving our collected data.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="probs.html#cb1-1" tabindex="-1"></a><span class="co"># Linked probability functions ----</span></span>
+<span id="cb1-2"><a href="probs.html#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="probs.html#cb1-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb1-4"><a href="probs.html#cb1-4" tabindex="-1"></a><span class="co"># Process model -----</span></span>
+<span id="cb1-5"><a href="probs.html#cb1-5" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span><span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb1-6"><a href="probs.html#cb1-6" tabindex="-1"></a><span class="co"># density(z)</span></span>
+<span id="cb1-7"><a href="probs.html#cb1-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(z), </span>
+<span id="cb1-8"><a href="probs.html#cb1-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">atop</span>(<span class="st">&#39;Process Model&#39;</span>, <span class="fu">paste</span>(<span class="fu">italic</span>(<span class="st">&#39;g&#39;</span>),<span class="st">&#39;(&#39;</span>,theta[p],<span class="st">&#39;,&#39;</span>,<span class="fu">italic</span>(<span class="st">&#39;x&#39;</span>),<span class="st">&#39;)&#39;</span>))), </span>
+<span id="cb1-9"><a href="probs.html#cb1-9" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;z&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Probability density&#39;</span>)</span>
+<span id="cb1-10"><a href="probs.html#cb1-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">0</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb1-11"><a href="probs.html#cb1-11" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="probs.html#cb1-12" tabindex="-1"></a><span class="co"># Sampling Model ----</span></span>
+<span id="cb1-13"><a href="probs.html#cb1-13" tabindex="-1"></a>u <span class="ot">=</span> <span class="fu">rlnorm</span>(<span class="dv">1000</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb1-14"><a href="probs.html#cb1-14" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(u), </span>
+<span id="cb1-15"><a href="probs.html#cb1-15" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">atop</span>(<span class="st">&#39;Sampling Model&#39;</span>,<span class="fu">italic</span>(z))),</span>
+<span id="cb1-16"><a href="probs.html#cb1-16" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(u[i])), <span class="at">ylab =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb1-17"><a href="probs.html#cb1-17" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(u), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb1-18"><a href="probs.html#cb1-18" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="probs.html#cb1-19" tabindex="-1"></a><span class="co"># Observation model ----</span></span>
+<span id="cb1-20"><a href="probs.html#cb1-20" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rlnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb1-21"><a href="probs.html#cb1-21" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y), </span>
+<span id="cb1-22"><a href="probs.html#cb1-22" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">atop</span>(<span class="st">&#39;Observation Model&#39;</span>, <span class="fu">paste</span>(<span class="fu">italic</span>(<span class="st">&#39;d&#39;</span>),<span class="st">&#39;(&#39;</span>,theta[o],<span class="st">&#39;,&#39;</span>,<span class="fu">italic</span>(u[i]),<span class="st">&#39;)&#39;</span>))), </span>
+<span id="cb1-23"><a href="probs.html#cb1-23" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(y[i])), <span class="at">ylab =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb1-24"><a href="probs.html#cb1-24" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(y), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/linkprob-1.png" width="672" /></p>
+<div id="process-model" class="section level3 hasAnchor" number="3.2.1">
+<h3><span class="header-section-number">3.2.1</span> Process model<a href="probs.html#process-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>First is the process model, or a deterministic function which represents some <em>theoretical</em> state of the system based upon our current conceptual understanding. The process model can come from our own understanding or observation of the system, pilot data, or previous studies. The process model should include our prediction of how the system functions, including any natural or imposed effects from treatments on the system. The process function is represented by <span class="math display">\[g(\Theta_p, x)\]</span>. An example of a process model might be a linear growth function <span class="math display">\[f(x) = mx + b\]</span> where fixed values of <em>m</em> and <em>b</em> get mapped as a single function of our variable of interest.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="probs.html#cb2-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">12</span>, <span class="dv">1</span>) <span class="co"># Independent X parameter placed on the X axis</span></span>
+<span id="cb2-2"><a href="probs.html#cb2-2" tabindex="-1"></a>b0 <span class="ot">=</span> <span class="dv">1</span> <span class="co"># Specify the Y intercept</span></span>
+<span id="cb2-3"><a href="probs.html#cb2-3" tabindex="-1"></a>b1 <span class="ot">=</span> <span class="dv">3</span> <span class="co"># Specify the B1 coefficient i.e. the slope</span></span>
+<span id="cb2-4"><a href="probs.html#cb2-4" tabindex="-1"></a>y <span class="ot">=</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>x</span>
+<span id="cb2-5"><a href="probs.html#cb2-5" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="probs.html#cb2-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb2-7"><a href="probs.html#cb2-7" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb2-8"><a href="probs.html#cb2-8" tabindex="-1"></a><span class="fu">hist</span>(y)</span>
+<span id="cb2-9"><a href="probs.html#cb2-9" tabindex="-1"></a>{</span>
+<span id="cb2-10"><a href="probs.html#cb2-10" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(y)), <span class="at">main =</span> <span class="fu">expression</span>(y <span class="sc">==</span> beta[<span class="dv">0</span>] <span class="sc">+</span> beta[<span class="dv">1</span>]<span class="sc">*</span>x))</span>
+<span id="cb2-11"><a href="probs.html#cb2-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb2-12"><a href="probs.html#cb2-12" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/processmod-1.png" width="672" /></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="probs.html#cb3-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb3-2"><a href="probs.html#cb3-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x))</span></code></pre></div>
+<pre><code>## Warning in summary.lm(lm(y ~ x)): essentially perfect fit: summary may be unreliable</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -2.788e-15 -1.578e-15 -4.107e-16  3.248e-16  8.485e-15 
+## 
+## Coefficients:
+##              Estimate Std. Error   t value Pr(&gt;|t|)    
+## (Intercept) 1.000e+00  1.900e-15 5.264e+14   &lt;2e-16 ***
+## x           3.000e+00  2.581e-16 1.162e+16   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.087e-15 on 10 degrees of freedom
+## Multiple R-squared:      1,  Adjusted R-squared:      1 
+## F-statistic: 1.351e+32 on 1 and 10 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div id="sampling-model" class="section level3 hasAnchor" number="3.2.2">
+<h3><span class="header-section-number">3.2.2</span> Sampling model<a href="probs.html#sampling-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The sampling model accounts for the precision in observational methods of the systems true state. Uncertainty arises as our observations most definitely do not represent the system’s true state. We can estimate this stoichastistically using the expression <span class="math display">\[[u_i|z,\sigma_s^2]\]</span> which assumes we can collect many observed instances of the true system state without bias, and <em>z</em> will arise to represent approximately the true state of the system for that variable. This can be added to our above process model by modeling the variance of the sampling method of our observed values, <em>Y</em>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="probs.html#cb6-1" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(y) <span class="co"># Number of random values to generate</span></span>
+<span id="cb6-2"><a href="probs.html#cb6-2" tabindex="-1"></a>u <span class="ot">=</span> <span class="dv">3</span> <span class="co"># approximate mean of the variation of the systems sampling values</span></span>
+<span id="cb6-3"><a href="probs.html#cb6-3" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">5</span> <span class="co"># Standard deviation of the systems sampling values</span></span>
+<span id="cb6-4"><a href="probs.html#cb6-4" tabindex="-1"></a>e <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(y),u,sigma)</span>
+<span id="cb6-5"><a href="probs.html#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="probs.html#cb6-6" tabindex="-1"></a>ui <span class="ot">=</span> y <span class="sc">+</span> e</span>
+<span id="cb6-7"><a href="probs.html#cb6-7" tabindex="-1"></a>{</span>
+<span id="cb6-8"><a href="probs.html#cb6-8" tabindex="-1"></a><span class="fu">plot</span>(x,ui, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(ui)), <span class="at">main =</span> <span class="fu">expression</span>(y <span class="sc">==</span> beta[<span class="dv">0</span>] <span class="sc">+</span> beta[<span class="dv">1</span>]<span class="sc">*</span>x <span class="sc">+</span> epsilon))</span>
+<span id="cb6-9"><a href="probs.html#cb6-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb6-10"><a href="probs.html#cb6-10" tabindex="-1"></a>}</span></code></pre></div>
+<p><img src="_main_files/figure-html/sampmod-1.png" width="672" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="probs.html#cb7-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb7-2"><a href="probs.html#cb7-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(ui<span class="sc">~</span>x))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = ui ~ x)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -6.4693 -2.5159 -0.5875  3.2666  6.2910 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   4.5668     2.7776   1.644    0.131    
+## x             2.8096     0.3774   7.445  2.2e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.513 on 10 degrees of freedom
+## Multiple R-squared:  0.8471, Adjusted R-squared:  0.8319 
+## F-statistic: 55.42 on 1 and 10 DF,  p-value: 2.198e-05</code></pre>
+</div>
+<div id="observation-model" class="section level3 hasAnchor" number="3.2.3">
+<h3><span class="header-section-number">3.2.3</span> Observation model<a href="probs.html#observation-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The observation model is similar to the sampling model sketched out previously, but rather than accounting for the variation due to our sampling processes, the observation model accounts for the inherent variation between the observed units of a system. Much as we might like to, it is impossible to measure the height of every blade of grass, biomass from every acre, or nutrient concentration from every bit of feed fed in our diets. Therefore, we can model the distribution of the inherent variation of the system in a similar fashion.</p>
+
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-hobbsBayesianModelsStatistical2015" class="csl-entry">
+Hobbs, N. Thompson, and Mevin B. Hooten. 2015. <em>Bayesian <span>Models</span>: <span>A</span> <span>Statistical</span> <span>Primer</span> for <span>Ecologists</span></em>. Princeton University Press. <a href="https://doi.org/10.1515/9781400866557">https://doi.org/10.1515/9781400866557</a>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bayes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="model.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-prob-dist.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["_main.pdf", "_main.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
