@@ -17,3 +17,4 @@ gibbs-sampler-gibbs
 model
 excercise-1
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
+gibbs
