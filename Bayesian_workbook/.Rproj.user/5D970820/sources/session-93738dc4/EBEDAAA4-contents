@@ -1,0 +1,83 @@
+# Demonstrating differences in P-Values
+library(tidyverse)
+
+n_samples = 1000
+u1 = 15
+sd1 = 7
+u2 = 20
+sd2 = 7
+
+n_vec = numeric()
+p_vec = numeric()
+u_vec = numeric()
+
+for (i in 2:n_samples) {
+  p1 = rnorm(i, mean = u1, sd = sd1)
+  p2 = rnorm(i, mean = u2, sd = sd2)
+  
+  n_vec[i] = i
+  p_vec[i] = as.numeric(t.test(p1,p2)[3])
+  u_vec[i] = as.numeric(mean(p2) - mean(p1))
+}
+
+data = data.frame(Samples = n_vec, P_values = p_vec, Mean = u_vec)
+
+data %>% 
+  ggplot(aes(x = Samples, y = P_values))+
+  geom_point()+
+  geom_smooth()+
+  geom_hline(yintercept = 0.05, color = 'red')+
+  labs(x = 'Number of Samples',
+       y = 'P-Value')
+
+data %>% 
+  ggplot(aes(x = Samples, y = P_values))+
+  geom_point()+
+  geom_smooth()+
+  geom_line()+
+  geom_hline(yintercept = 0.05, color = 'red')+
+  labs(x = 'Number of Samples',
+       y = 'P-Value')
+
+data %>% 
+  mutate(Pscaled = ((P_values-min(P_values,na.rm = T))/max(P_values,na.rm = T) - min(P_values,na.rm = T))*20) %>% 
+  ggplot(aes(x = Samples, y = Mean))+
+  geom_point()+
+  geom_line()+
+  geom_smooth()+
+  geom_smooth(aes(y = Pscaled), color = 'red')+
+  labs(x = 'Number of Samples',
+       y = 'Mean')
+
+
+n_chain = 1000
+nchain_vec = numeric()
+n_vec = numeric()
+p_vec = numeric()
+nchain_vec = numeric()
+n_vecn = numeric()
+p_vecn = numeric()
+
+for (j in 1:n_chain) {
+for (i in 2:n_samples) {
+  p1 = rnorm(i, mean = u1, sd = sd1)
+  p2 = rnorm(i, mean = u2, sd = sd2)
+  
+  n_vec[i] = i
+  p_vec[i] = as.numeric(t.test(p1,p2)[3])
+  n_chain[i] = j
+}
+  n_vecn = append(n_vecn,n_vec)
+  p_vecn = append(p_vecn, p_vec)
+  nchain_vec = append(nchain_vec, n_chain)
+}
+
+data = data.frame(Chain = nchain_vec, Samples = n_vecn, P_values = p_vecn)
+
+data %>% 
+  ggplot(aes(x = Samples, y = P_values))+
+  geom_point()+
+  geom_smooth()+
+  geom_hline(yintercept = 0.05, color = 'red')+
+  labs(x = 'Number of Samples',
+       y = 'P-Value')

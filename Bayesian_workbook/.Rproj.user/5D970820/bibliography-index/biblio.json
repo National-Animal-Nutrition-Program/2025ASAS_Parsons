@@ -1,0 +1,602 @@
+{
+    "sources": [
+        {
+            "URL": "http://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "xie2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "DOI": "10.1515/9781400866557",
+            "ISBN": "978-1-4008-6655-7",
+            "URL": "https://www.degruyter.com/document/doi/10.1515/9781400866557/html",
+            "accessed": {
+                "date-parts": [
+                    [
+                        2025,
+                        3,
+                        31
+                    ]
+                ]
+            },
+            "author": [
+                {
+                    "family": "Hobbs",
+                    "given": "N. Thompson"
+                },
+                {
+                    "family": "Hooten",
+                    "given": "Mevin B."
+                }
+            ],
+            "id": "hobbsBayesianModelsStatistical2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015,
+                        8
+                    ]
+                ]
+            },
+            "publisher": "Princeton University Press",
+            "title": "Bayesian Models: A Statistical Primer for Ecologists",
+            "title-short": "Bayesian Models",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Johnson",
+                    "given": "Valen E."
+                }
+            ],
+            "id": "johnsonCommentsASAStatement2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016,
+                        2
+                    ]
+                ]
+            },
+            "page": "1",
+            "title": "Comments on the “ASA Statement on Statistical Signiﬁcance and P-values” and marginally signiﬁcant p-values",
+            "type": "article-journal"
+        },
+        {
+            "DOI": "10.1371/journal.pmed.0020124",
+            "ISSN": "1549-1676",
+            "URL": "https://dx.plos.org/10.1371/journal.pmed.0020124",
+            "accessed": {
+                "date-parts": [
+                    [
+                        2025,
+                        7,
+                        2
+                    ]
+                ]
+            },
+            "author": [
+                {
+                    "family": "Ioannidis",
+                    "given": "John P. A."
+                }
+            ],
+            "container-title": "PLoS Medicine",
+            "id": "ioannidisWhyMostPublished2005",
+            "issue": "8",
+            "issued": {
+                "date-parts": [
+                    [
+                        2005,
+                        8
+                    ]
+                ]
+            },
+            "page": "e124",
+            "title": "Why Most Published Research Findings Are False",
+            "type": "article-journal",
+            "volume": "2"
+        },
+        {
+            "DOI": "10.1080/00031305.2016.1154108",
+            "ISSN": "0003-1305, 1537-2731",
+            "URL": "https://www.tandfonline.com/doi/full/10.1080/00031305.2016.1154108",
+            "accessed": {
+                "date-parts": [
+                    [
+                        2025,
+                        7,
+                        2
+                    ]
+                ]
+            },
+            "author": [
+                {
+                    "family": "Wasserstein",
+                    "given": "Ronald L."
+                },
+                {
+                    "family": "Lazar",
+                    "given": "Nicole A."
+                }
+            ],
+            "container-title": "The American Statistician",
+            "id": "wassersteinASAStatementValues2016",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016,
+                        4
+                    ]
+                ]
+            },
+            "page": "129-133",
+            "title": "The ASA Statement on <i>p</i> -Values: Context, Process, and Purpose",
+            "title-short": "The ASA Statement on <i>p</i> -Values",
+            "type": "article-journal",
+            "volume": "70"
+        },
+        {
+            "DOI": "10.1111/1740-9713.01505",
+            "ISSN": "1740-9705, 1740-9713",
+            "URL": "https://academic.oup.com/jrssig/article/18/2/16/7038207",
+            "abstract": "Abstract The American Statistical Association’s 2016 p-value statement generated debates and disagreements, editorials and symposia, and a plethora of ideas for how science could be changed for the better. Now, five years on, Robert Matthews asks what, if anything, has the statement achieved?",
+            "accessed": {
+                "date-parts": [
+                    [
+                        2025,
+                        7,
+                        2
+                    ]
+                ]
+            },
+            "author": [
+                {
+                    "family": "Matthews",
+                    "given": "Robert"
+                }
+            ],
+            "container-title": "Significance",
+            "id": "matthewsValueStatementFive2021",
+            "issue": "2",
+            "issued": {
+                "date-parts": [
+                    [
+                        2021,
+                        4
+                    ]
+                ]
+            },
+            "page": "16-19",
+            "title": "The <i>p</i> -value Statement, Five Years On",
+            "type": "article-journal",
+            "volume": "18"
+        },
+        {
+            "URL": "https://www.R-project.org/",
+            "author": [
+                {
+                    "literal": "R Core Team"
+                }
+            ],
+            "id": "R-base",
+            "issued": {
+                "date-parts": [
+                    [
+                        2025
+                    ]
+                ]
+            },
+            "publisher": "R Foundation for Statistical Computing",
+            "publisher-place": "Vienna, Austria",
+            "title": "R: A language and environment for statistical computing",
+            "title-short": "R",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/rstudio/bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-bookdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2025
+                    ]
+                ]
+            },
+            "note": "R package version 0.43",
+            "title": "Bookdown: Authoring books and technical documents with r markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "R-knitr",
+            "issued": {
+                "date-parts": [
+                    [
+                        2025
+                    ]
+                ]
+            },
+            "note": "R package version 1.50",
+            "title": "Knitr: A general-purpose package for dynamic report generation in r",
+            "title-short": "Knitr",
+            "type": "book"
+        },
+        {
+            "URL": "https://github.com/rstudio/rmarkdown",
+            "author": [
+                {
+                    "family": "Allaire",
+                    "given": "JJ"
+                },
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Dervieux",
+                    "given": "Christophe"
+                },
+                {
+                    "family": "McPherson",
+                    "given": "Jonathan"
+                },
+                {
+                    "family": "Luraschi",
+                    "given": "Javier"
+                },
+                {
+                    "family": "Ushey",
+                    "given": "Kevin"
+                },
+                {
+                    "family": "Atkins",
+                    "given": "Aron"
+                },
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                },
+                {
+                    "family": "Cheng",
+                    "given": "Joe"
+                },
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "Iannone",
+                    "given": "Richard"
+                }
+            ],
+            "id": "R-rmarkdown",
+            "issued": {
+                "date-parts": [
+                    [
+                        2024
+                    ]
+                ]
+            },
+            "note": "R package version 2.29",
+            "title": "Rmarkdown: Dynamic documents for r",
+            "title-short": "Rmarkdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://tidyverse.tidyverse.org",
+            "author": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                }
+            ],
+            "id": "R-tidyverse",
+            "issued": {
+                "date-parts": [
+                    [
+                        2023
+                    ]
+                ]
+            },
+            "note": "R package version 2.0.0",
+            "title": "Tidyverse: Easily install and load the tidyverse",
+            "title-short": "Tidyverse",
+            "type": "book"
+        },
+        {
+            "ISBN": "978-1138700109",
+            "URL": "https://bookdown.org/yihui/bookdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "id": "bookdown2016",
+            "issued": {
+                "date-parts": [
+                    [
+                        2016
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Bookdown: Authoring books and technical documents with R markdown",
+            "title-short": "Bookdown",
+            "type": "book"
+        },
+        {
+            "URL": "https://yihui.org/knitr/",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "edition": "2nd",
+            "id": "knitr2015",
+            "issued": {
+                "date-parts": [
+                    [
+                        2015
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1498716963",
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "Dynamic documents with R and knitr",
+            "type": "book"
+        },
+        {
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                }
+            ],
+            "container-title": "Implementing reproducible computational research",
+            "editor": [
+                {
+                    "family": "Stodden",
+                    "given": "Victoria"
+                },
+                {
+                    "family": "Leisch",
+                    "given": "Friedrich"
+                },
+                {
+                    "family": "Peng",
+                    "given": "Roger D."
+                }
+            ],
+            "id": "knitr2014",
+            "issued": {
+                "date-parts": [
+                    [
+                        2014
+                    ]
+                ]
+            },
+            "note": "ISBN 978-1466561595",
+            "publisher": "Chapman; Hall/CRC",
+            "title": "Knitr: A comprehensive tool for reproducible research in R",
+            "title-short": "Knitr",
+            "type": "chapter"
+        },
+        {
+            "ISBN": "9781138359338",
+            "URL": "https://bookdown.org/yihui/rmarkdown",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Allaire",
+                    "given": "J. J."
+                },
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                }
+            ],
+            "id": "rmarkdown2018",
+            "issued": {
+                "date-parts": [
+                    [
+                        2018
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "R markdown: The definitive guide",
+            "title-short": "R markdown",
+            "type": "book"
+        },
+        {
+            "ISBN": "9780367563837",
+            "URL": "https://bookdown.org/yihui/rmarkdown-cookbook",
+            "author": [
+                {
+                    "family": "Xie",
+                    "given": "Yihui"
+                },
+                {
+                    "family": "Dervieux",
+                    "given": "Christophe"
+                },
+                {
+                    "family": "Riederer",
+                    "given": "Emily"
+                }
+            ],
+            "id": "rmarkdown2020",
+            "issued": {
+                "date-parts": [
+                    [
+                        2020
+                    ]
+                ]
+            },
+            "publisher": "Chapman; Hall/CRC",
+            "publisher-place": "Boca Raton, Florida",
+            "title": "R markdown cookbook",
+            "type": "book"
+        },
+        {
+            "DOI": "10.21105/joss.01686",
+            "author": [
+                {
+                    "family": "Wickham",
+                    "given": "Hadley"
+                },
+                {
+                    "family": "Averick",
+                    "given": "Mara"
+                },
+                {
+                    "family": "Bryan",
+                    "given": "Jennifer"
+                },
+                {
+                    "family": "Chang",
+                    "given": "Winston"
+                },
+                {
+                    "family": "McGowan",
+                    "given": "Lucy D’Agostino"
+                },
+                {
+                    "family": "François",
+                    "given": "Romain"
+                },
+                {
+                    "family": "Grolemund",
+                    "given": "Garrett"
+                },
+                {
+                    "family": "Hayes",
+                    "given": "Alex"
+                },
+                {
+                    "family": "Henry",
+                    "given": "Lionel"
+                },
+                {
+                    "family": "Hester",
+                    "given": "Jim"
+                },
+                {
+                    "family": "Kuhn",
+                    "given": "Max"
+                },
+                {
+                    "family": "Pedersen",
+                    "given": "Thomas Lin"
+                },
+                {
+                    "family": "Miller",
+                    "given": "Evan"
+                },
+                {
+                    "family": "Bache",
+                    "given": "Stephan Milton"
+                },
+                {
+                    "family": "Müller",
+                    "given": "Kirill"
+                },
+                {
+                    "family": "Ooms",
+                    "given": "Jeroen"
+                },
+                {
+                    "family": "Robinson",
+                    "given": "David"
+                },
+                {
+                    "family": "Seidel",
+                    "given": "Dana Paige"
+                },
+                {
+                    "family": "Spinu",
+                    "given": "Vitalie"
+                },
+                {
+                    "family": "Takahashi",
+                    "given": "Kohske"
+                },
+                {
+                    "family": "Vaughan",
+                    "given": "Davis"
+                },
+                {
+                    "family": "Wilke",
+                    "given": "Claus"
+                },
+                {
+                    "family": "Woo",
+                    "given": "Kara"
+                },
+                {
+                    "family": "Yutani",
+                    "given": "Hiroaki"
+                }
+            ],
+            "container-title": "Journal of Open Source Software",
+            "id": "tidyverse2019",
+            "issue": "43",
+            "issued": {
+                "date-parts": [
+                    [
+                        2019
+                    ]
+                ]
+            },
+            "page": "1686",
+            "title": "Welcome to the tidyverse",
+            "type": "article-journal",
+            "volume": "4"
+        }
+    ],
+    "project_biblios": [
+        "book.bib",
+        "packages.bib"
+    ]
+}

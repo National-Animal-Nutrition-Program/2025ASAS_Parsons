@@ -1,0 +1,5 @@
+# Modeling {#model}
+
+## Excercise 1  
+
+We have a dataset representing 
