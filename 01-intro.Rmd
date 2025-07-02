@@ -4,8 +4,7 @@
 >
 >--- Galileo Galilei
 
-Scientists major challenge is to create a logical line of inference extending from what we know about a system in light of our observations and create new insight tempered by some uncertainty. Using the scientific method, mathmatical modeling and statistics have gone to great lengths to establish this domain of truth, resulting in the dramatic leaps forward in scientific knowledge and the with the availability of statistical software has pioneered a scientific revolution in technological progress.   
-
+Scientists major challenge is to create a logical line of inference extending from what we know about a system in light of our observations and create new insight tempered by some uncertainty. Using the scientific method, mathematical modeling and statistics have gone to great lengths to establish this domain of truth, resulting in the dramatic leaps forward in scientific knowledge and the with the availability of statistical software has pioneered a scientific revolution in technological progress.   
 
 ```{r scimethod, echo=F, fig.cap='The scientific method is the cornerstone of scientific research, and when paired with mathematics and modern statistical methods, has revolutionized the rate of discovery.'}
 knitr::include_graphics('figures/01-ScientificMethod.png')
