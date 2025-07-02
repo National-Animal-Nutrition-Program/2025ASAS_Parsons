@@ -6,5 +6,7 @@ We have a dataset representing
 
 ```{r}
 devtools::install_github("irap93/Bayesdemo")
+library(Bayesdemo)
+data(heifer)
 ```
 

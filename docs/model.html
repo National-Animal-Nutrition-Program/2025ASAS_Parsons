@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="gibbs-sampler-gibbs.html"/>
+<link rel="prev" href="gibbs.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -186,7 +186,7 @@ div.csl-indent {
 <li class="chapter" data-level="4.2.3" data-path="probs.html"><a href="probs.html#observation-model"><i class="fa fa-check"></i><b>4.2.3</b> Observation model</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="gibbs-sampler-gibbs.html"><a href="gibbs-sampler-gibbs.html"><i class="fa fa-check"></i><b>5</b> Gibbs sampler {gibbs}</a></li>
+<li class="chapter" data-level="5" data-path="gibbs.html"><a href="gibbs.html"><i class="fa fa-check"></i><b>5</b> Gibbs sampler</a></li>
 <li class="chapter" data-level="6" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>6</b> Modeling</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>6.1</b> Excercise 1</a></li>
@@ -218,16 +218,10 @@ div.csl-indent {
 <p>We have a dataset representing</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="model.html#cb1-1" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;irap93/Bayesdemo&quot;</span>)</span></code></pre></div>
 <pre><code>## Using GitHub PAT from the git credential store.</code></pre>
-<pre><code>## Downloading GitHub repo irap93/Bayesdemo@HEAD</code></pre>
-<pre><code>## ── R CMD build ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-##      checking for file ‘/private/var/folders/j7/z_hb_p997g1bj1vdr32wys_h0000gr/T/RtmpXRr0kx/remotesdc671cb8d37b/irap93-Bayesdemo-861913a/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/j7/z_hb_p997g1bj1vdr32wys_h0000gr/T/RtmpXRr0kx/remotesdc671cb8d37b/irap93-Bayesdemo-861913a/DESCRIPTION’ (485ms)
-##   ─  preparing ‘Bayesdemo’:
-##      checking DESCRIPTION meta-information ...  ✔  checking DESCRIPTION meta-information
-##   ─  checking for LF line-endings in source and make files and shell scripts
-##   ─  checking for empty or unneeded directories
-##   ─  building ‘Bayesdemo_1.0.0.tar.gz’
-##      
-## </code></pre>
+<pre><code>## Skipping install of &#39;Bayesdemo&#39; from a github remote, the SHA1 (861913a3) has not changed since last install.
+##   Use `force = TRUE` to force installation</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="model.html#cb4-1" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
+<span id="cb4-2"><a href="model.html#cb4-2" tabindex="-1"></a><span class="fu">data</span>(heifer)</span></code></pre></div>
 
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div class="csl-entry">
@@ -253,7 +247,7 @@ Wasserstein, Ronald L., and Nicole A. Lazar. 2016. <span>“The <span>ASA</span>
           </div>
         </div>
       </div>
-<a href="gibbs-sampler-gibbs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="gibbs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
