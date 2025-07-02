@@ -15,4 +15,3 @@ sampling-model
 observation-model
 model
 excercise-1
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
