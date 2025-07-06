@@ -5,7 +5,7 @@
 ```{r}
 # Libraries to install
 # List of packages to check/install
-packages <- c("data.table", "tidyverse", "rjags")
+packages <- c("data.table", "tidyverse", "rjags", "MCMCvis")
 
 # Function to check and install packages
 install_if_missing = function(pkg) {
@@ -28,17 +28,138 @@ library(Bayesdemo)
 library(data.table)
 library(tidyverse)
 library(rjags)
+library(MCMCvis)
+```
+## Data
+We have a dataset representing heifer performance, feeding behavior, and dry matter intake over a 56 day back grounding period. Heifers were assigned to a 2x2 crossover design to test a feed additives effect on animal behavior, performance, and morbidity during weaning.
 
-
+```{r heifer}
 data(heifer)
+head(heifer)
+summary(heifer)
 ```
 
 ## Excercise 1  
 
-We have a dataset representing 
 
+
+```{r heiferdata}
+names(heifer)
+ggplot(heifer, aes(x=cvDMI, y=Day56_ADG))+
+  geom_point()+
+  geom_smooth(method = 'lm')
+```
+Next we need to define the Jags model
+```{r jagsmodel}
+# Data list ----
+# Data
+data_list <- list(
+  x = heifer$cvDMI,  # Example predictor values
+  y = heifer$Day56_ADG, # Example response values
+  N = nrow(heifer)     # Number of observations
+)
+## Jags model ----
+# Define the model
+model_string <- "
+model {
+  for (i in 1:N) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta0 + beta1 * x[i]
+  }
+  
+  # Priors
+  beta0 ~ dunif(-10, 10)
+  beta1 ~ dunif(-1, 1)
+  sigma ~ dunif(0, 100)
+  tau <- 1 / (sigma * sigma)
+}
+"
+
+# Initial values
+inits <- list(
+  list(beta0 = 0, beta1 = 0, sigma = 1)
+)
+
+# Parameters to monitor
+params <- c("beta0", "beta1", "sigma", 'y')
+```
+
+Now we have the model set up, we are ready to run the model through jags
+```{r runjags}
+# Run the model
+model <- jags.model(textConnection(model_string), data = data_list, inits = inits, n.chains = 1)
+update(model, 1000)  # Burn-in
+samples <- coda.samples(model, variable.names = params, n.iter = 5000)
+```
+
+And do a preliminary look at the results.
 
 ```{r}
+beta0chain = MCMCchains(samples, params = 'beta0')
+plot(density(beta0chain), main = "beta0chain")
+rug(beta0chain, co = 'red')
+abline(v = quantile(beta0chain, c(.025, .975)), col = "red", lwd = 2)
+quantile(beta0chain, c(.025, .975))
+mean(beta0chain)
 
+beta1chain = MCMCchains(samples, params = 'beta1')
+plot(density(beta1chain), main = 'beta1chain')
+rug(beta1chain, col = 'blue')
+abline(v = quantile(beta1chain, c(.025, .975)), col = "red", lwd = 2)
+quantile(beta1chain, c(.025, .975))
+
+y = MCMCpstr(samples, params = 'y')
+plot(density(y$y), main = 'y')
+rug(y$y, col = 'blue')
+abline(v = quantile(y$y, c(.025, .975)), col = "red", lwd = 2)
+quantile(y$y, c(.025, .975))
+```
+Summarise results
+```{r}
+# Summarize the results
+summary(samples)
+```
+
+## Summary Plots
+Prior Plots
+```{r}
+## Plots
+# Prior plots ------
+iter = 5000
+priors = data.table(b0 = runif(iter,-10, 10),
+                    b1 = runif(iter,-1, 1),
+                    sigma = runif(iter, 0,100))
+priors
+class(samples)
+
+summary(lm(data_list$y ~ data_list$x))
+```
+
+Posterior Plots
+```{r}
+## Beta 0 ----
+observed = rnorm(iter, 1.01, 0.20)
+beta0 = MCMCchains(samples, params = c("beta0"))
+length(beta0)
+
+plot(density(priors$b0), xlim = c(-.03, 3), ylim = c(0,3), col = 'green', main = 'Beta 0')
+lines(density(beta0), col = 'blue')
+lines(density(observed), col = 'red')
+
+legend("topright", legend = c("Posterior", "Prior", "Scaled Likelihood"), 
+       col = c("blue", "red", "green"), lwd = 2, lty = c(1, 2, 3))
+
+# Beta 1 ----
+uCV = mean(heifer$cvDMI)
+sdCV = sd(heifer$cvDMI)
+oCV = rnorm(iter, -0.211, 0.53)
+
+beta1 = MCMCchains(samples, params = c("beta1"))
+plot(density(priors$b1), xlim = c(-2, 3), ylim = c(0,1.5), col = 'green', main = 'Beta 1')
+lines(density(beta1), col = 'blue')
+lines(density(oCV), col = 'red')
+
+legend("topright", legend = c("Posterior", "Prior", "Scaled Likelihood"), 
+       col = c("blue", "red", "green"), lwd = 2, lty = c(1, 2, 3))
 ```
 

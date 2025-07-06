@@ -20,3 +20,5 @@ model
 excercise-1
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
 libraries
+data
+summary-plots
