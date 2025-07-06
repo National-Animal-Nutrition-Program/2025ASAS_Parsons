@@ -27,4 +27,4 @@ model-1
 summary-plots
 excercise-2
 jags-model-2
-data-2
+url-your-book-url-like-httpsbookdown.orgyihuibookdown

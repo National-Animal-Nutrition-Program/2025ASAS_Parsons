@@ -118,7 +118,7 @@ quantile(y$y, c(.025, .975))
 Summarise results
 ```{r}
 # Summarize the results
-summary(samples)
+# summary(samples)
 ```
 
 ### Summary Plots
@@ -130,7 +130,7 @@ iter = 5000
 priors = data.table(b0 = runif(iter,-10, 10),
                     b1 = runif(iter,-1, 1),
                     sigma = runif(iter, 0,100))
-priors
+# priors
 class(samples)
 
 summary(lm(data_list$y ~ data_list$x))
@@ -147,7 +147,7 @@ plot(density(priors$b0), xlim = c(-.03, 3), ylim = c(0,3), col = 'green', main =
 lines(density(beta0), col = 'blue')
 lines(density(observed), col = 'red')
 
-legend("topright", legend = c("Posterior", "Prior", "Scaled Likelihood"), 
+legend("topright", legend = c("Posterior", "Observed", "Prior"), 
        col = c("blue", "red", "green"), lwd = 2, lty = c(1, 2, 3))
 
 # Beta 1 ----
@@ -160,7 +160,7 @@ plot(density(priors$b1), xlim = c(-2, 3), ylim = c(0,1.5), col = 'green', main =
 lines(density(beta1), col = 'blue')
 lines(density(oCV), col = 'red')
 
-legend("topright", legend = c("Posterior", "Prior", "Scaled Likelihood"), 
+legend("topright", legend = c("Posterior", "Observed", "Prior"), 
        col = c("blue", "red", "green"), lwd = 2, lty = c(1, 2, 3))
 ```
 
@@ -237,7 +237,7 @@ samples <- coda.samples(
 )
 
 # Summarize results
-summary(samples)
+# summary(samples)
 
 # Optional: Plot posterior distributions
 plot(samples)

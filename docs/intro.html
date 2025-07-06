@@ -263,11 +263,44 @@ Figure 1.1: The scientific method is the cornerstone of scientific research, and
 <span id="cb1-14"><a href="intro.html#cb1-14" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="intro.html#cb1-15" tabindex="-1"></a><span class="co"># Apply the function to each package in the list</span></span>
 <span id="cb1-16"><a href="intro.html#cb1-16" tabindex="-1"></a><span class="fu">lapply</span>(packages, install_if_missing)</span></code></pre></div>
-<pre><code>## Package data.table is already installed.
-## Package tidyverse is already installed.
-## Package rjags is already installed.
-## Package MCMCvis is already installed.
-## Package ggExtra is already installed.</code></pre>
+<pre><code>## Loading required package: data.table</code></pre>
+<pre><code>## data.table 1.17.4 using 8 threads (see ?getDTthreads).  Latest news: r-datatable.com</code></pre>
+<pre><code>## Package data.table is already installed.</code></pre>
+<pre><code>## Loading required package: tidyverse
+## ── Attaching core tidyverse packages ───────────────────────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.4     ── Conflicts ─────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::between()     masks data.table::between()
+## ✖ dplyr::filter()      masks stats::filter()
+## ✖ dplyr::first()       masks data.table::first()
+## ✖ lubridate::hour()    masks data.table::hour()
+## ✖ lubridate::isoweek() masks data.table::isoweek()
+## ✖ dplyr::lag()         masks stats::lag()
+## ✖ dplyr::last()        masks data.table::last()
+## ✖ lubridate::mday()    masks data.table::mday()
+## ✖ lubridate::minute()  masks data.table::minute()
+## ✖ lubridate::month()   masks data.table::month()
+## ✖ lubridate::quarter() masks data.table::quarter()
+## ✖ lubridate::second()  masks data.table::second()
+## ✖ purrr::transpose()   masks data.table::transpose()
+## ✖ lubridate::wday()    masks data.table::wday()
+## ✖ lubridate::week()    masks data.table::week()
+## ✖ lubridate::yday()    masks data.table::yday()
+## ✖ lubridate::year()    masks data.table::year()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre><code>## Package tidyverse is already installed.</code></pre>
+<pre><code>## Loading required package: rjags
+## Loading required package: coda
+## Linked to JAGS 4.3.2
+## Loaded modules: basemod,bugs</code></pre>
+<pre><code>## Package rjags is already installed.</code></pre>
+<pre><code>## Loading required package: MCMCvis</code></pre>
+<pre><code>## Package MCMCvis is already installed.</code></pre>
+<pre><code>## Loading required package: ggExtra</code></pre>
+<pre><code>## Package ggExtra is already installed.</code></pre>
 <pre><code>## [[1]]
 ## NULL
 ## 
@@ -282,15 +315,15 @@ Figure 1.1: The scientific method is the cornerstone of scientific research, and
 ## 
 ## [[5]]
 ## NULL</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="intro.html#cb4-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;irap93/Bayesdemo&quot;) # Uncomment out this line install for data </span></span>
-<span id="cb4-2"><a href="intro.html#cb4-2" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="intro.html#cb4-3" tabindex="-1"></a><span class="co"># Libraries</span></span>
-<span id="cb4-4"><a href="intro.html#cb4-4" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
-<span id="cb4-5"><a href="intro.html#cb4-5" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb4-6"><a href="intro.html#cb4-6" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-7"><a href="intro.html#cb4-7" tabindex="-1"></a><span class="fu">library</span>(rjags)</span>
-<span id="cb4-8"><a href="intro.html#cb4-8" tabindex="-1"></a><span class="fu">library</span>(MCMCvis)</span>
-<span id="cb4-9"><a href="intro.html#cb4-9" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="intro.html#cb14-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;irap93/Bayesdemo&quot;) # Uncomment out this line install for data </span></span>
+<span id="cb14-2"><a href="intro.html#cb14-2" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="intro.html#cb14-3" tabindex="-1"></a><span class="co"># Libraries</span></span>
+<span id="cb14-4"><a href="intro.html#cb14-4" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
+<span id="cb14-5"><a href="intro.html#cb14-5" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb14-6"><a href="intro.html#cb14-6" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb14-7"><a href="intro.html#cb14-7" tabindex="-1"></a><span class="fu">library</span>(rjags)</span>
+<span id="cb14-8"><a href="intro.html#cb14-8" tabindex="-1"></a><span class="fu">library</span>(MCMCvis)</span>
+<span id="cb14-9"><a href="intro.html#cb14-9" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span></code></pre></div>
 
 </div>
 </div>
