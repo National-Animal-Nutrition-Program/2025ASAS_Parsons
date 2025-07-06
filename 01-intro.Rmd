@@ -16,7 +16,7 @@ Additional training should increase comfort with functional modeling and a deepe
 
 ## Install Jags
 
-Before installing rjags, we have to install Jags for it to interface with. Refer to [mcmc-jags.sourceforge.io](https://mcmc-jags.sourceforge.io) and download the appropriate files for your machine type and install. 
+Before installing rjags, we have to install Jags for it to interface with. Refer to [mcmc-jags.sourceforge.io](https://mcmc-jags.sourceforge.io) and download the appropriate files for your machine type and install. Also, refer to the [Jags user manual](https://sourceforge.net/projects/mcmc-jags/) to understand how JAGS works.
 
 ## Install these packages
 
