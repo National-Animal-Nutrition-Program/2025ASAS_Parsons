@@ -193,7 +193,12 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="7" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>7</b> Modeling</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>7.1</b> Excercise 1</a></li>
+<li class="chapter" data-level="7.1" data-path="model.html"><a href="model.html#libraries"><i class="fa fa-check"></i><b>7.1</b> Libraries</a></li>
+<li class="chapter" data-level="7.2" data-path="model.html"><a href="model.html#data"><i class="fa fa-check"></i><b>7.2</b> Data</a></li>
+<li class="chapter" data-level="7.3" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>7.3</b> Excercise 1</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="model.html"><a href="model.html#summary-plots"><i class="fa fa-check"></i><b>7.3.1</b> Summary Plots</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://iraparsons.com" target="blank">Ira Parsons</a></li>
@@ -218,6 +223,7 @@ div.csl-indent {
 <div id="joint-distributions" class="section level1 hasAnchor" number="6">
 <h1><span class="header-section-number">Chapter 6</span> Joint Distributions<a href="joint-distributions.html#joint-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The joint distribution results from the conjugation of two or more posterior distributions of multiple factors or parameters from the model. There are two ways of finding this conjugated distribution. The moments of the two distributions can be matched using calculus <strong>If they hold these moments in common</strong>. However, this is not always a given, and many times the distributions may not hold moments in common. This is where the computational intensity of Bayesian statistics comes into play. We will utilize a Monte Carlo simulation model to create a simulation of the conjugated distribtution model. We will implement it using a gibbs sampler, typical of the one illustrated below.</p>
+<p><img src="figures/03-JointProb.png" width="1172" /></p>
 <div id="marcov-monte-carlo" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Marcov Monte Carlo<a href="joint-distributions.html#marcov-monte-carlo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="joint-distributions.html#cb18-1" tabindex="-1"></a><span class="co"># Set random seed for reproducibility</span></span>
@@ -292,7 +298,6 @@ div.csl-indent {
 <span id="cb19-18"><a href="joint-distributions.html#cb19-18" tabindex="-1"></a><span class="co"># ggMarginal(data = NULL, p = p, x=samples[,&quot;Feed_Intake&quot;], y=samples[,&quot;ADG&quot;], type = &quot;histogram&quot; )</span></span>
 <span id="cb19-19"><a href="joint-distributions.html#cb19-19" tabindex="-1"></a><span class="fu">ggMarginal</span>(<span class="at">data =</span> <span class="cn">NULL</span>, <span class="at">p =</span> p, <span class="at">x=</span>samples[,<span class="st">&quot;Feed_Intake&quot;</span>], <span class="at">y=</span>samples[,<span class="st">&quot;ADG&quot;</span>], <span class="at">type =</span> <span class="st">&quot;densigram&quot;</span>, <span class="at">color =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">fill =</span> <span class="st">&#39;grey&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/MCMCsample-2.png" width="672" /></p>
-<p><img src="figures/03-JointProb.png" width="1172" /></p>
 
 </div>
 </div>

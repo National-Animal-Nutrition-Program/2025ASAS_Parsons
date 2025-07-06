@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Modeling | NANP Bayesian Workbook</title>
+  <title>Chapter 6 Modeling | NANP Bayesian Workbook</title>
   <meta name="description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Modeling | NANP Bayesian Workbook" />
+  <meta property="og:title" content="Chapter 6 Modeling | NANP Bayesian Workbook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Modeling | NANP Bayesian Workbook" />
+  <meta name="twitter:title" content="Chapter 6 Modeling | NANP Bayesian Workbook" />
   
   <meta name="twitter:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   
@@ -30,7 +30,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="probs.html"/>
+<link rel="prev" href="joint-distributions.html"/>
 
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -164,35 +164,41 @@ div.csl-indent {
 <li><a href="./">NANP Bayesian Workbook</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>3</b> Bayes Theory</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>2</b> Bayes Theory</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="bayes.html"><a href="bayes.html#bayes-theorem"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="3.2" data-path="bayes.html"><a href="bayes.html#random-variables"><i class="fa fa-check"></i><b>3.2</b> Random variables</a></li>
+<li class="chapter" data-level="2.1" data-path="bayes.html"><a href="bayes.html#bayes-theorem"><i class="fa fa-check"></i><b>2.1</b> Bayes Theorem</a></li>
+<li class="chapter" data-level="2.2" data-path="bayes.html"><a href="bayes.html#random-variables"><i class="fa fa-check"></i><b>2.2</b> Random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="probs.html"><a href="probs.html"><i class="fa fa-check"></i><b>4</b> Probability Distributions</a>
+<li class="chapter" data-level="3" data-path="probs.html"><a href="probs.html"><i class="fa fa-check"></i><b>3</b> Probability Distributions</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="probs.html"><a href="probs.html#three-rules-of-probability"><i class="fa fa-check"></i><b>4.1</b> Three rules of probability</a>
+<li class="chapter" data-level="3.1" data-path="probs.html"><a href="probs.html#three-rules-of-probability"><i class="fa fa-check"></i><b>3.1</b> Three rules of probability</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="probs.html"><a href="probs.html#conditional-probability"><i class="fa fa-check"></i><b>4.1.1</b> Conditional Probability</a></li>
-<li class="chapter" data-level="4.1.2" data-path="probs.html"><a href="probs.html#total-probability"><i class="fa fa-check"></i><b>4.1.2</b> Total Probability</a></li>
-<li class="chapter" data-level="4.1.3" data-path="probs.html"><a href="probs.html#chain-rule-of-probability"><i class="fa fa-check"></i><b>4.1.3</b> Chain Rule of Probability</a></li>
+<li class="chapter" data-level="3.1.1" data-path="probs.html"><a href="probs.html#conditional-probability"><i class="fa fa-check"></i><b>3.1.1</b> Conditional Probability</a></li>
+<li class="chapter" data-level="3.1.2" data-path="probs.html"><a href="probs.html#total-probability"><i class="fa fa-check"></i><b>3.1.2</b> Total Probability</a></li>
+<li class="chapter" data-level="3.1.3" data-path="probs.html"><a href="probs.html#chain-rule-of-probability"><i class="fa fa-check"></i><b>3.1.3</b> Chain Rule of Probability</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="probs.html"><a href="probs.html#establishing-inference"><i class="fa fa-check"></i><b>4.2</b> Establishing inference</a>
+<li class="chapter" data-level="3.2" data-path="probs.html"><a href="probs.html#establishing-inference"><i class="fa fa-check"></i><b>3.2</b> Establishing inference</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="probs.html"><a href="probs.html#process-model"><i class="fa fa-check"></i><b>4.2.1</b> Process model</a></li>
-<li class="chapter" data-level="4.2.2" data-path="probs.html"><a href="probs.html#sampling-model"><i class="fa fa-check"></i><b>4.2.2</b> Sampling model</a></li>
-<li class="chapter" data-level="4.2.3" data-path="probs.html"><a href="probs.html#observation-model"><i class="fa fa-check"></i><b>4.2.3</b> Observation model</a></li>
+<li class="chapter" data-level="3.2.1" data-path="probs.html"><a href="probs.html#process-model"><i class="fa fa-check"></i><b>3.2.1</b> Process model</a></li>
+<li class="chapter" data-level="3.2.2" data-path="probs.html"><a href="probs.html#sampling-model"><i class="fa fa-check"></i><b>3.2.2</b> Sampling model</a></li>
+<li class="chapter" data-level="3.2.3" data-path="probs.html"><a href="probs.html#observation-model"><i class="fa fa-check"></i><b>3.2.3</b> Observation model</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="probs.html"><a href="probs.html#marcov-monte-carlo"><i class="fa fa-check"></i><b>4.3</b> Marcov Monte Carlo</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>5</b> Modeling</a>
+<li class="chapter" data-level="4" data-path="conjugate-priors.html"><a href="conjugate-priors.html"><i class="fa fa-check"></i><b>4</b> Conjugate Priors</a></li>
+<li class="chapter" data-level="5" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>5</b> Joint Distributions</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="model.html"><a href="model.html#libraries"><i class="fa fa-check"></i><b>5.1</b> Libraries</a></li>
-<li class="chapter" data-level="5.2" data-path="model.html"><a href="model.html#data"><i class="fa fa-check"></i><b>5.2</b> Data</a></li>
-<li class="chapter" data-level="5.3" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>5.3</b> Excercise 1</a></li>
-<li class="chapter" data-level="5.4" data-path="model.html"><a href="model.html#summary-plots"><i class="fa fa-check"></i><b>5.4</b> Summary Plots</a></li>
+<li class="chapter" data-level="5.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marcov-monte-carlo"><i class="fa fa-check"></i><b>5.1</b> Marcov Monte Carlo</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>6</b> Modeling</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="model.html"><a href="model.html#libraries"><i class="fa fa-check"></i><b>6.1</b> Libraries</a></li>
+<li class="chapter" data-level="6.2" data-path="model.html"><a href="model.html#data"><i class="fa fa-check"></i><b>6.2</b> Data</a></li>
+<li class="chapter" data-level="6.3" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>6.3</b> Excercise 1</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="model.html"><a href="model.html#summary-plots"><i class="fa fa-check"></i><b>6.3.1</b> Summary Plots</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://iraparsons.com" target="blank">Ira Parsons</a></li>
@@ -214,26 +220,26 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="model" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">Chapter 5</span> Modeling<a href="model.html#model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="libraries" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> Libraries<a href="model.html#libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="model.html#cb1-1" tabindex="-1"></a><span class="co"># Libraries to install</span></span>
-<span id="cb1-2"><a href="model.html#cb1-2" tabindex="-1"></a><span class="co"># List of packages to check/install</span></span>
-<span id="cb1-3"><a href="model.html#cb1-3" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;data.table&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;rjags&quot;</span>, <span class="st">&quot;MCMCvis&quot;</span>)</span>
-<span id="cb1-4"><a href="model.html#cb1-4" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="model.html#cb1-5" tabindex="-1"></a><span class="co"># Function to check and install packages</span></span>
-<span id="cb1-6"><a href="model.html#cb1-6" tabindex="-1"></a>install_if_missing <span class="ot">=</span> <span class="cf">function</span>(pkg) {</span>
-<span id="cb1-7"><a href="model.html#cb1-7" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
-<span id="cb1-8"><a href="model.html#cb1-8" tabindex="-1"></a>    <span class="fu">install.packages</span>(pkg, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-9"><a href="model.html#cb1-9" tabindex="-1"></a>    <span class="fu">library</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-10"><a href="model.html#cb1-10" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb1-11"><a href="model.html#cb1-11" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">&quot;Package&quot;</span>, pkg, <span class="st">&quot;is already installed.</span><span class="sc">\n</span><span class="st">&quot;</span>))</span>
-<span id="cb1-12"><a href="model.html#cb1-12" tabindex="-1"></a>  }</span>
-<span id="cb1-13"><a href="model.html#cb1-13" tabindex="-1"></a>}</span>
-<span id="cb1-14"><a href="model.html#cb1-14" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="model.html#cb1-15" tabindex="-1"></a><span class="co"># Apply the function to each package in the list</span></span>
-<span id="cb1-16"><a href="model.html#cb1-16" tabindex="-1"></a><span class="fu">lapply</span>(packages, install_if_missing)</span></code></pre></div>
+<div id="model" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Modeling<a href="model.html#model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="libraries" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Libraries<a href="model.html#libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="model.html#cb20-1" tabindex="-1"></a><span class="co"># Libraries to install</span></span>
+<span id="cb20-2"><a href="model.html#cb20-2" tabindex="-1"></a><span class="co"># List of packages to check/install</span></span>
+<span id="cb20-3"><a href="model.html#cb20-3" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;data.table&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;rjags&quot;</span>, <span class="st">&quot;MCMCvis&quot;</span>)</span>
+<span id="cb20-4"><a href="model.html#cb20-4" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="model.html#cb20-5" tabindex="-1"></a><span class="co"># Function to check and install packages</span></span>
+<span id="cb20-6"><a href="model.html#cb20-6" tabindex="-1"></a>install_if_missing <span class="ot">=</span> <span class="cf">function</span>(pkg) {</span>
+<span id="cb20-7"><a href="model.html#cb20-7" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb20-8"><a href="model.html#cb20-8" tabindex="-1"></a>    <span class="fu">install.packages</span>(pkg, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-9"><a href="model.html#cb20-9" tabindex="-1"></a>    <span class="fu">library</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb20-10"><a href="model.html#cb20-10" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb20-11"><a href="model.html#cb20-11" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">&quot;Package&quot;</span>, pkg, <span class="st">&quot;is already installed.</span><span class="sc">\n</span><span class="st">&quot;</span>))</span>
+<span id="cb20-12"><a href="model.html#cb20-12" tabindex="-1"></a>  }</span>
+<span id="cb20-13"><a href="model.html#cb20-13" tabindex="-1"></a>}</span>
+<span id="cb20-14"><a href="model.html#cb20-14" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="model.html#cb20-15" tabindex="-1"></a><span class="co"># Apply the function to each package in the list</span></span>
+<span id="cb20-16"><a href="model.html#cb20-16" tabindex="-1"></a><span class="fu">lapply</span>(packages, install_if_missing)</span></code></pre></div>
 <pre><code>## Package data.table is already installed.
 ## Package tidyverse is already installed.
 ## Package rjags is already installed.
@@ -249,20 +255,20 @@ div.csl-indent {
 ## 
 ## [[4]]
 ## NULL</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="model.html#cb4-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;irap93/Bayesdemo&quot;) # Uncomment out this line install for data </span></span>
-<span id="cb4-2"><a href="model.html#cb4-2" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="model.html#cb4-3" tabindex="-1"></a><span class="co"># Libraries</span></span>
-<span id="cb4-4"><a href="model.html#cb4-4" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
-<span id="cb4-5"><a href="model.html#cb4-5" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb4-6"><a href="model.html#cb4-6" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-7"><a href="model.html#cb4-7" tabindex="-1"></a><span class="fu">library</span>(rjags)</span>
-<span id="cb4-8"><a href="model.html#cb4-8" tabindex="-1"></a><span class="fu">library</span>(MCMCvis)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="model.html#cb23-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;irap93/Bayesdemo&quot;) # Uncomment out this line install for data </span></span>
+<span id="cb23-2"><a href="model.html#cb23-2" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="model.html#cb23-3" tabindex="-1"></a><span class="co"># Libraries</span></span>
+<span id="cb23-4"><a href="model.html#cb23-4" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
+<span id="cb23-5"><a href="model.html#cb23-5" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb23-6"><a href="model.html#cb23-6" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb23-7"><a href="model.html#cb23-7" tabindex="-1"></a><span class="fu">library</span>(rjags)</span>
+<span id="cb23-8"><a href="model.html#cb23-8" tabindex="-1"></a><span class="fu">library</span>(MCMCvis)</span></code></pre></div>
 </div>
-<div id="data" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> Data<a href="model.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Data<a href="model.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We have a dataset representing heifer performance, feeding behavior, and dry matter intake over a 56 day back grounding period. Heifers were assigned to a 2x2 crossover design to test a feed additives effect on animal behavior, performance, and morbidity during weaning.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="model.html#cb5-1" tabindex="-1"></a><span class="fu">data</span>(heifer)</span>
-<span id="cb5-2"><a href="model.html#cb5-2" tabindex="-1"></a><span class="fu">head</span>(heifer)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="model.html#cb24-1" tabindex="-1"></a><span class="fu">data</span>(heifer)</span>
+<span id="cb24-2"><a href="model.html#cb24-2" tabindex="-1"></a><span class="fu">head</span>(heifer)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 21
 ##     VID   Pen CreepTrt WeanTrt D_42_BW Creep_Gain Shipping_Loss Day56_InitialBW Day56_ADG Day56_MMBW
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;     &lt;dbl&gt;      &lt;dbl&gt;         &lt;dbl&gt;           &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
@@ -274,7 +280,7 @@ div.csl-indent {
 ## 6   346     6 B        A          189.       13.6         -2.27            185.     0.716      0.716
 ## # ℹ 11 more variables: Day56_DMI &lt;dbl&gt;, Day56_Residual &lt;dbl&gt;, D_1_EV &lt;dbl&gt;, AVE_TTB &lt;dbl&gt;,
 ## #   BVFREQ &lt;dbl&gt;, BVDUR &lt;dbl&gt;, BVFREQsd &lt;dbl&gt;, BVDURsd &lt;dbl&gt;, uDMI &lt;dbl&gt;, sdDMI &lt;dbl&gt;, cvDMI &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="model.html#cb7-1" tabindex="-1"></a><span class="fu">summary</span>(heifer)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="model.html#cb26-1" tabindex="-1"></a><span class="fu">summary</span>(heifer)</span></code></pre></div>
 <pre><code>##       VID             Pen          CreepTrt           WeanTrt             D_42_BW        Creep_Gain    
 ##  Min.   :248.0   Min.   :5.000   Length:77          Length:77          Min.   :160.0   Min.   : 5.897  
 ##  1st Qu.:672.0   1st Qu.:6.000   Class :character   Class :character   1st Qu.:179.5   1st Qu.:23.133  
@@ -304,54 +310,54 @@ div.csl-indent {
 ##  3rd Qu.: 82.77   3rd Qu.: 7650   3rd Qu.:7.033   3rd Qu.:2.645   3rd Qu.:0.3984  
 ##  Max.   :130.86   Max.   :13055   Max.   :7.860   Max.   :3.226   Max.   :0.6268</code></pre>
 </div>
-<div id="excercise-1" class="section level2 hasAnchor" number="5.3">
-<h2><span class="header-section-number">5.3</span> Excercise 1<a href="model.html#excercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="model.html#cb9-1" tabindex="-1"></a><span class="fu">names</span>(heifer)</span></code></pre></div>
+<div id="excercise-1" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Excercise 1<a href="model.html#excercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="model.html#cb28-1" tabindex="-1"></a><span class="fu">names</span>(heifer)</span></code></pre></div>
 <pre><code>##  [1] &quot;VID&quot;             &quot;Pen&quot;             &quot;CreepTrt&quot;        &quot;WeanTrt&quot;         &quot;D_42_BW&quot;        
 ##  [6] &quot;Creep_Gain&quot;      &quot;Shipping_Loss&quot;   &quot;Day56_InitialBW&quot; &quot;Day56_ADG&quot;       &quot;Day56_MMBW&quot;     
 ## [11] &quot;Day56_DMI&quot;       &quot;Day56_Residual&quot;  &quot;D_1_EV&quot;          &quot;AVE_TTB&quot;         &quot;BVFREQ&quot;         
 ## [16] &quot;BVDUR&quot;           &quot;BVFREQsd&quot;        &quot;BVDURsd&quot;         &quot;uDMI&quot;            &quot;sdDMI&quot;          
 ## [21] &quot;cvDMI&quot;</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="model.html#cb11-1" tabindex="-1"></a><span class="fu">ggplot</span>(heifer, <span class="fu">aes</span>(<span class="at">x=</span>cvDMI, <span class="at">y=</span>Day56_ADG))<span class="sc">+</span></span>
-<span id="cb11-2"><a href="model.html#cb11-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
-<span id="cb11-3"><a href="model.html#cb11-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="model.html#cb30-1" tabindex="-1"></a><span class="fu">ggplot</span>(heifer, <span class="fu">aes</span>(<span class="at">x=</span>cvDMI, <span class="at">y=</span>Day56_ADG))<span class="sc">+</span></span>
+<span id="cb30-2"><a href="model.html#cb30-2" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb30-3"><a href="model.html#cb30-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&#39;lm&#39;</span>)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <p><img src="_main_files/figure-html/heiferdata-1.png" width="672" />
 Next we need to define the Jags model</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="model.html#cb13-1" tabindex="-1"></a><span class="co"># Data list ----</span></span>
-<span id="cb13-2"><a href="model.html#cb13-2" tabindex="-1"></a><span class="co"># Data</span></span>
-<span id="cb13-3"><a href="model.html#cb13-3" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb13-4"><a href="model.html#cb13-4" tabindex="-1"></a>  <span class="at">x =</span> heifer<span class="sc">$</span>cvDMI,  <span class="co"># Example predictor values</span></span>
-<span id="cb13-5"><a href="model.html#cb13-5" tabindex="-1"></a>  <span class="at">y =</span> heifer<span class="sc">$</span>Day56_ADG, <span class="co"># Example response values</span></span>
-<span id="cb13-6"><a href="model.html#cb13-6" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">nrow</span>(heifer)     <span class="co"># Number of observations</span></span>
-<span id="cb13-7"><a href="model.html#cb13-7" tabindex="-1"></a>)</span>
-<span id="cb13-8"><a href="model.html#cb13-8" tabindex="-1"></a><span class="do">## Jags model ----</span></span>
-<span id="cb13-9"><a href="model.html#cb13-9" tabindex="-1"></a><span class="co"># Define the model</span></span>
-<span id="cb13-10"><a href="model.html#cb13-10" tabindex="-1"></a>model_string <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
-<span id="cb13-11"><a href="model.html#cb13-11" tabindex="-1"></a><span class="st">model {</span></span>
-<span id="cb13-12"><a href="model.html#cb13-12" tabindex="-1"></a><span class="st">  for (i in 1:N) {</span></span>
-<span id="cb13-13"><a href="model.html#cb13-13" tabindex="-1"></a><span class="st">    y[i] ~ dnorm(mu[i], tau)</span></span>
-<span id="cb13-14"><a href="model.html#cb13-14" tabindex="-1"></a><span class="st">    mu[i] &lt;- beta0 + beta1 * x[i]</span></span>
-<span id="cb13-15"><a href="model.html#cb13-15" tabindex="-1"></a><span class="st">  }</span></span>
-<span id="cb13-16"><a href="model.html#cb13-16" tabindex="-1"></a><span class="st">  </span></span>
-<span id="cb13-17"><a href="model.html#cb13-17" tabindex="-1"></a><span class="st">  # Priors</span></span>
-<span id="cb13-18"><a href="model.html#cb13-18" tabindex="-1"></a><span class="st">  beta0 ~ dunif(-10, 10)</span></span>
-<span id="cb13-19"><a href="model.html#cb13-19" tabindex="-1"></a><span class="st">  beta1 ~ dunif(-1, 1)</span></span>
-<span id="cb13-20"><a href="model.html#cb13-20" tabindex="-1"></a><span class="st">  sigma ~ dunif(0, 100)</span></span>
-<span id="cb13-21"><a href="model.html#cb13-21" tabindex="-1"></a><span class="st">  tau &lt;- 1 / (sigma * sigma)</span></span>
-<span id="cb13-22"><a href="model.html#cb13-22" tabindex="-1"></a><span class="st">}</span></span>
-<span id="cb13-23"><a href="model.html#cb13-23" tabindex="-1"></a><span class="st">&quot;</span></span>
-<span id="cb13-24"><a href="model.html#cb13-24" tabindex="-1"></a></span>
-<span id="cb13-25"><a href="model.html#cb13-25" tabindex="-1"></a><span class="co"># Initial values</span></span>
-<span id="cb13-26"><a href="model.html#cb13-26" tabindex="-1"></a>inits <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb13-27"><a href="model.html#cb13-27" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">beta0 =</span> <span class="dv">0</span>, <span class="at">beta1 =</span> <span class="dv">0</span>, <span class="at">sigma =</span> <span class="dv">1</span>)</span>
-<span id="cb13-28"><a href="model.html#cb13-28" tabindex="-1"></a>)</span>
-<span id="cb13-29"><a href="model.html#cb13-29" tabindex="-1"></a></span>
-<span id="cb13-30"><a href="model.html#cb13-30" tabindex="-1"></a><span class="co"># Parameters to monitor</span></span>
-<span id="cb13-31"><a href="model.html#cb13-31" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;beta0&quot;</span>, <span class="st">&quot;beta1&quot;</span>, <span class="st">&quot;sigma&quot;</span>, <span class="st">&#39;y&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="model.html#cb32-1" tabindex="-1"></a><span class="co"># Data list ----</span></span>
+<span id="cb32-2"><a href="model.html#cb32-2" tabindex="-1"></a><span class="co"># Data</span></span>
+<span id="cb32-3"><a href="model.html#cb32-3" tabindex="-1"></a>data_list <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb32-4"><a href="model.html#cb32-4" tabindex="-1"></a>  <span class="at">x =</span> heifer<span class="sc">$</span>cvDMI,  <span class="co"># Example predictor values</span></span>
+<span id="cb32-5"><a href="model.html#cb32-5" tabindex="-1"></a>  <span class="at">y =</span> heifer<span class="sc">$</span>Day56_ADG, <span class="co"># Example response values</span></span>
+<span id="cb32-6"><a href="model.html#cb32-6" tabindex="-1"></a>  <span class="at">N =</span> <span class="fu">nrow</span>(heifer)     <span class="co"># Number of observations</span></span>
+<span id="cb32-7"><a href="model.html#cb32-7" tabindex="-1"></a>)</span>
+<span id="cb32-8"><a href="model.html#cb32-8" tabindex="-1"></a><span class="do">## Jags model ----</span></span>
+<span id="cb32-9"><a href="model.html#cb32-9" tabindex="-1"></a><span class="co"># Define the model</span></span>
+<span id="cb32-10"><a href="model.html#cb32-10" tabindex="-1"></a>model_string <span class="ot">&lt;-</span> <span class="st">&quot;</span></span>
+<span id="cb32-11"><a href="model.html#cb32-11" tabindex="-1"></a><span class="st">model {</span></span>
+<span id="cb32-12"><a href="model.html#cb32-12" tabindex="-1"></a><span class="st">  for (i in 1:N) {</span></span>
+<span id="cb32-13"><a href="model.html#cb32-13" tabindex="-1"></a><span class="st">    y[i] ~ dnorm(mu[i], tau)</span></span>
+<span id="cb32-14"><a href="model.html#cb32-14" tabindex="-1"></a><span class="st">    mu[i] &lt;- beta0 + beta1 * x[i]</span></span>
+<span id="cb32-15"><a href="model.html#cb32-15" tabindex="-1"></a><span class="st">  }</span></span>
+<span id="cb32-16"><a href="model.html#cb32-16" tabindex="-1"></a><span class="st">  </span></span>
+<span id="cb32-17"><a href="model.html#cb32-17" tabindex="-1"></a><span class="st">  # Priors</span></span>
+<span id="cb32-18"><a href="model.html#cb32-18" tabindex="-1"></a><span class="st">  beta0 ~ dunif(-10, 10)</span></span>
+<span id="cb32-19"><a href="model.html#cb32-19" tabindex="-1"></a><span class="st">  beta1 ~ dunif(-1, 1)</span></span>
+<span id="cb32-20"><a href="model.html#cb32-20" tabindex="-1"></a><span class="st">  sigma ~ dunif(0, 100)</span></span>
+<span id="cb32-21"><a href="model.html#cb32-21" tabindex="-1"></a><span class="st">  tau &lt;- 1 / (sigma * sigma)</span></span>
+<span id="cb32-22"><a href="model.html#cb32-22" tabindex="-1"></a><span class="st">}</span></span>
+<span id="cb32-23"><a href="model.html#cb32-23" tabindex="-1"></a><span class="st">&quot;</span></span>
+<span id="cb32-24"><a href="model.html#cb32-24" tabindex="-1"></a></span>
+<span id="cb32-25"><a href="model.html#cb32-25" tabindex="-1"></a><span class="co"># Initial values</span></span>
+<span id="cb32-26"><a href="model.html#cb32-26" tabindex="-1"></a>inits <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb32-27"><a href="model.html#cb32-27" tabindex="-1"></a>  <span class="fu">list</span>(<span class="at">beta0 =</span> <span class="dv">0</span>, <span class="at">beta1 =</span> <span class="dv">0</span>, <span class="at">sigma =</span> <span class="dv">1</span>)</span>
+<span id="cb32-28"><a href="model.html#cb32-28" tabindex="-1"></a>)</span>
+<span id="cb32-29"><a href="model.html#cb32-29" tabindex="-1"></a></span>
+<span id="cb32-30"><a href="model.html#cb32-30" tabindex="-1"></a><span class="co"># Parameters to monitor</span></span>
+<span id="cb32-31"><a href="model.html#cb32-31" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;beta0&quot;</span>, <span class="st">&quot;beta1&quot;</span>, <span class="st">&quot;sigma&quot;</span>, <span class="st">&#39;y&#39;</span>)</span></code></pre></div>
 <p>Now we have the model set up, we are ready to run the model through jags</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="model.html#cb14-1" tabindex="-1"></a><span class="co"># Run the model</span></span>
-<span id="cb14-2"><a href="model.html#cb14-2" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(<span class="fu">textConnection</span>(model_string), <span class="at">data =</span> data_list, <span class="at">inits =</span> inits, <span class="at">n.chains =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="model.html#cb33-1" tabindex="-1"></a><span class="co"># Run the model</span></span>
+<span id="cb33-2"><a href="model.html#cb33-2" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">jags.model</span>(<span class="fu">textConnection</span>(model_string), <span class="at">data =</span> data_list, <span class="at">inits =</span> inits, <span class="at">n.chains =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## Compiling model graph
 ##    Resolving undeclared variables
 ##    Allocating nodes
@@ -363,40 +369,40 @@ Next we need to define the Jags model</p>
 ## Initializing model
 ## 
 ##   |                                                          |                                                  |   0%  |                                                          |+                                                 |   2%  |                                                          |++                                                |   4%  |                                                          |+++                                               |   6%  |                                                          |++++                                              |   8%  |                                                          |+++++                                             |  10%  |                                                          |++++++                                            |  12%  |                                                          |+++++++                                           |  14%  |                                                          |++++++++                                          |  16%  |                                                          |+++++++++                                         |  18%  |                                                          |++++++++++                                        |  20%  |                                                          |+++++++++++                                       |  22%  |                                                          |++++++++++++                                      |  24%  |                                                          |+++++++++++++                                     |  26%  |                                                          |++++++++++++++                                    |  28%  |                                                          |+++++++++++++++                                   |  30%  |                                                          |++++++++++++++++                                  |  32%  |                                                          |+++++++++++++++++                                 |  34%  |                                                          |++++++++++++++++++                                |  36%  |                                                          |+++++++++++++++++++                               |  38%  |                                                          |++++++++++++++++++++                              |  40%  |                                                          |+++++++++++++++++++++                             |  42%  |                                                          |++++++++++++++++++++++                            |  44%  |                                                          |+++++++++++++++++++++++                           |  46%  |                                                          |++++++++++++++++++++++++                          |  48%  |                                                          |+++++++++++++++++++++++++                         |  50%  |                                                          |++++++++++++++++++++++++++                        |  52%  |                                                          |+++++++++++++++++++++++++++                       |  54%  |                                                          |++++++++++++++++++++++++++++                      |  56%  |                                                          |+++++++++++++++++++++++++++++                     |  58%  |                                                          |++++++++++++++++++++++++++++++                    |  60%  |                                                          |+++++++++++++++++++++++++++++++                   |  62%  |                                                          |++++++++++++++++++++++++++++++++                  |  64%  |                                                          |+++++++++++++++++++++++++++++++++                 |  66%  |                                                          |++++++++++++++++++++++++++++++++++                |  68%  |                                                          |+++++++++++++++++++++++++++++++++++               |  70%  |                                                          |++++++++++++++++++++++++++++++++++++              |  72%  |                                                          |+++++++++++++++++++++++++++++++++++++             |  74%  |                                                          |++++++++++++++++++++++++++++++++++++++            |  76%  |                                                          |+++++++++++++++++++++++++++++++++++++++           |  78%  |                                                          |++++++++++++++++++++++++++++++++++++++++          |  80%  |                                                          |+++++++++++++++++++++++++++++++++++++++++         |  82%  |                                                          |++++++++++++++++++++++++++++++++++++++++++        |  84%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++       |  86%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++      |  88%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++     |  90%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++    |  92%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++   |  94%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++  |  96%  |                                                          |+++++++++++++++++++++++++++++++++++++++++++++++++ |  98%  |                                                          |++++++++++++++++++++++++++++++++++++++++++++++++++| 100%</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="model.html#cb16-1" tabindex="-1"></a><span class="fu">update</span>(model, <span class="dv">1000</span>)  <span class="co"># Burn-in</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="model.html#cb35-1" tabindex="-1"></a><span class="fu">update</span>(model, <span class="dv">1000</span>)  <span class="co"># Burn-in</span></span></code></pre></div>
 <pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="model.html#cb18-1" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(model, <span class="at">variable.names =</span> params, <span class="at">n.iter =</span> <span class="dv">5000</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="model.html#cb37-1" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">coda.samples</span>(model, <span class="at">variable.names =</span> params, <span class="at">n.iter =</span> <span class="dv">5000</span>)</span></code></pre></div>
 <pre><code>##   |                                                          |                                                  |   0%  |                                                          |*                                                 |   2%  |                                                          |**                                                |   4%  |                                                          |***                                               |   6%  |                                                          |****                                              |   8%  |                                                          |*****                                             |  10%  |                                                          |******                                            |  12%  |                                                          |*******                                           |  14%  |                                                          |********                                          |  16%  |                                                          |*********                                         |  18%  |                                                          |**********                                        |  20%  |                                                          |***********                                       |  22%  |                                                          |************                                      |  24%  |                                                          |*************                                     |  26%  |                                                          |**************                                    |  28%  |                                                          |***************                                   |  30%  |                                                          |****************                                  |  32%  |                                                          |*****************                                 |  34%  |                                                          |******************                                |  36%  |                                                          |*******************                               |  38%  |                                                          |********************                              |  40%  |                                                          |*********************                             |  42%  |                                                          |**********************                            |  44%  |                                                          |***********************                           |  46%  |                                                          |************************                          |  48%  |                                                          |*************************                         |  50%  |                                                          |**************************                        |  52%  |                                                          |***************************                       |  54%  |                                                          |****************************                      |  56%  |                                                          |*****************************                     |  58%  |                                                          |******************************                    |  60%  |                                                          |*******************************                   |  62%  |                                                          |********************************                  |  64%  |                                                          |*********************************                 |  66%  |                                                          |**********************************                |  68%  |                                                          |***********************************               |  70%  |                                                          |************************************              |  72%  |                                                          |*************************************             |  74%  |                                                          |**************************************            |  76%  |                                                          |***************************************           |  78%  |                                                          |****************************************          |  80%  |                                                          |*****************************************         |  82%  |                                                          |******************************************        |  84%  |                                                          |*******************************************       |  86%  |                                                          |********************************************      |  88%  |                                                          |*********************************************     |  90%  |                                                          |**********************************************    |  92%  |                                                          |***********************************************   |  94%  |                                                          |************************************************  |  96%  |                                                          |************************************************* |  98%  |                                                          |**************************************************| 100%</code></pre>
 <p>And do a preliminary look at the results.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="model.html#cb20-1" tabindex="-1"></a>beta0chain <span class="ot">=</span> <span class="fu">MCMCchains</span>(samples, <span class="at">params =</span> <span class="st">&#39;beta0&#39;</span>)</span>
-<span id="cb20-2"><a href="model.html#cb20-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(beta0chain), <span class="at">main =</span> <span class="st">&quot;beta0chain&quot;</span>)</span>
-<span id="cb20-3"><a href="model.html#cb20-3" tabindex="-1"></a><span class="fu">rug</span>(beta0chain, <span class="at">co =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb20-4"><a href="model.html#cb20-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(beta0chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="model.html#cb21-1" tabindex="-1"></a><span class="fu">quantile</span>(beta0chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="model.html#cb39-1" tabindex="-1"></a>beta0chain <span class="ot">=</span> <span class="fu">MCMCchains</span>(samples, <span class="at">params =</span> <span class="st">&#39;beta0&#39;</span>)</span>
+<span id="cb39-2"><a href="model.html#cb39-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(beta0chain), <span class="at">main =</span> <span class="st">&quot;beta0chain&quot;</span>)</span>
+<span id="cb39-3"><a href="model.html#cb39-3" tabindex="-1"></a><span class="fu">rug</span>(beta0chain, <span class="at">co =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb39-4"><a href="model.html#cb39-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(beta0chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="model.html#cb40-1" tabindex="-1"></a><span class="fu">quantile</span>(beta0chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 1.091424 1.337607</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="model.html#cb23-1" tabindex="-1"></a><span class="fu">mean</span>(beta0chain)</span></code></pre></div>
-<pre><code>## [1] 1.249529</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="model.html#cb25-1" tabindex="-1"></a>beta1chain <span class="ot">=</span> <span class="fu">MCMCchains</span>(samples, <span class="at">params =</span> <span class="st">&#39;beta1&#39;</span>)</span>
-<span id="cb25-2"><a href="model.html#cb25-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(beta1chain), <span class="at">main =</span> <span class="st">&#39;beta1chain&#39;</span>)</span>
-<span id="cb25-3"><a href="model.html#cb25-3" tabindex="-1"></a><span class="fu">rug</span>(beta1chain, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb25-4"><a href="model.html#cb25-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(beta1chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-2.png" width="672" /></p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="model.html#cb26-1" tabindex="-1"></a><span class="fu">quantile</span>(beta1chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code></pre></div>
+## 1.124634 1.338754</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="model.html#cb42-1" tabindex="-1"></a><span class="fu">mean</span>(beta0chain)</span></code></pre></div>
+<pre><code>## [1] 1.256357</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="model.html#cb44-1" tabindex="-1"></a>beta1chain <span class="ot">=</span> <span class="fu">MCMCchains</span>(samples, <span class="at">params =</span> <span class="st">&#39;beta1&#39;</span>)</span>
+<span id="cb44-2"><a href="model.html#cb44-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(beta1chain), <span class="at">main =</span> <span class="st">&#39;beta1chain&#39;</span>)</span>
+<span id="cb44-3"><a href="model.html#cb44-3" tabindex="-1"></a><span class="fu">rug</span>(beta1chain, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb44-4"><a href="model.html#cb44-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(beta1chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="model.html#cb45-1" tabindex="-1"></a><span class="fu">quantile</span>(beta1chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
-## -0.9957234 -0.4437010</code></pre>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="model.html#cb28-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">MCMCpstr</span>(samples, <span class="at">params =</span> <span class="st">&#39;y&#39;</span>)</span>
-<span id="cb28-2"><a href="model.html#cb28-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y<span class="sc">$</span>y), <span class="at">main =</span> <span class="st">&#39;y&#39;</span>)</span>
-<span id="cb28-3"><a href="model.html#cb28-3" tabindex="-1"></a><span class="fu">rug</span>(y<span class="sc">$</span>y, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb28-4"><a href="model.html#cb28-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(y<span class="sc">$</span>y, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-3.png" width="672" /></p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="model.html#cb29-1" tabindex="-1"></a><span class="fu">quantile</span>(y<span class="sc">$</span>y, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code></pre></div>
+## -0.9956555 -0.5415129</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="model.html#cb47-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">MCMCpstr</span>(samples, <span class="at">params =</span> <span class="st">&#39;y&#39;</span>)</span>
+<span id="cb47-2"><a href="model.html#cb47-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y<span class="sc">$</span>y), <span class="at">main =</span> <span class="st">&#39;y&#39;</span>)</span>
+<span id="cb47-3"><a href="model.html#cb47-3" tabindex="-1"></a><span class="fu">rug</span>(y<span class="sc">$</span>y, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb47-4"><a href="model.html#cb47-4" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(y<span class="sc">$</span>y, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="model.html#cb48-1" tabindex="-1"></a><span class="fu">quantile</span>(y<span class="sc">$</span>y, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code></pre></div>
 <pre><code>##      2.5%     97.5% 
 ## 0.2546595 1.3006211</code></pre>
 <p>Summarise results</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="model.html#cb31-1" tabindex="-1"></a><span class="co"># Summarize the results</span></span>
-<span id="cb31-2"><a href="model.html#cb31-2" tabindex="-1"></a><span class="fu">summary</span>(samples)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="model.html#cb50-1" tabindex="-1"></a><span class="co"># Summarize the results</span></span>
+<span id="cb50-2"><a href="model.html#cb50-2" tabindex="-1"></a><span class="fu">summary</span>(samples)</span></code></pre></div>
 <pre><code>## 
 ## Iterations = 2001:7000
 ## Thinning interval = 1 
@@ -407,9 +413,9 @@ Next we need to define the Jags model</p>
 ##    plus standard error of the mean:
 ## 
 ##           Mean      SD  Naive SE Time-series SE
-## beta0  1.24953 0.06183 0.0008744      0.0037977
-## beta1 -0.84624 0.14707 0.0020799      0.0095652
-## sigma  0.24252 0.02085 0.0002949      0.0004627
+## beta0  1.25636 0.05396 0.0007631      0.0028048
+## beta1 -0.86511 0.12360 0.0017479      0.0076591
+## sigma  0.24185 0.02052 0.0002902      0.0003873
 ## y[1]   1.21822 0.00000 0.0000000      0.0000000
 ## y[2]   0.94606 0.00000 0.0000000      0.0000000
 ## y[3]   1.14694 0.00000 0.0000000      0.0000000
@@ -491,9 +497,9 @@ Next we need to define the Jags model</p>
 ## 2. Quantiles for each variable:
 ## 
 ##           2.5%      25%      50%      75%    97.5%
-## beta0  1.09142  1.21915  1.26191  1.29197  1.33761
-## beta1 -0.99572 -0.95570 -0.89639 -0.77993 -0.44370
-## sigma  0.20550  0.22812  0.24119  0.25567  0.28751
+## beta0  1.12463  1.22909  1.26391  1.29244  1.33875
+## beta1 -0.99566 -0.95522 -0.89993 -0.81338 -0.54151
+## sigma  0.20572  0.22784  0.24057  0.25455  0.28610
 ## y[1]   1.21822  1.21822  1.21822  1.21822  1.21822
 ## y[2]   0.94606  0.94606  0.94606  0.94606  0.94606
 ## y[3]   1.14694  1.14694  1.14694  1.14694  1.14694
@@ -571,33 +577,32 @@ Next we need to define the Jags model</p>
 ## y[75]  1.20742  1.20742  1.20742  1.20742  1.20742
 ## y[76]  1.03246  1.03246  1.03246  1.03246  1.03246
 ## y[77]  0.73655  0.73655  0.73655  0.73655  0.73655</code></pre>
-</div>
-<div id="summary-plots" class="section level2 hasAnchor" number="5.4">
-<h2><span class="header-section-number">5.4</span> Summary Plots<a href="model.html#summary-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="summary-plots" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Summary Plots<a href="model.html#summary-plots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Prior Plots</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="model.html#cb33-1" tabindex="-1"></a><span class="do">## Plots</span></span>
-<span id="cb33-2"><a href="model.html#cb33-2" tabindex="-1"></a><span class="co"># Prior plots ------</span></span>
-<span id="cb33-3"><a href="model.html#cb33-3" tabindex="-1"></a>iter <span class="ot">=</span> <span class="dv">5000</span></span>
-<span id="cb33-4"><a href="model.html#cb33-4" tabindex="-1"></a>priors <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">b0 =</span> <span class="fu">runif</span>(iter,<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>),</span>
-<span id="cb33-5"><a href="model.html#cb33-5" tabindex="-1"></a>                    <span class="at">b1 =</span> <span class="fu">runif</span>(iter,<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb33-6"><a href="model.html#cb33-6" tabindex="-1"></a>                    <span class="at">sigma =</span> <span class="fu">runif</span>(iter, <span class="dv">0</span>,<span class="dv">100</span>))</span>
-<span id="cb33-7"><a href="model.html#cb33-7" tabindex="-1"></a>priors</span></code></pre></div>
-<pre><code>##               b0          b1    sigma
-##            &lt;num&gt;       &lt;num&gt;    &lt;num&gt;
-##    1:  5.2221264  0.56634908 62.05740
-##    2: -2.5893550 -0.98291823 29.10582
-##    3:  1.9438876 -0.32830733 76.91813
-##    4:  0.5334629  0.07910043 54.29905
-##    5: -7.9896048 -0.60160045 49.69477
-##   ---                                
-## 4996:  7.3164883 -0.79789510 89.90013
-## 4997: -4.6666574 -0.64156576 51.35939
-## 4998: -4.4803318 -0.64914353 98.38349
-## 4999: -4.1862577  0.65260367 72.00733
-## 5000:  2.5548045  0.75585878 11.80609</code></pre>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="model.html#cb35-1" tabindex="-1"></a><span class="fu">class</span>(samples)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="model.html#cb52-1" tabindex="-1"></a><span class="do">## Plots</span></span>
+<span id="cb52-2"><a href="model.html#cb52-2" tabindex="-1"></a><span class="co"># Prior plots ------</span></span>
+<span id="cb52-3"><a href="model.html#cb52-3" tabindex="-1"></a>iter <span class="ot">=</span> <span class="dv">5000</span></span>
+<span id="cb52-4"><a href="model.html#cb52-4" tabindex="-1"></a>priors <span class="ot">=</span> <span class="fu">data.table</span>(<span class="at">b0 =</span> <span class="fu">runif</span>(iter,<span class="sc">-</span><span class="dv">10</span>, <span class="dv">10</span>),</span>
+<span id="cb52-5"><a href="model.html#cb52-5" tabindex="-1"></a>                    <span class="at">b1 =</span> <span class="fu">runif</span>(iter,<span class="sc">-</span><span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb52-6"><a href="model.html#cb52-6" tabindex="-1"></a>                    <span class="at">sigma =</span> <span class="fu">runif</span>(iter, <span class="dv">0</span>,<span class="dv">100</span>))</span>
+<span id="cb52-7"><a href="model.html#cb52-7" tabindex="-1"></a>priors</span></code></pre></div>
+<pre><code>##               b0          b1     sigma
+##            &lt;num&gt;       &lt;num&gt;     &lt;num&gt;
+##    1: -5.9701202  0.21839384 21.324640
+##    2:  9.5638068 -0.95929104 44.366740
+##    3: -1.7457507  0.37283521 12.816430
+##    4: -0.4937504 -0.20708212 47.802486
+##    5: -9.6457920  0.22958080 71.907682
+##   ---                                 
+## 4996:  6.1302412  0.72755111 10.915328
+## 4997: -0.2533277  0.40568331 34.861760
+## 4998:  8.1942948  0.86246866  4.989995
+## 4999:  6.5334121 -0.01963494 51.399111
+## 5000:  8.5982722  0.64946927 48.392465</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="model.html#cb54-1" tabindex="-1"></a><span class="fu">class</span>(samples)</span></code></pre></div>
 <pre><code>## [1] &quot;mcmc.list&quot;</code></pre>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="model.html#cb37-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(data_list<span class="sc">$</span>y <span class="sc">~</span> data_list<span class="sc">$</span>x))</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="model.html#cb56-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(data_list<span class="sc">$</span>y <span class="sc">~</span> data_list<span class="sc">$</span>x))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = data_list$y ~ data_list$x)
@@ -617,31 +622,31 @@ Next we need to define the Jags model</p>
 ## Multiple R-squared:  0.2794, Adjusted R-squared:  0.2698 
 ## F-statistic: 29.07 on 1 and 75 DF,  p-value: 7.777e-07</code></pre>
 <p>Posterior Plots</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="model.html#cb39-1" tabindex="-1"></a><span class="do">## Beta 0 ----</span></span>
-<span id="cb39-2"><a href="model.html#cb39-2" tabindex="-1"></a>observed <span class="ot">=</span> <span class="fu">rnorm</span>(iter, <span class="fl">1.01</span>, <span class="fl">0.20</span>)</span>
-<span id="cb39-3"><a href="model.html#cb39-3" tabindex="-1"></a>beta0 <span class="ot">=</span> <span class="fu">MCMCchains</span>(samples, <span class="at">params =</span> <span class="fu">c</span>(<span class="st">&quot;beta0&quot;</span>))</span>
-<span id="cb39-4"><a href="model.html#cb39-4" tabindex="-1"></a><span class="fu">length</span>(beta0)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="model.html#cb58-1" tabindex="-1"></a><span class="do">## Beta 0 ----</span></span>
+<span id="cb58-2"><a href="model.html#cb58-2" tabindex="-1"></a>observed <span class="ot">=</span> <span class="fu">rnorm</span>(iter, <span class="fl">1.01</span>, <span class="fl">0.20</span>)</span>
+<span id="cb58-3"><a href="model.html#cb58-3" tabindex="-1"></a>beta0 <span class="ot">=</span> <span class="fu">MCMCchains</span>(samples, <span class="at">params =</span> <span class="fu">c</span>(<span class="st">&quot;beta0&quot;</span>))</span>
+<span id="cb58-4"><a href="model.html#cb58-4" tabindex="-1"></a><span class="fu">length</span>(beta0)</span></code></pre></div>
 <pre><code>## [1] 5000</code></pre>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="model.html#cb41-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(priors<span class="sc">$</span>b0), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">03</span>, <span class="dv">3</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>), <span class="at">col =</span> <span class="st">&#39;green&#39;</span>, <span class="at">main =</span> <span class="st">&#39;Beta 0&#39;</span>)</span>
-<span id="cb41-2"><a href="model.html#cb41-2" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(beta0), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb41-3"><a href="model.html#cb41-3" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(observed), <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb41-4"><a href="model.html#cb41-4" tabindex="-1"></a></span>
-<span id="cb41-5"><a href="model.html#cb41-5" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Posterior&quot;</span>, <span class="st">&quot;Prior&quot;</span>, <span class="st">&quot;Scaled Likelihood&quot;</span>), </span>
-<span id="cb41-6"><a href="model.html#cb41-6" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="model.html#cb42-1" tabindex="-1"></a><span class="co"># Beta 1 ----</span></span>
-<span id="cb42-2"><a href="model.html#cb42-2" tabindex="-1"></a>uCV <span class="ot">=</span> <span class="fu">mean</span>(heifer<span class="sc">$</span>cvDMI)</span>
-<span id="cb42-3"><a href="model.html#cb42-3" tabindex="-1"></a>sdCV <span class="ot">=</span> <span class="fu">sd</span>(heifer<span class="sc">$</span>cvDMI)</span>
-<span id="cb42-4"><a href="model.html#cb42-4" tabindex="-1"></a>oCV <span class="ot">=</span> <span class="fu">rnorm</span>(iter, <span class="sc">-</span><span class="fl">0.211</span>, <span class="fl">0.53</span>)</span>
-<span id="cb42-5"><a href="model.html#cb42-5" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="model.html#cb42-6" tabindex="-1"></a>beta1 <span class="ot">=</span> <span class="fu">MCMCchains</span>(samples, <span class="at">params =</span> <span class="fu">c</span>(<span class="st">&quot;beta1&quot;</span>))</span>
-<span id="cb42-7"><a href="model.html#cb42-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(priors<span class="sc">$</span>b1), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.5</span>), <span class="at">col =</span> <span class="st">&#39;green&#39;</span>, <span class="at">main =</span> <span class="st">&#39;Beta 1&#39;</span>)</span>
-<span id="cb42-8"><a href="model.html#cb42-8" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(beta1), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb42-9"><a href="model.html#cb42-9" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(oCV), <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
-<span id="cb42-10"><a href="model.html#cb42-10" tabindex="-1"></a></span>
-<span id="cb42-11"><a href="model.html#cb42-11" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Posterior&quot;</span>, <span class="st">&quot;Prior&quot;</span>, <span class="st">&quot;Scaled Likelihood&quot;</span>), </span>
-<span id="cb42-12"><a href="model.html#cb42-12" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="model.html#cb60-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(priors<span class="sc">$</span>b0), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span>.<span class="dv">03</span>, <span class="dv">3</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">3</span>), <span class="at">col =</span> <span class="st">&#39;green&#39;</span>, <span class="at">main =</span> <span class="st">&#39;Beta 0&#39;</span>)</span>
+<span id="cb60-2"><a href="model.html#cb60-2" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(beta0), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb60-3"><a href="model.html#cb60-3" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(observed), <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb60-4"><a href="model.html#cb60-4" tabindex="-1"></a></span>
+<span id="cb60-5"><a href="model.html#cb60-5" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Posterior&quot;</span>, <span class="st">&quot;Prior&quot;</span>, <span class="st">&quot;Scaled Likelihood&quot;</span>), </span>
+<span id="cb60-6"><a href="model.html#cb60-6" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="model.html#cb61-1" tabindex="-1"></a><span class="co"># Beta 1 ----</span></span>
+<span id="cb61-2"><a href="model.html#cb61-2" tabindex="-1"></a>uCV <span class="ot">=</span> <span class="fu">mean</span>(heifer<span class="sc">$</span>cvDMI)</span>
+<span id="cb61-3"><a href="model.html#cb61-3" tabindex="-1"></a>sdCV <span class="ot">=</span> <span class="fu">sd</span>(heifer<span class="sc">$</span>cvDMI)</span>
+<span id="cb61-4"><a href="model.html#cb61-4" tabindex="-1"></a>oCV <span class="ot">=</span> <span class="fu">rnorm</span>(iter, <span class="sc">-</span><span class="fl">0.211</span>, <span class="fl">0.53</span>)</span>
+<span id="cb61-5"><a href="model.html#cb61-5" tabindex="-1"></a></span>
+<span id="cb61-6"><a href="model.html#cb61-6" tabindex="-1"></a>beta1 <span class="ot">=</span> <span class="fu">MCMCchains</span>(samples, <span class="at">params =</span> <span class="fu">c</span>(<span class="st">&quot;beta1&quot;</span>))</span>
+<span id="cb61-7"><a href="model.html#cb61-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(priors<span class="sc">$</span>b1), <span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="dv">3</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">1.5</span>), <span class="at">col =</span> <span class="st">&#39;green&#39;</span>, <span class="at">main =</span> <span class="st">&#39;Beta 1&#39;</span>)</span>
+<span id="cb61-8"><a href="model.html#cb61-8" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(beta1), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb61-9"><a href="model.html#cb61-9" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(oCV), <span class="at">col =</span> <span class="st">&#39;red&#39;</span>)</span>
+<span id="cb61-10"><a href="model.html#cb61-10" tabindex="-1"></a></span>
+<span id="cb61-11"><a href="model.html#cb61-11" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Posterior&quot;</span>, <span class="st">&quot;Prior&quot;</span>, <span class="st">&quot;Scaled Likelihood&quot;</span>), </span>
+<span id="cb61-12"><a href="model.html#cb61-12" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div class="csl-entry">
@@ -662,12 +667,13 @@ Wasserstein, Ronald L., and Nicole A. Lazar. 2016. <span>“The <span>ASA</span>
 </div>
 </div>
 </div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="probs.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="joint-distributions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
@@ -722,6 +728,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

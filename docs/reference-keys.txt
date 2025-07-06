@@ -17,8 +17,8 @@ conjugate-priors
 joint-distributions
 marcov-monte-carlo
 model
-excercise-1
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
 libraries
 data
+excercise-1
 summary-plots
+url-your-book-url-like-httpsbookdown.orgyihuibookdown

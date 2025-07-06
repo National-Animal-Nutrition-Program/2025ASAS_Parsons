@@ -120,7 +120,7 @@ Summarise results
 summary(samples)
 ```
 
-## Summary Plots
+### Summary Plots
 Prior Plots
 ```{r}
 ## Plots
