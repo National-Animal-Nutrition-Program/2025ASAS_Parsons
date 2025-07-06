@@ -165,7 +165,10 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#install-these-packages"><i class="fa fa-check"></i><b>1.1</b> Install these packages</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>2</b> Bayes Theory</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="bayes.html"><a href="bayes.html#bayes-theorem"><i class="fa fa-check"></i><b>2.1</b> Bayes Theorem</a></li>
@@ -242,7 +245,54 @@ Figure 1.1: The scientific method is the cornerstone of scientific research, and
 </div>
 <p>However, the same structures that have afforded remarkable scientific progress are also inherently limiting. Many common statistical methodologies are designed around bespoke experimental designs, assumptions of data type and distributions, and are sensitive to the number of observations taken using various sampling methods <span class="citation">(<a href="#ref-wassersteinASAStatementValues2016">Wasserstein and Lazar 2016</a>; <a href="#ref-johnsonCommentsASAStatement2016">Johnson 2016</a>)</span>, and generated some concern regarding the reliability of published research findings <span class="citation">(<a href="#ref-ioannidisWhyMostPublished2005">Ioannidis 2005</a>)</span>, with alternatives to null hypothesis testing yielding marginal success, with many statisticians pleas to correctly utilize the p-value falling on researchers deaf ears <span class="citation">(<a href="#ref-matthewsValueStatementFive2021">Matthews 2021</a>)</span>. Perhaps more importantly, there is an ever decreasing suite of novel questions which may be asked by a single investigator, even if they are particularly advanced and talented. This problem becomes even more intimidating for young investigators. The ability to write new and unique models using the creativity of inter-disciplinary teams increases the depth and breadth of available questions <span class="citation">(<a href="#ref-hobbsBayesianModelsStatistical2015">Hobbs and Hooten 2015</a>)</span>.</p>
 <p>Additional training should increase comfort with functional modeling and a deeper perspective of natural stochastic and modeling probability in complex ecological systems. The overarching goal of this class is to both increase scientists comfort with writing mathematical process models which describe their system, and basic statistical principles needed to describe the probability inherent to their system. There are many technical aspects surrounding this methodology, and my belief is that no matter whether you consider yourself a Frequentist, Bayesian, or Pragmatic statistitian, that their is tremendous value in pursuing deeper intelectual knowledge of system stoichasticiy and probability which will inevitably increase the intellectual satisfaction we take from our work.</p>
+<div id="install-these-packages" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Install these packages<a href="intro.html#install-these-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="intro.html#cb1-1" tabindex="-1"></a><span class="co"># Libraries to install</span></span>
+<span id="cb1-2"><a href="intro.html#cb1-2" tabindex="-1"></a><span class="co"># List of packages to check/install</span></span>
+<span id="cb1-3"><a href="intro.html#cb1-3" tabindex="-1"></a>packages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;data.table&quot;</span>, <span class="st">&quot;tidyverse&quot;</span>, <span class="st">&quot;rjags&quot;</span>, <span class="st">&quot;MCMCvis&quot;</span>, <span class="st">&quot;ggExtra&quot;</span>)</span>
+<span id="cb1-4"><a href="intro.html#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="intro.html#cb1-5" tabindex="-1"></a><span class="co"># Function to check and install packages</span></span>
+<span id="cb1-6"><a href="intro.html#cb1-6" tabindex="-1"></a>install_if_missing <span class="ot">=</span> <span class="cf">function</span>(pkg) {</span>
+<span id="cb1-7"><a href="intro.html#cb1-7" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>)) {</span>
+<span id="cb1-8"><a href="intro.html#cb1-8" tabindex="-1"></a>    <span class="fu">install.packages</span>(pkg, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-9"><a href="intro.html#cb1-9" tabindex="-1"></a>    <span class="fu">library</span>(pkg, <span class="at">character.only =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-10"><a href="intro.html#cb1-10" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb1-11"><a href="intro.html#cb1-11" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="st">&quot;Package&quot;</span>, pkg, <span class="st">&quot;is already installed.</span><span class="sc">\n</span><span class="st">&quot;</span>))</span>
+<span id="cb1-12"><a href="intro.html#cb1-12" tabindex="-1"></a>  }</span>
+<span id="cb1-13"><a href="intro.html#cb1-13" tabindex="-1"></a>}</span>
+<span id="cb1-14"><a href="intro.html#cb1-14" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="intro.html#cb1-15" tabindex="-1"></a><span class="co"># Apply the function to each package in the list</span></span>
+<span id="cb1-16"><a href="intro.html#cb1-16" tabindex="-1"></a><span class="fu">lapply</span>(packages, install_if_missing)</span></code></pre></div>
+<pre><code>## Package data.table is already installed.
+## Package tidyverse is already installed.
+## Package rjags is already installed.
+## Package MCMCvis is already installed.
+## Package ggExtra is already installed.</code></pre>
+<pre><code>## [[1]]
+## NULL
+## 
+## [[2]]
+## NULL
+## 
+## [[3]]
+## NULL
+## 
+## [[4]]
+## NULL
+## 
+## [[5]]
+## NULL</code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="intro.html#cb4-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;irap93/Bayesdemo&quot;) # Uncomment out this line install for data </span></span>
+<span id="cb4-2"><a href="intro.html#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="intro.html#cb4-3" tabindex="-1"></a><span class="co"># Libraries</span></span>
+<span id="cb4-4"><a href="intro.html#cb4-4" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
+<span id="cb4-5"><a href="intro.html#cb4-5" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb4-6"><a href="intro.html#cb4-6" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-7"><a href="intro.html#cb4-7" tabindex="-1"></a><span class="fu">library</span>(rjags)</span>
+<span id="cb4-8"><a href="intro.html#cb4-8" tabindex="-1"></a><span class="fu">library</span>(MCMCvis)</span>
+<span id="cb4-9"><a href="intro.html#cb4-9" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span></code></pre></div>
 
+</div>
 </div>
 <h3>References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">

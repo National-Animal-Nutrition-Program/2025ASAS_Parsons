@@ -1,6 +1,7 @@
 fig:modframe
 fig:scimethod
 intro
+install-these-packages
 bayes
 bayes-theorem
 random-variables

@@ -165,7 +165,10 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#install-these-packages"><i class="fa fa-check"></i><b>1.1</b> Install these packages</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>2</b> Bayes Theory</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="bayes.html"><a href="bayes.html#bayes-theorem"><i class="fa fa-check"></i><b>2.1</b> Bayes Theorem</a></li>
@@ -230,60 +233,60 @@ div.csl-indent {
 <div id="conjugate-priors" class="section level1 hasAnchor" number="4">
 <h1><span class="header-section-number">Chapter 4</span> Conjugate Priors<a href="conjugate-priors.html#conjugate-priors" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Below is an example of conjugation of priors, sample and posterior distributions.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="conjugate-priors.html#cb11-1" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
-<span id="cb11-2"><a href="conjugate-priors.html#cb11-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb11-3"><a href="conjugate-priors.html#cb11-3" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="conjugate-priors.html#cb11-4" tabindex="-1"></a><span class="co"># 1. Define the prior: Normal(mu_0, sigma_0^2)</span></span>
-<span id="cb11-5"><a href="conjugate-priors.html#cb11-5" tabindex="-1"></a>mu_prior <span class="ot">=</span> <span class="dv">0</span>        <span class="co"># Prior mean</span></span>
-<span id="cb11-6"><a href="conjugate-priors.html#cb11-6" tabindex="-1"></a>sigma_prior <span class="ot">=</span> <span class="dv">1</span>     <span class="co"># Prior standard deviation</span></span>
-<span id="cb11-7"><a href="conjugate-priors.html#cb11-7" tabindex="-1"></a>var_prior <span class="ot">=</span> sigma_prior<span class="sc">^</span><span class="dv">2</span>  <span class="co"># Prior variance</span></span>
-<span id="cb11-8"><a href="conjugate-priors.html#cb11-8" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="conjugate-priors.html#cb11-9" tabindex="-1"></a><span class="co"># 2. Simulate some data: Normal observations with known variance</span></span>
-<span id="cb11-10"><a href="conjugate-priors.html#cb11-10" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">2</span>       <span class="co"># Known population standard deviation</span></span>
-<span id="cb11-11"><a href="conjugate-priors.html#cb11-11" tabindex="-1"></a>sigma_sq <span class="ot">=</span> sigma<span class="sc">^</span><span class="dv">2</span>  <span class="co"># Known population variance</span></span>
-<span id="cb11-12"><a href="conjugate-priors.html#cb11-12" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">50</span>          <span class="co"># Number of observations</span></span>
-<span id="cb11-13"><a href="conjugate-priors.html#cb11-13" tabindex="-1"></a>true_mu <span class="ot">=</span> <span class="dv">1</span>     <span class="co"># True mean for simulation</span></span>
-<span id="cb11-14"><a href="conjugate-priors.html#cb11-14" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> true_mu, <span class="at">sd =</span> sigma)  <span class="co"># Simulated data</span></span>
-<span id="cb11-15"><a href="conjugate-priors.html#cb11-15" tabindex="-1"></a>sample_mean <span class="ot">=</span> <span class="fu">mean</span>(data)  <span class="co"># Observed sample mean</span></span>
-<span id="cb11-16"><a href="conjugate-priors.html#cb11-16" tabindex="-1"></a></span>
-<span id="cb11-17"><a href="conjugate-priors.html#cb11-17" tabindex="-1"></a><span class="co"># 3. Compute the posterior: Normal(mu_n, sigma_n^2)</span></span>
-<span id="cb11-18"><a href="conjugate-priors.html#cb11-18" tabindex="-1"></a><span class="co"># Posterior precision = 1/sigma_0^2 + n/sigma^2</span></span>
-<span id="cb11-19"><a href="conjugate-priors.html#cb11-19" tabindex="-1"></a>posterior_precision <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span>var_prior <span class="sc">+</span> n<span class="sc">/</span>var_prior</span>
-<span id="cb11-20"><a href="conjugate-priors.html#cb11-20" tabindex="-1"></a>posterior_variance <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span>posterior_precision</span>
-<span id="cb11-21"><a href="conjugate-priors.html#cb11-21" tabindex="-1"></a>posterior_sd <span class="ot">=</span> <span class="fu">sqrt</span>(posterior_variance)</span>
-<span id="cb11-22"><a href="conjugate-priors.html#cb11-22" tabindex="-1"></a>posterior_mean <span class="ot">=</span> (mu_prior<span class="sc">/</span>var_prior <span class="sc">+</span> n<span class="sc">*</span>sample_mean<span class="sc">/</span>sigma_sq) <span class="sc">/</span> posterior_precision</span>
-<span id="cb11-23"><a href="conjugate-priors.html#cb11-23" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="conjugate-priors.html#cb11-24" tabindex="-1"></a><span class="co"># 4. Plot the prior, likelihood, and posterior</span></span>
-<span id="cb11-25"><a href="conjugate-priors.html#cb11-25" tabindex="-1"></a><span class="co"># Create a sequence of possible mu values</span></span>
-<span id="cb11-26"><a href="conjugate-priors.html#cb11-26" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
-<span id="cb11-27"><a href="conjugate-priors.html#cb11-27" tabindex="-1"></a></span>
-<span id="cb11-28"><a href="conjugate-priors.html#cb11-28" tabindex="-1"></a><span class="co"># Prior density: Normal(mu_0, sigma_0^2)</span></span>
-<span id="cb11-29"><a href="conjugate-priors.html#cb11-29" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, <span class="at">mean =</span> mu_prior, <span class="at">sd =</span> sigma_prior)</span>
-<span id="cb11-30"><a href="conjugate-priors.html#cb11-30" tabindex="-1"></a></span>
-<span id="cb11-31"><a href="conjugate-priors.html#cb11-31" tabindex="-1"></a><span class="co"># Scaled likelihood: Normal(sample_mean, sigma^2/n)</span></span>
-<span id="cb11-32"><a href="conjugate-priors.html#cb11-32" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, <span class="at">mean =</span> sample_mean, <span class="at">sd =</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
-<span id="cb11-33"><a href="conjugate-priors.html#cb11-33" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> likelihood <span class="sc">/</span> <span class="fu">max</span>(likelihood)  <span class="co"># Scale for visualization</span></span>
-<span id="cb11-34"><a href="conjugate-priors.html#cb11-34" tabindex="-1"></a></span>
-<span id="cb11-35"><a href="conjugate-priors.html#cb11-35" tabindex="-1"></a><span class="co"># Posterior density: Normal(posterior_mean, posterior_variance)</span></span>
-<span id="cb11-36"><a href="conjugate-priors.html#cb11-36" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, <span class="at">mean =</span> posterior_mean, <span class="at">sd =</span> posterior_sd)</span>
-<span id="cb11-37"><a href="conjugate-priors.html#cb11-37" tabindex="-1"></a></span>
-<span id="cb11-38"><a href="conjugate-priors.html#cb11-38" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb11-39"><a href="conjugate-priors.html#cb11-39" tabindex="-1"></a><span class="fu">plot</span>(mu, posterior, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, </span>
-<span id="cb11-40"><a href="conjugate-priors.html#cb11-40" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Mean (mu)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Density&quot;</span>, </span>
-<span id="cb11-41"><a href="conjugate-priors.html#cb11-41" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Normal-Normal Conjugate Prior Example&quot;</span>)</span>
-<span id="cb11-42"><a href="conjugate-priors.html#cb11-42" tabindex="-1"></a><span class="fu">lines</span>(mu, prior, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
-<span id="cb11-43"><a href="conjugate-priors.html#cb11-43" tabindex="-1"></a><span class="fu">lines</span>(mu, likelihood, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
-<span id="cb11-44"><a href="conjugate-priors.html#cb11-44" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Posterior&quot;</span>, <span class="st">&quot;Prior&quot;</span>, <span class="st">&quot;Scaled Likelihood&quot;</span>), </span>
-<span id="cb11-45"><a href="conjugate-priors.html#cb11-45" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="conjugate-priors.html#cb15-1" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb15-2"><a href="conjugate-priors.html#cb15-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb15-3"><a href="conjugate-priors.html#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="conjugate-priors.html#cb15-4" tabindex="-1"></a><span class="co"># 1. Define the prior: Normal(mu_0, sigma_0^2)</span></span>
+<span id="cb15-5"><a href="conjugate-priors.html#cb15-5" tabindex="-1"></a>mu_prior <span class="ot">=</span> <span class="dv">0</span>        <span class="co"># Prior mean</span></span>
+<span id="cb15-6"><a href="conjugate-priors.html#cb15-6" tabindex="-1"></a>sigma_prior <span class="ot">=</span> <span class="dv">1</span>     <span class="co"># Prior standard deviation</span></span>
+<span id="cb15-7"><a href="conjugate-priors.html#cb15-7" tabindex="-1"></a>var_prior <span class="ot">=</span> sigma_prior<span class="sc">^</span><span class="dv">2</span>  <span class="co"># Prior variance</span></span>
+<span id="cb15-8"><a href="conjugate-priors.html#cb15-8" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="conjugate-priors.html#cb15-9" tabindex="-1"></a><span class="co"># 2. Simulate some data: Normal observations with known variance</span></span>
+<span id="cb15-10"><a href="conjugate-priors.html#cb15-10" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">2</span>       <span class="co"># Known population standard deviation</span></span>
+<span id="cb15-11"><a href="conjugate-priors.html#cb15-11" tabindex="-1"></a>sigma_sq <span class="ot">=</span> sigma<span class="sc">^</span><span class="dv">2</span>  <span class="co"># Known population variance</span></span>
+<span id="cb15-12"><a href="conjugate-priors.html#cb15-12" tabindex="-1"></a>n <span class="ot">=</span> <span class="dv">50</span>          <span class="co"># Number of observations</span></span>
+<span id="cb15-13"><a href="conjugate-priors.html#cb15-13" tabindex="-1"></a>true_mu <span class="ot">=</span> <span class="dv">1</span>     <span class="co"># True mean for simulation</span></span>
+<span id="cb15-14"><a href="conjugate-priors.html#cb15-14" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> true_mu, <span class="at">sd =</span> sigma)  <span class="co"># Simulated data</span></span>
+<span id="cb15-15"><a href="conjugate-priors.html#cb15-15" tabindex="-1"></a>sample_mean <span class="ot">=</span> <span class="fu">mean</span>(data)  <span class="co"># Observed sample mean</span></span>
+<span id="cb15-16"><a href="conjugate-priors.html#cb15-16" tabindex="-1"></a></span>
+<span id="cb15-17"><a href="conjugate-priors.html#cb15-17" tabindex="-1"></a><span class="co"># 3. Compute the posterior: Normal(mu_n, sigma_n^2)</span></span>
+<span id="cb15-18"><a href="conjugate-priors.html#cb15-18" tabindex="-1"></a><span class="co"># Posterior precision = 1/sigma_0^2 + n/sigma^2</span></span>
+<span id="cb15-19"><a href="conjugate-priors.html#cb15-19" tabindex="-1"></a>posterior_precision <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span>var_prior <span class="sc">+</span> n<span class="sc">/</span>var_prior</span>
+<span id="cb15-20"><a href="conjugate-priors.html#cb15-20" tabindex="-1"></a>posterior_variance <span class="ot">=</span> <span class="dv">1</span><span class="sc">/</span>posterior_precision</span>
+<span id="cb15-21"><a href="conjugate-priors.html#cb15-21" tabindex="-1"></a>posterior_sd <span class="ot">=</span> <span class="fu">sqrt</span>(posterior_variance)</span>
+<span id="cb15-22"><a href="conjugate-priors.html#cb15-22" tabindex="-1"></a>posterior_mean <span class="ot">=</span> (mu_prior<span class="sc">/</span>var_prior <span class="sc">+</span> n<span class="sc">*</span>sample_mean<span class="sc">/</span>sigma_sq) <span class="sc">/</span> posterior_precision</span>
+<span id="cb15-23"><a href="conjugate-priors.html#cb15-23" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="conjugate-priors.html#cb15-24" tabindex="-1"></a><span class="co"># 4. Plot the prior, likelihood, and posterior</span></span>
+<span id="cb15-25"><a href="conjugate-priors.html#cb15-25" tabindex="-1"></a><span class="co"># Create a sequence of possible mu values</span></span>
+<span id="cb15-26"><a href="conjugate-priors.html#cb15-26" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb15-27"><a href="conjugate-priors.html#cb15-27" tabindex="-1"></a></span>
+<span id="cb15-28"><a href="conjugate-priors.html#cb15-28" tabindex="-1"></a><span class="co"># Prior density: Normal(mu_0, sigma_0^2)</span></span>
+<span id="cb15-29"><a href="conjugate-priors.html#cb15-29" tabindex="-1"></a>prior <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, <span class="at">mean =</span> mu_prior, <span class="at">sd =</span> sigma_prior)</span>
+<span id="cb15-30"><a href="conjugate-priors.html#cb15-30" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="conjugate-priors.html#cb15-31" tabindex="-1"></a><span class="co"># Scaled likelihood: Normal(sample_mean, sigma^2/n)</span></span>
+<span id="cb15-32"><a href="conjugate-priors.html#cb15-32" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, <span class="at">mean =</span> sample_mean, <span class="at">sd =</span> sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb15-33"><a href="conjugate-priors.html#cb15-33" tabindex="-1"></a>likelihood <span class="ot">&lt;-</span> likelihood <span class="sc">/</span> <span class="fu">max</span>(likelihood)  <span class="co"># Scale for visualization</span></span>
+<span id="cb15-34"><a href="conjugate-priors.html#cb15-34" tabindex="-1"></a></span>
+<span id="cb15-35"><a href="conjugate-priors.html#cb15-35" tabindex="-1"></a><span class="co"># Posterior density: Normal(posterior_mean, posterior_variance)</span></span>
+<span id="cb15-36"><a href="conjugate-priors.html#cb15-36" tabindex="-1"></a>posterior <span class="ot">&lt;-</span> <span class="fu">dnorm</span>(mu, <span class="at">mean =</span> posterior_mean, <span class="at">sd =</span> posterior_sd)</span>
+<span id="cb15-37"><a href="conjugate-priors.html#cb15-37" tabindex="-1"></a></span>
+<span id="cb15-38"><a href="conjugate-priors.html#cb15-38" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb15-39"><a href="conjugate-priors.html#cb15-39" tabindex="-1"></a><span class="fu">plot</span>(mu, posterior, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, </span>
+<span id="cb15-40"><a href="conjugate-priors.html#cb15-40" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Mean (mu)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Density&quot;</span>, </span>
+<span id="cb15-41"><a href="conjugate-priors.html#cb15-41" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Normal-Normal Conjugate Prior Example&quot;</span>)</span>
+<span id="cb15-42"><a href="conjugate-priors.html#cb15-42" tabindex="-1"></a><span class="fu">lines</span>(mu, prior, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb15-43"><a href="conjugate-priors.html#cb15-43" tabindex="-1"></a><span class="fu">lines</span>(mu, likelihood, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">3</span>)</span>
+<span id="cb15-44"><a href="conjugate-priors.html#cb15-44" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Posterior&quot;</span>, <span class="st">&quot;Prior&quot;</span>, <span class="st">&quot;Scaled Likelihood&quot;</span>), </span>
+<span id="cb15-45"><a href="conjugate-priors.html#cb15-45" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span>), <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/conjugatepriors-1.png" width="672" /></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="conjugate-priors.html#cb12-1" tabindex="-1"></a><span class="co"># 5. Summarize the results</span></span>
-<span id="cb12-2"><a href="conjugate-priors.html#cb12-2" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Prior: Normal(mean = &quot;</span>, mu_prior, <span class="st">&quot;, sd = &quot;</span>, sigma_prior, <span class="st">&quot;)</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="conjugate-priors.html#cb16-1" tabindex="-1"></a><span class="co"># 5. Summarize the results</span></span>
+<span id="cb16-2"><a href="conjugate-priors.html#cb16-2" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Prior: Normal(mean = &quot;</span>, mu_prior, <span class="st">&quot;, sd = &quot;</span>, sigma_prior, <span class="st">&quot;)</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Prior: Normal(mean =  0 , sd =  1 )</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="conjugate-priors.html#cb14-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Data: Sample mean = &quot;</span>, <span class="fu">round</span>(sample_mean, <span class="dv">3</span>), <span class="st">&quot;, n = &quot;</span>, n, <span class="st">&quot;, known sd = &quot;</span>, sigma, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="conjugate-priors.html#cb18-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Data: Sample mean = &quot;</span>, <span class="fu">round</span>(sample_mean, <span class="dv">3</span>), <span class="st">&quot;, n = &quot;</span>, n, <span class="st">&quot;, known sd = &quot;</span>, sigma, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Data: Sample mean =  1.201 , n =  50 , known sd =  2</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="conjugate-priors.html#cb16-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Posterior: Normal(mean = &quot;</span>, <span class="fu">round</span>(posterior_mean, <span class="dv">3</span>), <span class="st">&quot;, sd = &quot;</span>, <span class="fu">round</span>(posterior_sd, <span class="dv">3</span>), <span class="st">&quot;)</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="conjugate-priors.html#cb20-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Posterior: Normal(mean = &quot;</span>, <span class="fu">round</span>(posterior_mean, <span class="dv">3</span>), <span class="st">&quot;, sd = &quot;</span>, <span class="fu">round</span>(posterior_sd, <span class="dv">3</span>), <span class="st">&quot;)</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Posterior: Normal(mean =  0.294 , sd =  0.14 )</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="conjugate-priors.html#cb18-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Posterior Variance: &quot;</span>, <span class="fu">round</span>(posterior_variance, <span class="dv">3</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="conjugate-priors.html#cb22-1" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Posterior Variance: &quot;</span>, <span class="fu">round</span>(posterior_variance, <span class="dv">3</span>), <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>## Posterior Variance:  0.02</code></pre>
 </div>
             </section>

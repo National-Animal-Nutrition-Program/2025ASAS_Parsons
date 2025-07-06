@@ -1,7 +1,5 @@
 # Probability Distributions {#probs}
 
-
-
 ## Three rules of probability  
 
 ### Conditional Probability  

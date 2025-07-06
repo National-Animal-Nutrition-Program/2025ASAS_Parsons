@@ -5,7 +5,7 @@
 ```{r}
 # Libraries to install
 # List of packages to check/install
-packages <- c("data.table", "tidyverse", "rjags", "MCMCvis")
+packages <- c("data.table", "tidyverse", "rjags", "MCMCvis", "ggExtra")
 
 # Function to check and install packages
 install_if_missing = function(pkg) {
@@ -29,6 +29,7 @@ library(data.table)
 library(tidyverse)
 library(rjags)
 library(MCMCvis)
+library(ggExtra)
 ```
 ## Data
 We have a dataset representing heifer performance, feeding behavior, and dry matter intake over a 56 day back grounding period. Heifers were assigned to a 2x2 crossover design to test a feed additives effect on animal behavior, performance, and morbidity during weaning.

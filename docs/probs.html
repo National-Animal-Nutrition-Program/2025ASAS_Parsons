@@ -165,7 +165,10 @@ div.csl-indent {
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#install-these-packages"><i class="fa fa-check"></i><b>1.1</b> Install these packages</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>2</b> Bayes Theory</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="bayes.html"><a href="bayes.html#bayes-theorem"><i class="fa fa-check"></i><b>2.1</b> Bayes Theorem</a></li>
@@ -247,49 +250,49 @@ div.csl-indent {
 <div id="establishing-inference" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Establishing inference<a href="probs.html#establishing-inference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Establishing inference involves understanding how the state of our ecological system changes over time, between individuals, or across space. Our results rely upon observations drawn from the system, because the system (total space) is to large to observe in totality <span class="citation">(<a href="#ref-hobbsBayesianModelsStatistical2015">Hobbs and Hooten 2015</a>)</span>. Thus, we have three sources of variation which may be driving our collected data.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="probs.html#cb1-1" tabindex="-1"></a><span class="co"># Linked probability functions ----</span></span>
-<span id="cb1-2"><a href="probs.html#cb1-2" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="probs.html#cb1-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb1-4"><a href="probs.html#cb1-4" tabindex="-1"></a><span class="co"># Process model -----</span></span>
-<span id="cb1-5"><a href="probs.html#cb1-5" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span><span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb1-6"><a href="probs.html#cb1-6" tabindex="-1"></a><span class="co"># density(z)</span></span>
-<span id="cb1-7"><a href="probs.html#cb1-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(z), </span>
-<span id="cb1-8"><a href="probs.html#cb1-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">atop</span>(<span class="st">&#39;Process Model&#39;</span>, <span class="fu">paste</span>(<span class="fu">italic</span>(<span class="st">&#39;g&#39;</span>),<span class="st">&#39;(&#39;</span>,theta[p],<span class="st">&#39;,&#39;</span>,<span class="fu">italic</span>(<span class="st">&#39;x&#39;</span>),<span class="st">&#39;)&#39;</span>))), </span>
-<span id="cb1-9"><a href="probs.html#cb1-9" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;z&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Probability density&#39;</span>)</span>
-<span id="cb1-10"><a href="probs.html#cb1-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">0</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb1-11"><a href="probs.html#cb1-11" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="probs.html#cb1-12" tabindex="-1"></a><span class="co"># Sampling Model ----</span></span>
-<span id="cb1-13"><a href="probs.html#cb1-13" tabindex="-1"></a>u <span class="ot">=</span> <span class="fu">rlnorm</span>(<span class="dv">1000</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb1-14"><a href="probs.html#cb1-14" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(u), </span>
-<span id="cb1-15"><a href="probs.html#cb1-15" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">atop</span>(<span class="st">&#39;Sampling Model&#39;</span>,<span class="fu">italic</span>(z))),</span>
-<span id="cb1-16"><a href="probs.html#cb1-16" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(u[i])), <span class="at">ylab =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb1-17"><a href="probs.html#cb1-17" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(u), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb1-18"><a href="probs.html#cb1-18" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="probs.html#cb1-19" tabindex="-1"></a><span class="co"># Observation model ----</span></span>
-<span id="cb1-20"><a href="probs.html#cb1-20" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rlnorm</span>(<span class="dv">1000</span>)</span>
-<span id="cb1-21"><a href="probs.html#cb1-21" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y), </span>
-<span id="cb1-22"><a href="probs.html#cb1-22" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">atop</span>(<span class="st">&#39;Observation Model&#39;</span>, <span class="fu">paste</span>(<span class="fu">italic</span>(<span class="st">&#39;d&#39;</span>),<span class="st">&#39;(&#39;</span>,theta[o],<span class="st">&#39;,&#39;</span>,<span class="fu">italic</span>(u[i]),<span class="st">&#39;)&#39;</span>))), </span>
-<span id="cb1-23"><a href="probs.html#cb1-23" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(y[i])), <span class="at">ylab =</span> <span class="st">&#39;&#39;</span>)</span>
-<span id="cb1-24"><a href="probs.html#cb1-24" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(y), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="probs.html#cb5-1" tabindex="-1"></a><span class="co"># Linked probability functions ----</span></span>
+<span id="cb5-2"><a href="probs.html#cb5-2" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="probs.html#cb5-3" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb5-4"><a href="probs.html#cb5-4" tabindex="-1"></a><span class="co"># Process model -----</span></span>
+<span id="cb5-5"><a href="probs.html#cb5-5" tabindex="-1"></a>z <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">1000</span>, <span class="at">mean =</span><span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb5-6"><a href="probs.html#cb5-6" tabindex="-1"></a><span class="co"># density(z)</span></span>
+<span id="cb5-7"><a href="probs.html#cb5-7" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(z), </span>
+<span id="cb5-8"><a href="probs.html#cb5-8" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">atop</span>(<span class="st">&#39;Process Model&#39;</span>, <span class="fu">paste</span>(<span class="fu">italic</span>(<span class="st">&#39;g&#39;</span>),<span class="st">&#39;(&#39;</span>,theta[p],<span class="st">&#39;,&#39;</span>,<span class="fu">italic</span>(<span class="st">&#39;x&#39;</span>),<span class="st">&#39;)&#39;</span>))), </span>
+<span id="cb5-9"><a href="probs.html#cb5-9" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&#39;z&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;Probability density&#39;</span>)</span>
+<span id="cb5-10"><a href="probs.html#cb5-10" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">0</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb5-11"><a href="probs.html#cb5-11" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="probs.html#cb5-12" tabindex="-1"></a><span class="co"># Sampling Model ----</span></span>
+<span id="cb5-13"><a href="probs.html#cb5-13" tabindex="-1"></a>u <span class="ot">=</span> <span class="fu">rlnorm</span>(<span class="dv">1000</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb5-14"><a href="probs.html#cb5-14" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(u), </span>
+<span id="cb5-15"><a href="probs.html#cb5-15" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">atop</span>(<span class="st">&#39;Sampling Model&#39;</span>,<span class="fu">italic</span>(z))),</span>
+<span id="cb5-16"><a href="probs.html#cb5-16" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(u[i])), <span class="at">ylab =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb5-17"><a href="probs.html#cb5-17" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(u), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb5-18"><a href="probs.html#cb5-18" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="probs.html#cb5-19" tabindex="-1"></a><span class="co"># Observation model ----</span></span>
+<span id="cb5-20"><a href="probs.html#cb5-20" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">rlnorm</span>(<span class="dv">1000</span>)</span>
+<span id="cb5-21"><a href="probs.html#cb5-21" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y), </span>
+<span id="cb5-22"><a href="probs.html#cb5-22" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">expression</span>(<span class="fu">atop</span>(<span class="st">&#39;Observation Model&#39;</span>, <span class="fu">paste</span>(<span class="fu">italic</span>(<span class="st">&#39;d&#39;</span>),<span class="st">&#39;(&#39;</span>,theta[o],<span class="st">&#39;,&#39;</span>,<span class="fu">italic</span>(u[i]),<span class="st">&#39;)&#39;</span>))), </span>
+<span id="cb5-23"><a href="probs.html#cb5-23" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(y[i])), <span class="at">ylab =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb5-24"><a href="probs.html#cb5-24" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(y), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/linkprob-1.png" width="672" /></p>
 <div id="process-model" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Process model<a href="probs.html#process-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First is the process model, or a deterministic function which represents some <em>theoretical</em> state of the system based upon our current conceptual understanding. The process model can come from our own understanding or observation of the system, pilot data, or previous studies. The process model should include our prediction of how the system functions, including any natural or imposed effects from treatments on the system. The process function is represented by <span class="math display">\[g(\Theta_p, x)\]</span>. An example of a process model might be a linear growth function <span class="math display">\[f(x) = mx + b\]</span> where fixed values of <em>m</em> and <em>b</em> get mapped as a single function of our variable of interest.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="probs.html#cb2-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">12</span>, <span class="dv">1</span>) <span class="co"># Independent X parameter placed on the X axis</span></span>
-<span id="cb2-2"><a href="probs.html#cb2-2" tabindex="-1"></a>b0 <span class="ot">=</span> <span class="dv">1</span> <span class="co"># Specify the Y intercept</span></span>
-<span id="cb2-3"><a href="probs.html#cb2-3" tabindex="-1"></a>b1 <span class="ot">=</span> <span class="dv">3</span> <span class="co"># Specify the B1 coefficient i.e. the slope</span></span>
-<span id="cb2-4"><a href="probs.html#cb2-4" tabindex="-1"></a>y <span class="ot">=</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>x</span>
-<span id="cb2-5"><a href="probs.html#cb2-5" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="probs.html#cb2-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
-<span id="cb2-7"><a href="probs.html#cb2-7" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
-<span id="cb2-8"><a href="probs.html#cb2-8" tabindex="-1"></a><span class="fu">hist</span>(y)</span>
-<span id="cb2-9"><a href="probs.html#cb2-9" tabindex="-1"></a>{</span>
-<span id="cb2-10"><a href="probs.html#cb2-10" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(y)), <span class="at">main =</span> <span class="fu">expression</span>(y <span class="sc">==</span> beta[<span class="dv">0</span>] <span class="sc">+</span> beta[<span class="dv">1</span>]<span class="sc">*</span>x))</span>
-<span id="cb2-11"><a href="probs.html#cb2-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb2-12"><a href="probs.html#cb2-12" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="probs.html#cb6-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">12</span>, <span class="dv">1</span>) <span class="co"># Independent X parameter placed on the X axis</span></span>
+<span id="cb6-2"><a href="probs.html#cb6-2" tabindex="-1"></a>b0 <span class="ot">=</span> <span class="dv">1</span> <span class="co"># Specify the Y intercept</span></span>
+<span id="cb6-3"><a href="probs.html#cb6-3" tabindex="-1"></a>b1 <span class="ot">=</span> <span class="dv">3</span> <span class="co"># Specify the B1 coefficient i.e. the slope</span></span>
+<span id="cb6-4"><a href="probs.html#cb6-4" tabindex="-1"></a>y <span class="ot">=</span> b0 <span class="sc">+</span> b1<span class="sc">*</span>x</span>
+<span id="cb6-5"><a href="probs.html#cb6-5" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="probs.html#cb6-6" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb6-7"><a href="probs.html#cb6-7" tabindex="-1"></a><span class="fu">hist</span>(x)</span>
+<span id="cb6-8"><a href="probs.html#cb6-8" tabindex="-1"></a><span class="fu">hist</span>(y)</span>
+<span id="cb6-9"><a href="probs.html#cb6-9" tabindex="-1"></a>{</span>
+<span id="cb6-10"><a href="probs.html#cb6-10" tabindex="-1"></a><span class="fu">plot</span>(x,y, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(y)), <span class="at">main =</span> <span class="fu">expression</span>(y <span class="sc">==</span> beta[<span class="dv">0</span>] <span class="sc">+</span> beta[<span class="dv">1</span>]<span class="sc">*</span>x))</span>
+<span id="cb6-11"><a href="probs.html#cb6-11" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb6-12"><a href="probs.html#cb6-12" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="_main_files/figure-html/processmod-1.png" width="672" /></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="probs.html#cb3-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb3-2"><a href="probs.html#cb3-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x))</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="probs.html#cb7-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb7-2"><a href="probs.html#cb7-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x))</span></code></pre></div>
 <pre><code>## Warning in summary.lm(lm(y ~ x)): essentially perfect fit: summary may be unreliable</code></pre>
 <pre><code>## 
 ## Call:
@@ -313,37 +316,37 @@ div.csl-indent {
 <div id="sampling-model" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Sampling model<a href="probs.html#sampling-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The sampling model accounts for the precision in observational methods of the systems true state. Uncertainty arises as our observations most definitely do not represent the system’s true state. We can estimate this stoichastistically using the expression <span class="math display">\[[u_i|z,\sigma_s^2]\]</span> which assumes we can collect many observed instances of the true system state without bias, and <em>z</em> will arise to represent approximately the true state of the system for that variable. This can be added to our above process model by modeling the variance of the sampling method of our observed values, <em>Y</em>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="probs.html#cb6-1" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(y) <span class="co"># Number of random values to generate</span></span>
-<span id="cb6-2"><a href="probs.html#cb6-2" tabindex="-1"></a>u <span class="ot">=</span> <span class="dv">3</span> <span class="co"># approximate mean of the variation of the systems sampling values</span></span>
-<span id="cb6-3"><a href="probs.html#cb6-3" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">5</span> <span class="co"># Standard deviation of the systems sampling values</span></span>
-<span id="cb6-4"><a href="probs.html#cb6-4" tabindex="-1"></a>e <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(y),u,sigma)</span>
-<span id="cb6-5"><a href="probs.html#cb6-5" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="probs.html#cb6-6" tabindex="-1"></a>ui <span class="ot">=</span> y <span class="sc">+</span> e</span>
-<span id="cb6-7"><a href="probs.html#cb6-7" tabindex="-1"></a>{</span>
-<span id="cb6-8"><a href="probs.html#cb6-8" tabindex="-1"></a><span class="fu">plot</span>(x,ui, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(ui)), <span class="at">main =</span> <span class="fu">expression</span>(y <span class="sc">==</span> beta[<span class="dv">0</span>] <span class="sc">+</span> beta[<span class="dv">1</span>]<span class="sc">*</span>x <span class="sc">+</span> epsilon))</span>
-<span id="cb6-9"><a href="probs.html#cb6-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
-<span id="cb6-10"><a href="probs.html#cb6-10" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="probs.html#cb10-1" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(y) <span class="co"># Number of random values to generate</span></span>
+<span id="cb10-2"><a href="probs.html#cb10-2" tabindex="-1"></a>u <span class="ot">=</span> <span class="dv">3</span> <span class="co"># approximate mean of the variation of the systems sampling values</span></span>
+<span id="cb10-3"><a href="probs.html#cb10-3" tabindex="-1"></a>sigma <span class="ot">=</span> <span class="dv">5</span> <span class="co"># Standard deviation of the systems sampling values</span></span>
+<span id="cb10-4"><a href="probs.html#cb10-4" tabindex="-1"></a>e <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="fu">length</span>(y),u,sigma)</span>
+<span id="cb10-5"><a href="probs.html#cb10-5" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="probs.html#cb10-6" tabindex="-1"></a>ui <span class="ot">=</span> y <span class="sc">+</span> e</span>
+<span id="cb10-7"><a href="probs.html#cb10-7" tabindex="-1"></a>{</span>
+<span id="cb10-8"><a href="probs.html#cb10-8" tabindex="-1"></a><span class="fu">plot</span>(x,ui, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">max</span>(ui)), <span class="at">main =</span> <span class="fu">expression</span>(y <span class="sc">==</span> beta[<span class="dv">0</span>] <span class="sc">+</span> beta[<span class="dv">1</span>]<span class="sc">*</span>x <span class="sc">+</span> epsilon))</span>
+<span id="cb10-9"><a href="probs.html#cb10-9" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y<span class="sc">~</span>x), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
+<span id="cb10-10"><a href="probs.html#cb10-10" tabindex="-1"></a>}</span></code></pre></div>
 <p><img src="_main_files/figure-html/sampmod-1.png" width="672" /></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="probs.html#cb7-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb7-2"><a href="probs.html#cb7-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(ui<span class="sc">~</span>x))</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="probs.html#cb11-1" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb11-2"><a href="probs.html#cb11-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(ui<span class="sc">~</span>x))</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = ui ~ x)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -6.4772 -3.9738 -0.6704  4.2612  6.6144 
+## -6.1930 -1.2713  0.1458  1.2155  7.1561 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   8.5324     3.1531   2.706 0.022084 *  
-## x             2.1380     0.4284   4.991 0.000545 ***
+## (Intercept)   2.9541     2.5044    1.18    0.265    
+## x             2.7595     0.3403    8.11 1.04e-05 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 5.123 on 10 degrees of freedom
-## Multiple R-squared:  0.7135, Adjusted R-squared:  0.6849 
-## F-statistic: 24.91 on 1 and 10 DF,  p-value: 0.0005449</code></pre>
+## Residual standard error: 4.069 on 10 degrees of freedom
+## Multiple R-squared:  0.868,  Adjusted R-squared:  0.8548 
+## F-statistic: 65.77 on 1 and 10 DF,  p-value: 1.045e-05</code></pre>
 </div>
 <div id="observation-model" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Observation model<a href="probs.html#observation-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -352,20 +355,20 @@ div.csl-indent {
 </div>
 <div id="reading-density-distributions" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Reading density distributions<a href="probs.html#reading-density-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="probs.html#cb9-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;irap93/Bayesdemo&quot;) # Uncomment out this line install for data </span></span>
-<span id="cb9-2"><a href="probs.html#cb9-2" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="probs.html#cb9-3" tabindex="-1"></a><span class="co"># Libraries</span></span>
-<span id="cb9-4"><a href="probs.html#cb9-4" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
-<span id="cb9-5"><a href="probs.html#cb9-5" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="probs.html#cb9-6" tabindex="-1"></a><span class="co"># Data</span></span>
-<span id="cb9-7"><a href="probs.html#cb9-7" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;heifer&quot;</span>)</span>
-<span id="cb9-8"><a href="probs.html#cb9-8" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="probs.html#cb9-9" tabindex="-1"></a><span class="fu">hist</span>(heifer<span class="sc">$</span>Day56_InitialBW)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="probs.html#cb10-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(heifer<span class="sc">$</span>Day56_InitialBW))</span>
-<span id="cb10-2"><a href="probs.html#cb10-2" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(heifer<span class="sc">$</span>Day56_InitialBW, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb10-3"><a href="probs.html#cb10-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(heifer<span class="sc">$</span>Day56_InitialBW, <span class="fu">c</span>(<span class="fl">0.75</span>)), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="probs.html#cb13-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;irap93/Bayesdemo&quot;) # Uncomment out this line install for data </span></span>
+<span id="cb13-2"><a href="probs.html#cb13-2" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="probs.html#cb13-3" tabindex="-1"></a><span class="co"># Libraries</span></span>
+<span id="cb13-4"><a href="probs.html#cb13-4" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
+<span id="cb13-5"><a href="probs.html#cb13-5" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="probs.html#cb13-6" tabindex="-1"></a><span class="co"># Data</span></span>
+<span id="cb13-7"><a href="probs.html#cb13-7" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;heifer&quot;</span>)</span>
+<span id="cb13-8"><a href="probs.html#cb13-8" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="probs.html#cb13-9" tabindex="-1"></a><span class="fu">hist</span>(heifer<span class="sc">$</span>Day56_InitialBW)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="probs.html#cb14-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(heifer<span class="sc">$</span>Day56_InitialBW))</span>
+<span id="cb14-2"><a href="probs.html#cb14-2" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(heifer<span class="sc">$</span>Day56_InitialBW, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb14-3"><a href="probs.html#cb14-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(heifer<span class="sc">$</span>Day56_InitialBW, <span class="fu">c</span>(<span class="fl">0.75</span>)), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
 </div>
 </div>
 <h3>References</h3>

@@ -34,4 +34,32 @@ knitr::include_graphics('figures/i-framework.png')
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown', 'tidyverse', 'datatable'
 ), 'packages.bib')
+
+# Libraries to install
+# List of packages to check/install
+packages <- c("data.table", "tidyverse", "rjags", "MCMCvis", "ggExtra")
+
+# Function to check and install packages
+install_if_missing = function(pkg) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg, dependencies = TRUE)
+    library(pkg, character.only = TRUE)
+  } else {
+    cat(paste("Package", pkg, "is already installed.\n"))
+  }
+}
+
+# Apply the function to each package in the list
+lapply(packages, install_if_missing)
+
+
+# devtools::install_github("irap93/Bayesdemo") # Uncomment out this line install for data 
+
+# Libraries
+library(Bayesdemo)
+library(data.table)
+library(tidyverse)
+library(rjags)
+library(MCMCvis)
+library(ggExtra)
 ```
