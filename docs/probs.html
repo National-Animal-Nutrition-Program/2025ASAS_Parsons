@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Probability Distributions | NANP Bayesian Workbook</title>
+  <title>Chapter 4 Probability Distributions | NANP Bayesian Workbook</title>
   <meta name="description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Probability Distributions | NANP Bayesian Workbook" />
+  <meta property="og:title" content="Chapter 4 Probability Distributions | NANP Bayesian Workbook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Probability Distributions | NANP Bayesian Workbook" />
+  <meta name="twitter:title" content="Chapter 4 Probability Distributions | NANP Bayesian Workbook" />
   
   <meta name="twitter:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   
@@ -23,7 +23,7 @@
 <meta name="author" content="Ira L. Parsons" />
 
 
-<meta name="date" content="2025-07-02" />
+<meta name="date" content="2025-07-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="bayes.html"/>
-<link rel="next" href="gibbs-sampler-gibbs.html"/>
+<link rel="next" href="conjugate-priors.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -164,32 +164,36 @@ div.csl-indent {
 <li><a href="./">NANP Bayesian Workbook</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Abstract</a></li>
-<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>2</b> Bayes Theory</a>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> url: your book url like https://bookdown.org/yihui/bookdown</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="bayes.html"><a href="bayes.html"><i class="fa fa-check"></i><b>3</b> Bayes Theory</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="bayes.html"><a href="bayes.html#bayes-theorem"><i class="fa fa-check"></i><b>2.1</b> Bayes Theorem</a></li>
-<li class="chapter" data-level="2.2" data-path="bayes.html"><a href="bayes.html#random-variables"><i class="fa fa-check"></i><b>2.2</b> Random variables</a></li>
+<li class="chapter" data-level="3.1" data-path="bayes.html"><a href="bayes.html#bayes-theorem"><i class="fa fa-check"></i><b>3.1</b> Bayes Theorem</a></li>
+<li class="chapter" data-level="3.2" data-path="bayes.html"><a href="bayes.html#random-variables"><i class="fa fa-check"></i><b>3.2</b> Random variables</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="probs.html"><a href="probs.html"><i class="fa fa-check"></i><b>3</b> Probability Distributions</a>
+<li class="chapter" data-level="4" data-path="probs.html"><a href="probs.html"><i class="fa fa-check"></i><b>4</b> Probability Distributions</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="probs.html"><a href="probs.html#three-rules-of-probability"><i class="fa fa-check"></i><b>3.1</b> Three rules of probability</a>
+<li class="chapter" data-level="4.1" data-path="probs.html"><a href="probs.html#three-rules-of-probability"><i class="fa fa-check"></i><b>4.1</b> Three rules of probability</a>
 <ul>
-<li class="chapter" data-level="3.1.1" data-path="probs.html"><a href="probs.html#conditional-probability"><i class="fa fa-check"></i><b>3.1.1</b> Conditional Probability</a></li>
-<li class="chapter" data-level="3.1.2" data-path="probs.html"><a href="probs.html#total-probability"><i class="fa fa-check"></i><b>3.1.2</b> Total Probability</a></li>
-<li class="chapter" data-level="3.1.3" data-path="probs.html"><a href="probs.html#chain-rule-of-probability"><i class="fa fa-check"></i><b>3.1.3</b> Chain Rule of Probability</a></li>
+<li class="chapter" data-level="4.1.1" data-path="probs.html"><a href="probs.html#conditional-probability"><i class="fa fa-check"></i><b>4.1.1</b> Conditional Probability</a></li>
+<li class="chapter" data-level="4.1.2" data-path="probs.html"><a href="probs.html#total-probability"><i class="fa fa-check"></i><b>4.1.2</b> Total Probability</a></li>
+<li class="chapter" data-level="4.1.3" data-path="probs.html"><a href="probs.html#chain-rule-of-probability"><i class="fa fa-check"></i><b>4.1.3</b> Chain Rule of Probability</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="probs.html"><a href="probs.html#establishing-inference"><i class="fa fa-check"></i><b>3.2</b> Establishing inference</a>
+<li class="chapter" data-level="4.2" data-path="probs.html"><a href="probs.html#establishing-inference"><i class="fa fa-check"></i><b>4.2</b> Establishing inference</a>
 <ul>
-<li class="chapter" data-level="3.2.1" data-path="probs.html"><a href="probs.html#process-model"><i class="fa fa-check"></i><b>3.2.1</b> Process model</a></li>
-<li class="chapter" data-level="3.2.2" data-path="probs.html"><a href="probs.html#sampling-model"><i class="fa fa-check"></i><b>3.2.2</b> Sampling model</a></li>
-<li class="chapter" data-level="3.2.3" data-path="probs.html"><a href="probs.html#observation-model"><i class="fa fa-check"></i><b>3.2.3</b> Observation model</a></li>
+<li class="chapter" data-level="4.2.1" data-path="probs.html"><a href="probs.html#process-model"><i class="fa fa-check"></i><b>4.2.1</b> Process model</a></li>
+<li class="chapter" data-level="4.2.2" data-path="probs.html"><a href="probs.html#sampling-model"><i class="fa fa-check"></i><b>4.2.2</b> Sampling model</a></li>
+<li class="chapter" data-level="4.2.3" data-path="probs.html"><a href="probs.html#observation-model"><i class="fa fa-check"></i><b>4.2.3</b> Observation model</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="gibbs-sampler-gibbs.html"><a href="gibbs-sampler-gibbs.html"><i class="fa fa-check"></i><b>4</b> Gibbs sampler {gibbs}</a></li>
-<li class="chapter" data-level="5" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>5</b> Modeling</a>
+<li class="chapter" data-level="5" data-path="conjugate-priors.html"><a href="conjugate-priors.html"><i class="fa fa-check"></i><b>5</b> Conjugate Priors</a></li>
+<li class="chapter" data-level="6" data-path="joint-distributions.html"><a href="joint-distributions.html"><i class="fa fa-check"></i><b>6</b> Joint Distributions</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>5.1</b> Excercise 1</a></li>
+<li class="chapter" data-level="6.1" data-path="joint-distributions.html"><a href="joint-distributions.html#marcov-monte-carlo"><i class="fa fa-check"></i><b>6.1</b> Marcov Monte Carlo</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>7</b> Modeling</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>7.1</b> Excercise 1</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://iraparsons.com" target="blank">Ira Parsons</a></li>
@@ -211,25 +215,25 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="probs" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Probability Distributions<a href="probs.html#probs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="three-rules-of-probability" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> Three rules of probability<a href="probs.html#three-rules-of-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="conditional-probability" class="section level3 hasAnchor" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Conditional Probability<a href="probs.html#conditional-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="probs" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Probability Distributions<a href="probs.html#probs" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="three-rules-of-probability" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Three rules of probability<a href="probs.html#three-rules-of-probability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="conditional-probability" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Conditional Probability<a href="probs.html#conditional-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="figures/03-ConditionalProbability.png" width="422" /></p>
 </div>
-<div id="total-probability" class="section level3 hasAnchor" number="3.1.2">
-<h3><span class="header-section-number">3.1.2</span> Total Probability<a href="probs.html#total-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="total-probability" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Total Probability<a href="probs.html#total-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="figures/03-TotalProbability.png" width="422" /></p>
 </div>
-<div id="chain-rule-of-probability" class="section level3 hasAnchor" number="3.1.3">
-<h3><span class="header-section-number">3.1.3</span> Chain Rule of Probability<a href="probs.html#chain-rule-of-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="chain-rule-of-probability" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Chain Rule of Probability<a href="probs.html#chain-rule-of-probability" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="figures/03-ChainProbability.png" width="421" /></p>
 </div>
 </div>
-<div id="establishing-inference" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Establishing inference<a href="probs.html#establishing-inference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="establishing-inference" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Establishing inference<a href="probs.html#establishing-inference" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Establishing inference involves understanding how the state of our ecological system changes over time, between individuals, or across space. Our results rely upon observations drawn from the system, because the system (total space) is to large to observe in totality <span class="citation">(<a href="#ref-hobbsBayesianModelsStatistical2015">Hobbs and Hooten 2015</a>)</span>. Thus, we have three sources of variation which may be driving our collected data.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="probs.html#cb1-1" tabindex="-1"></a><span class="co"># Linked probability functions ----</span></span>
 <span id="cb1-2"><a href="probs.html#cb1-2" tabindex="-1"></a></span>
@@ -256,8 +260,8 @@ div.csl-indent {
 <span id="cb1-23"><a href="probs.html#cb1-23" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="fu">expression</span>(<span class="fu">italic</span>(y[i])), <span class="at">ylab =</span> <span class="st">&#39;&#39;</span>)</span>
 <span id="cb1-24"><a href="probs.html#cb1-24" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">mean</span>(y), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span></code></pre></div>
 <p><img src="_main_files/figure-html/linkprob-1.png" width="672" /></p>
-<div id="process-model" class="section level3 hasAnchor" number="3.2.1">
-<h3><span class="header-section-number">3.2.1</span> Process model<a href="probs.html#process-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="process-model" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Process model<a href="probs.html#process-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>First is the process model, or a deterministic function which represents some <em>theoretical</em> state of the system based upon our current conceptual understanding. The process model can come from our own understanding or observation of the system, pilot data, or previous studies. The process model should include our prediction of how the system functions, including any natural or imposed effects from treatments on the system. The process function is represented by <span class="math display">\[g(\Theta_p, x)\]</span>. An example of a process model might be a linear growth function <span class="math display">\[f(x) = mx + b\]</span> where fixed values of <em>m</em> and <em>b</em> get mapped as a single function of our variable of interest.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="probs.html#cb2-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">12</span>, <span class="dv">1</span>) <span class="co"># Independent X parameter placed on the X axis</span></span>
 <span id="cb2-2"><a href="probs.html#cb2-2" tabindex="-1"></a>b0 <span class="ot">=</span> <span class="dv">1</span> <span class="co"># Specify the Y intercept</span></span>
@@ -294,8 +298,8 @@ div.csl-indent {
 ## Multiple R-squared:      1,  Adjusted R-squared:      1 
 ## F-statistic: 1.351e+32 on 1 and 10 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<div id="sampling-model" class="section level3 hasAnchor" number="3.2.2">
-<h3><span class="header-section-number">3.2.2</span> Sampling model<a href="probs.html#sampling-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="sampling-model" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Sampling model<a href="probs.html#sampling-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The sampling model accounts for the precision in observational methods of the systems true state. Uncertainty arises as our observations most definitely do not represent the system’s true state. We can estimate this stoichastistically using the expression <span class="math display">\[[u_i|z,\sigma_s^2]\]</span> which assumes we can collect many observed instances of the true system state without bias, and <em>z</em> will arise to represent approximately the true state of the system for that variable. This can be added to our above process model by modeling the variance of the sampling method of our observed values, <em>Y</em>.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="probs.html#cb6-1" tabindex="-1"></a>n <span class="ot">=</span> <span class="fu">length</span>(y) <span class="co"># Number of random values to generate</span></span>
 <span id="cb6-2"><a href="probs.html#cb6-2" tabindex="-1"></a>u <span class="ot">=</span> <span class="dv">3</span> <span class="co"># approximate mean of the variation of the systems sampling values</span></span>
@@ -315,24 +319,23 @@ div.csl-indent {
 ## lm(formula = ui ~ x)
 ## 
 ## Residuals:
-##    Min     1Q Median     3Q    Max 
-## -3.549 -2.156 -1.437  1.928  6.600 
+##     Min      1Q  Median      3Q     Max 
+## -5.6046 -2.6122 -0.3438  0.6228  8.1007 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)  -0.4713     2.1336  -0.221     0.83    
-## x             3.3465     0.2899  11.543  4.2e-07 ***
+## (Intercept)   0.4684     2.7023   0.173    0.866    
+## x             3.7592     0.3672  10.238 1.28e-06 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 3.467 on 10 degrees of freedom
-## Multiple R-squared:  0.9302, Adjusted R-squared:  0.9232 
-## F-statistic: 133.3 on 1 and 10 DF,  p-value: 4.204e-07</code></pre>
+## Residual standard error: 4.391 on 10 degrees of freedom
+## Multiple R-squared:  0.9129, Adjusted R-squared:  0.9042 
+## F-statistic: 104.8 on 1 and 10 DF,  p-value: 1.28e-06</code></pre>
 </div>
-<div id="observation-model" class="section level3 hasAnchor" number="3.2.3">
-<h3><span class="header-section-number">3.2.3</span> Observation model<a href="probs.html#observation-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="observation-model" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Observation model<a href="probs.html#observation-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The observation model is similar to the sampling model sketched out previously, but rather than accounting for the variation due to our sampling processes, the observation model accounts for the inherent variation between the observed units of a system. Much as we might like to, it is impossible to measure the height of every blade of grass, biomass from every acre, or nutrient concentration from every bit of feed fed in our diets. Therefore, we can model the distribution of the inherent variation of the system in a similar fashion.</p>
-
 </div>
 </div>
 </div>
@@ -348,7 +351,7 @@ Hobbs, N. Thompson, and Mevin B. Hooten. 2015. <em>Bayesian <span>Models</span>:
         </div>
       </div>
 <a href="bayes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="gibbs-sampler-gibbs.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conjugate-priors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

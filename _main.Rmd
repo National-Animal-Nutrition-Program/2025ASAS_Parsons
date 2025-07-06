@@ -1,0 +1,138 @@
+--- 
+title: "NANP Bayesian Workbook"
+author: "Ira L. Parsons"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+# url: your book url like https://bookdown.org/yihui/bookdown
+# cover-image: path to the social sharing image like images/cover.jpg
+description: |
+  This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida.
+link-citations: yes
+github-repo: rstudio/bookdown-demo
+---
+
+# url: your book url like https://bookdown.org/yihui/bookdown
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction {#intro}   
+
+> "Mathematics is the languange in which God has written the Universe"
+>
+>--- Galileo Galilei
+
+Scientists major challenge is to create a logical line of inference extending from what we know about a system in light of our observations and create new insight tempered by some uncertainty. Using the scientific method, mathematical modeling and statistics have gone to great lengths to establish this domain of truth, resulting in the dramatic leaps forward in scientific knowledge and the with the availability of statistical software has pioneered a scientific revolution in technological progress.   
+
+```{r scimethod, echo=F, fig.cap='The scientific method is the cornerstone of scientific research, and when paired with mathematics and modern statistical methods, has revolutionized the rate of discovery.'}
+knitr::include_graphics('figures/01-ScientificMethod.png')
+```
+
+However, the same structures that have afforded remarkable scientific progress are also inherently limiting. Many common statistical methodologies are designed around bespoke experimental designs, assumptions of data type and distributions, and are sensitive to the number of observations taken using various sampling methods [@wassersteinASAStatementValues2016; @johnsonCommentsASAStatement2016], and generated some concern regarding the reliability of published research findings [@ioannidisWhyMostPublished2005], with alternatives to null hypothesis testing yielding marginal success, with many statisticians pleas to correctly utilize the p-value falling on researchers deaf ears [@matthewsValueStatementFive2021]. Perhaps more importantly, there is an ever decreasing suite of novel questions which may be asked by a single investigator, even if they are particularly advanced and talented. This problem becomes even more intimidating for young investigators. The ability to write new and unique models using the creativity of inter-disciplinary teams increases the depth and breadth of available questions [@hobbsBayesianModelsStatistical2015]. 
+
+Additional training should increase comfort with functional modeling and a deeper perspective of natural stochastic and modeling probability in complex ecological systems. The overarching goal of this class is to both increase scientists comfort with writing mathematical process models which describe their system, and basic statistical principles needed to describe the probability inherent to their system. There are many technical aspects surrounding this methodology, and my belief is that no matter whether you consider yourself a Frequentist, Bayesian, or Pragmatic statistitian, that their is tremendous value in pursuing deeper intelectual knowledge of system stoichasticiy and probability which will inevitably increase the intellectual satisfaction we take from our work.
+
+<!--chapter:end:01-intro.Rmd-->
+
+# Bayes Theory {#bayes}
+Bayes' Theorem was first proposed by [Thomas Bayes](https://en.wikipedia.org/wiki/Thomas_Bayes), an English statistician, philosopher and minister. He famously never published the theorem that bears his name, but they were found and published later by his friend Richard Price. His theory was motivated by his desire to understand creation prove, or calculate the probability of the existence of God. His theorem have been interpreted many ways, but can summarised as the interest in the relative strength of beliefs and hypothesis rather than the frequency of them being true. His work was popularized by the french scholar [Pierre-Simon Laplace](https://en.wikipedia.org/wiki/Pierre-Simon_Laplace), who brought to statistics the [Bayesian interpretation](https://en.wikipedia.org/wiki/Bayesian_probability) of probability. Because Bayesians' measure the relative strength of a hypothesis rather than seeking to succinctly accept or reject the hypothesis as is practiced by frequentists in Null Hypothesis Testing (NHT), a common and somewhat humourous critique of the philosophy is summarized by one statistician is *"to be a bayesian is to never have to admit you are wrong*.
+
+The Bayesian framework operates under the assumption that what we observe is the truth. It is the only branch of statistics to treat all unobserved quantities as random variables, and utilizes probability distributions to govern their behavior. Models are utilized to describe the system from which our data arises. A common critique of the Bayesian framework is that the results are clouded by utilization of prescribed priors. Indeed, it is possible to skew the results if poor, or biased, priors are used in constructing or fitting the model. However, this is true of all statistical methods.
+
+Proccess models describe the system generating our data, and are known to produce functionally different data types. These may be real numbers, counts, proportions, or ordinal data types. The models may or may not include stoichasticity of the system, i.e. they may be either deterministic or probabalistic in nature.
+
+## Bayes Theorem  
+
+Bayes' Theorem is a mathematical formula used to update probabilities based on new evidence. It describes the probability of an event given prior knowledge and new data. The theorem is expressed as:
+
+P(A|B) = [P(B|A) * P(A)] / P(B)
+
+Where:
+
+P(A|B): Posterior probability of event A given evidence B.  
+P(B|A): Likelihood of evidence B given event A.  
+P(A): Prior probability of event A.  
+P(B): Probability of evidence B (normalizing constant).  
+In essence, it allows you to revise the probability of a hypothesis (A) given new evidence (B) by combining prior beliefs with the likelihood of observing the evidence. It's widely used in statistics, machine learning, and decision-making for tasks like spam filtering, medical diagnosis, and more.
+
+## Random variables
+
+Inverse probability theory divides the world into things that are observed and things that are unobserved.  
+
+- A unobserved quantities are *random variables*  
+- Values of *random variables* are governed by chance following some probability process model  
+- Probability distributions quantify "governed by chance" as the *Space where chance occurs*  
+
+
+<!--chapter:end:02-bayes.Rmd-->
+
+
+# Probability Distributions {#probs}
+
+Placeholder
+
+
+## Three rules of probability  
+### Conditional Probability  
+### Total Probability  
+### Chain Rule of Probability  
+## Establishing inference
+### Process model  
+### Sampling model  
+### Observation model  
+## Marcov Monte Carlo
+
+<!--chapter:end:03-prob-dist.Rmd-->
+
+# Modeling {#model}
+
+## Libraries 
+
+```{r}
+# Libraries to install
+# List of packages to check/install
+packages <- c("data.tabale", "tidyverse", "rjags")
+
+# Function to check and install packages
+install_if_missing <- function(pkg) {
+  if (!require(pkg, character.only = TRUE)) {
+    install.packages(pkg, dependencies = TRUE)
+    library(pkg, character.only = TRUE)
+  } else {
+    cat(paste("Package", pkg, "is already installed.\n"))
+  }
+}
+
+# Apply the function to each package in the list
+lapply(packages, install_if_missing)
+
+
+# devtools::install_github("irap93/Bayesdemo") # Uncomment out this line install for data 
+
+# Libraries
+library(Bayesdemo)
+library(data.table)
+library(tidyverse)
+library(rjags)
+
+
+data(heifer)
+```
+
+## Excercise 1  
+
+We have a dataset representing 
+
+
+```{r}
+
+```
+
+
+<!--chapter:end:04-modeling.Rmd-->
+

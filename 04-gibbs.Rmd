@@ -1,2 +1,0 @@
-# Gibbs sampler {#gibbs}
-

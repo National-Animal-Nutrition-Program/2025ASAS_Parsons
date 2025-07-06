@@ -13,8 +13,9 @@ establishing-inference
 process-model
 sampling-model
 observation-model
-gibbs-sampler-gibbs
+conjugate-priors
+joint-distributions
+marcov-monte-carlo
 model
 excercise-1
 url-your-book-url-like-httpsbookdown.orgyihuibookdown
-gibbs
