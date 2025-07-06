@@ -1,6 +1,7 @@
 fig:modframe
 fig:scimethod
 intro
+install-jags
 install-these-packages
 bayes
 bayes-theorem
@@ -27,4 +28,3 @@ model-1
 summary-plots
 excercise-2
 jags-model-2
-url-your-book-url-like-httpsbookdown.orgyihuibookdown

@@ -14,6 +14,10 @@ However, the same structures that have afforded remarkable scientific progress a
 
 Additional training should increase comfort with functional modeling and a deeper perspective of natural stochastic and modeling probability in complex ecological systems. The overarching goal of this class is to both increase scientists comfort with writing mathematical process models which describe their system, and basic statistical principles needed to describe the probability inherent to their system. There are many technical aspects surrounding this methodology, and my belief is that no matter whether you consider yourself a Frequentist, Bayesian, or Pragmatic statistitian, that their is tremendous value in pursuing deeper intelectual knowledge of system stoichasticiy and probability which will inevitably increase the intellectual satisfaction we take from our work.
 
+## Install Jags
+
+Before installing rjags, we have to install Jags for it to interface with. Refer to [mcmc-jags.sourceforge.io](https://mcmc-jags.sourceforge.io) and download the appropriate files for your machine type and install. 
+
 ## Install these packages
 
 ```{r}
