@@ -13,6 +13,7 @@ establishing-inference
 process-model
 sampling-model
 observation-model
+reading-density-distributions
 conjugate-priors
 joint-distributions
 marcov-monte-carlo
@@ -20,5 +21,8 @@ model
 libraries
 data
 excercise-1
+heifer-data
+model-1
 summary-plots
-url-your-book-url-like-httpsbookdown.orgyihuibookdown
+excercise-2
+jags-model-2

@@ -41,15 +41,17 @@ summary(heifer)
 
 ## Excercise 1  
 
-
-
+### Heifer data  
 ```{r heiferdata}
 names(heifer)
 ggplot(heifer, aes(x=cvDMI, y=Day56_ADG))+
   geom_point()+
   geom_smooth(method = 'lm')
 ```
-Next we need to define the Jags model
+
+### Model  
+Next we need to define the Jags model to find the conjugated distribution 
+
 ```{r jagsmodel}
 # Data list ----
 # Data
@@ -76,12 +78,10 @@ model {
 "
 
 # Initial values
-inits <- list(
-  list(beta0 = 0, beta1 = 0, sigma = 1)
-)
+inits <- list(list(beta0 = 0, beta1 = 0, sigma = 1))
 
 # Parameters to monitor
-params <- c("beta0", "beta1", "sigma", 'y')
+(params <- c("beta0", "beta1", "sigma", 'y'))
 ```
 
 Now we have the model set up, we are ready to run the model through jags
@@ -161,5 +161,112 @@ lines(density(oCV), col = 'red')
 
 legend("topright", legend = c("Posterior", "Prior", "Scaled Likelihood"), 
        col = c("blue", "red", "green"), lwd = 2, lty = c(1, 2, 3))
+```
+
+## Excercise 2
+
+Now lets fit the model to see the effect of feed additive on post weaning growth.
+### Data 2
+```{r}
+# Data list ----
+# Data
+names(heifer)
+data_list <- list(
+  x = heifer$WeanTrt,  # Example predictor values
+  y = heifer$Day56_ADG, # Example response values
+  N = nrow(heifer)     # Number of observations
+)
+
+```
+
+### Jags model 2
+
+Eff
+
+```{r}
+names(heifer)
+data_list <- list(
+  x = ifelse(heifer$WeanTrt == "A",1,2),  # Example predictor values
+  y = heifer$Day56_ADG, # Example response values
+  N = nrow(heifer),    # Number of observations
+  K = length(unique(heifer$WeanTrt)) # Number of categories
+)
+
+## Jags model ----
+# Define the model
+model_string <- "
+model {
+  # Likelihood
+  for (i in 1:N) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[x[i]]  # Treatment-specific mean
+  }
+  
+  # Priors
+  for (k in 1:K) {
+    beta[k] ~ dnorm(0, 0.001)  # Vague prior for treatment means
+  }
+  tau ~ dgamma(0.001, 0.001)   # Precision (1/variance)
+  sigma <- 1 / sqrt(tau)       # Standard deviation
+  
+  # Derived quantity: difference between treatments (B - A)
+  delta <- beta[2] - beta[1]
+}
+"
+
+# Write model to a temporary file
+writeLines(model_string, "model.txt")
+
+# Initialize JAGS model
+jags_model <- jags.model(
+  file = "model.txt",
+  data = data_list,
+  n.chains = 3,  # Number of MCMC chains
+  n.adapt = 1000 # Adaptation period
+)
+
+# Burn-in
+update(jags_model, n.iter = 1000)
+
+# Sample from posterior
+samples <- coda.samples(
+  jags_model,
+  variable.names = c("beta", "sigma", "delta"),
+  n.iter = 5000
+)
+
+# Summarize results
+summary(samples)
+
+# Optional: Plot posterior distributions
+plot(samples)
+```
+
+
+So the big question is, was there a difference between treatment A and treatment B?
+
+```{r}
+# Extract posterior samples for delta
+delta_samples <- as.matrix(samples)[, "delta"]
+
+# Calculate probability that Treatment B has higher ADG than A (delta > 0)
+prob_B_greater <- mean(delta_samples > 0)
+cat("Probability that Treatment B has higher ADG than Treatment A:", prob_B_greater, "\n")
+
+# Create a density plot with shaded area for delta > 0
+delta_df <- data.frame(delta = delta_samples)
+plot(density(delta_df$delta))
+
+ggplot(delta_df, aes(x = delta)) +
+  geom_density(fill = "lightblue", alpha = 0.5) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "red") +
+  geom_vline(xintercept = quantile(delta_df$delta, c(0.025, 0.975)), color = 'blue')+
+  labs(
+    title = "Posterior Distribution of Treatment Effect (B - A)",
+    subtitle = paste("P(ADG_B > ADG_A) =", round(prob_B_greater, 3)),
+    x = "Difference in ADG (Treatment B - Treatment A, kg/day)",
+    y = "Density"
+  ) +
+  theme_minimal()
 ```
 

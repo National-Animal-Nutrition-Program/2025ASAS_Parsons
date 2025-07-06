@@ -1,0 +1,19 @@
+
+model {
+  # Likelihood
+  for (i in 1:N) {
+    y[i] ~ dnorm(mu[i], tau)
+    mu[i] <- beta[x[i]]  # Treatment-specific mean
+  }
+  
+  # Priors
+  for (k in 1:K) {
+    beta[k] ~ dnorm(0, 0.001)  # Vague prior for treatment means
+  }
+  tau ~ dgamma(0.001, 0.001)   # Precision (1/variance)
+  sigma <- 1 / sqrt(tau)       # Standard deviation
+  
+  # Derived quantity: difference between treatments (B - A)
+  delta <- beta[2] - beta[1]
+}
+

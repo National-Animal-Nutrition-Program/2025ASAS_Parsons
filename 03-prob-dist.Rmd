@@ -97,6 +97,25 @@ summary(lm(ui~x))
 
 The observation model is similar to the sampling model sketched out previously, but rather than accounting for the variation due to our sampling processes, the observation model accounts for the inherent variation between the observed units of a system. Much as we might like to, it is impossible to measure the height of every blade of grass, biomass from every acre, or nutrient concentration from every bit of feed fed in our diets. Therefore, we can model the distribution of the inherent variation of the system in a similar fashion.
 
+## Reading density distributions
+
+```{r}
+# devtools::install_github("irap93/Bayesdemo") # Uncomment out this line install for data 
+
+# Libraries
+library(Bayesdemo)
+
+# Data
+data("heifer")
+
+hist(heifer$Day56_InitialBW)
+
+plot(density(heifer$Day56_InitialBW))
+abline(v = quantile(heifer$Day56_InitialBW, c(.025, .975)), col = "red", lwd = 2)
+abline(v = quantile(heifer$Day56_InitialBW, c(0.75)), col = 'blue', lwd = 2)
+```
+
+
 # Conjugate Priors 
 
 Below is an example of conjugation of priors, sample and posterior distributions.
@@ -156,6 +175,7 @@ cat("Posterior Variance: ", round(posterior_variance, 3), "\n")
 
 
 ```
+
 
 
 # Joint Distributions  
