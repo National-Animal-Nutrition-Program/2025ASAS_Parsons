@@ -24,7 +24,7 @@ The ability to ask important questions and provide compelling answers will deter
 
 
 ```{r modframe, echo=F, fig.cap='Fundamental challenge of ecological research is to create a credible line of inference from what we know to new insight based upon our observations and tempered by uncertainty.'}
-knitr::include_graphics('docs/figures/i-framework.png')
+knitr::include_graphics('figures/i-framework.png')
 ```
 
 
