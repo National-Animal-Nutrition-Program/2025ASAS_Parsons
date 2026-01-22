@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 5 Joint Distributions | NANP Bayesian Workbook</title>
   <meta name="description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 5 Joint Distributions | NANP Bayesian Workbook" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ira L. Parsons" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2026-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -234,80 +234,80 @@ div.csl-indent {
 <div id="joint-distributions" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Joint Distributions<a href="joint-distributions.html#joint-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The joint distribution results from the conjugation of two or more posterior distributions of multiple factors or parameters from the model. There are two ways of finding this conjugated distribution. The moments of the two distributions can be matched using calculus <strong>If they hold these moments in common</strong>. However, this is not always a given, and many times the distributions may not hold moments in common. This is where the computational intensity of Bayesian statistics comes into play. We will utilize a Monte Carlo simulation model to create a simulation of the conjugated distribtution model. We will implement it using a gibbs sampler, typical of the one illustrated below.</p>
-<p><img src="figures/03-JointProb.png" width="1172" /></p>
+<p><img src="docs/figures/03-JointProb.png" width="1172" /></p>
 <div id="marcov-monte-carlo" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Marcov Monte Carlo<a href="joint-distributions.html#marcov-monte-carlo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="joint-distributions.html#cb34-1" tabindex="-1"></a><span class="co"># Set random seed for reproducibility</span></span>
-<span id="cb34-2"><a href="joint-distributions.html#cb34-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb34-3"><a href="joint-distributions.html#cb34-3" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="joint-distributions.html#cb34-4" tabindex="-1"></a><span class="co"># Parameters for bivariate normal distribution (based on typical livestock data)</span></span>
-<span id="cb34-5"><a href="joint-distributions.html#cb34-5" tabindex="-1"></a>mu_fi <span class="ot">&lt;-</span> <span class="fl">6.0</span>    <span class="co"># Mean feed intake (kg/day)</span></span>
-<span id="cb34-6"><a href="joint-distributions.html#cb34-6" tabindex="-1"></a>mu_adg <span class="ot">&lt;-</span> <span class="fl">0.8</span>   <span class="co"># Mean average daily gain (kg/day)</span></span>
-<span id="cb34-7"><a href="joint-distributions.html#cb34-7" tabindex="-1"></a>sigma_fi <span class="ot">&lt;-</span> <span class="fl">1.0</span> <span class="co"># Standard deviation for feed intake</span></span>
-<span id="cb34-8"><a href="joint-distributions.html#cb34-8" tabindex="-1"></a>sigma_adg <span class="ot">&lt;-</span> <span class="fl">0.2</span> <span class="co"># Standard deviation for ADG</span></span>
-<span id="cb34-9"><a href="joint-distributions.html#cb34-9" tabindex="-1"></a>rho <span class="ot">&lt;-</span> <span class="fl">0.7</span>      <span class="co"># Correlation coefficient (positive correlation between FI and ADG)</span></span>
-<span id="cb34-10"><a href="joint-distributions.html#cb34-10" tabindex="-1"></a></span>
-<span id="cb34-11"><a href="joint-distributions.html#cb34-11" tabindex="-1"></a><span class="co"># Function to sample from conditional distribution of feed intake (FI) given ADG</span></span>
-<span id="cb34-12"><a href="joint-distributions.html#cb34-12" tabindex="-1"></a>sample_fi_given_adg <span class="ot">&lt;-</span> <span class="cf">function</span>(adg, mu_fi, mu_adg, sigma_fi, sigma_adg, rho) {</span>
-<span id="cb34-13"><a href="joint-distributions.html#cb34-13" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> mu_fi <span class="sc">+</span> rho <span class="sc">*</span> (sigma_fi <span class="sc">/</span> sigma_adg) <span class="sc">*</span> (adg <span class="sc">-</span> mu_adg)</span>
-<span id="cb34-14"><a href="joint-distributions.html#cb34-14" tabindex="-1"></a>  variance <span class="ot">&lt;-</span> sigma_fi<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> rho<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb34-15"><a href="joint-distributions.html#cb34-15" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="dv">1</span>, mean, <span class="fu">sqrt</span>(variance))</span>
-<span id="cb34-16"><a href="joint-distributions.html#cb34-16" tabindex="-1"></a>}</span>
-<span id="cb34-17"><a href="joint-distributions.html#cb34-17" tabindex="-1"></a></span>
-<span id="cb34-18"><a href="joint-distributions.html#cb34-18" tabindex="-1"></a><span class="co"># Function to sample from conditional distribution of ADG given feed intake (FI)</span></span>
-<span id="cb34-19"><a href="joint-distributions.html#cb34-19" tabindex="-1"></a>sample_adg_given_fi <span class="ot">&lt;-</span> <span class="cf">function</span>(fi, mu_fi, mu_adg, sigma_fi, sigma_adg, rho) {</span>
-<span id="cb34-20"><a href="joint-distributions.html#cb34-20" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> mu_adg <span class="sc">+</span> rho <span class="sc">*</span> (sigma_adg <span class="sc">/</span> sigma_fi) <span class="sc">*</span> (fi <span class="sc">-</span> mu_fi)</span>
-<span id="cb34-21"><a href="joint-distributions.html#cb34-21" tabindex="-1"></a>  variance <span class="ot">&lt;-</span> sigma_adg<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> rho<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb34-22"><a href="joint-distributions.html#cb34-22" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="dv">1</span>, mean, <span class="fu">sqrt</span>(variance))</span>
-<span id="cb34-23"><a href="joint-distributions.html#cb34-23" tabindex="-1"></a>}</span>
-<span id="cb34-24"><a href="joint-distributions.html#cb34-24" tabindex="-1"></a></span>
-<span id="cb34-25"><a href="joint-distributions.html#cb34-25" tabindex="-1"></a><span class="co"># Gibbs sampler function</span></span>
-<span id="cb34-26"><a href="joint-distributions.html#cb34-26" tabindex="-1"></a>gibbs_sampler <span class="ot">&lt;-</span> <span class="cf">function</span>(n_samples, mu_fi, mu_adg, sigma_fi, sigma_adg, rho) {</span>
-<span id="cb34-27"><a href="joint-distributions.html#cb34-27" tabindex="-1"></a>  samples <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> n_samples, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb34-28"><a href="joint-distributions.html#cb34-28" tabindex="-1"></a>  fi <span class="ot">&lt;-</span> mu_fi   <span class="co"># Initial value for feed intake</span></span>
-<span id="cb34-29"><a href="joint-distributions.html#cb34-29" tabindex="-1"></a>  adg <span class="ot">&lt;-</span> mu_adg <span class="co"># Initial value for ADG</span></span>
-<span id="cb34-30"><a href="joint-distributions.html#cb34-30" tabindex="-1"></a></span>
-<span id="cb34-31"><a href="joint-distributions.html#cb34-31" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_samples) {</span>
-<span id="cb34-32"><a href="joint-distributions.html#cb34-32" tabindex="-1"></a>    fi <span class="ot">&lt;-</span> <span class="fu">sample_fi_given_adg</span>(adg, mu_fi, mu_adg, sigma_fi, sigma_adg, rho)</span>
-<span id="cb34-33"><a href="joint-distributions.html#cb34-33" tabindex="-1"></a>    adg <span class="ot">&lt;-</span> <span class="fu">sample_adg_given_fi</span>(fi, mu_fi, mu_adg, sigma_fi, sigma_adg, rho)</span>
-<span id="cb34-34"><a href="joint-distributions.html#cb34-34" tabindex="-1"></a>    samples[i, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(fi, adg)</span>
-<span id="cb34-35"><a href="joint-distributions.html#cb34-35" tabindex="-1"></a>  }</span>
-<span id="cb34-36"><a href="joint-distributions.html#cb34-36" tabindex="-1"></a></span>
-<span id="cb34-37"><a href="joint-distributions.html#cb34-37" tabindex="-1"></a>  <span class="fu">return</span>(samples)</span>
-<span id="cb34-38"><a href="joint-distributions.html#cb34-38" tabindex="-1"></a>}</span>
-<span id="cb34-39"><a href="joint-distributions.html#cb34-39" tabindex="-1"></a></span>
-<span id="cb34-40"><a href="joint-distributions.html#cb34-40" tabindex="-1"></a><span class="co"># Run the Gibbs sampler</span></span>
-<span id="cb34-41"><a href="joint-distributions.html#cb34-41" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb34-42"><a href="joint-distributions.html#cb34-42" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">gibbs_sampler</span>(n_samples, mu_fi, mu_adg, sigma_fi, sigma_adg, rho)</span>
-<span id="cb34-43"><a href="joint-distributions.html#cb34-43" tabindex="-1"></a></span>
-<span id="cb34-44"><a href="joint-distributions.html#cb34-44" tabindex="-1"></a><span class="co"># Name the columns for clarity</span></span>
-<span id="cb34-45"><a href="joint-distributions.html#cb34-45" tabindex="-1"></a><span class="fu">colnames</span>(samples) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Feed_Intake&quot;</span>, <span class="st">&quot;ADG&quot;</span>)</span>
-<span id="cb34-46"><a href="joint-distributions.html#cb34-46" tabindex="-1"></a></span>
-<span id="cb34-47"><a href="joint-distributions.html#cb34-47" tabindex="-1"></a><span class="co"># Plot the joint distribution (scatter plot)</span></span>
-<span id="cb34-48"><a href="joint-distributions.html#cb34-48" tabindex="-1"></a><span class="fu">plot</span>(samples[, <span class="st">&quot;Feed_Intake&quot;</span>], samples[, <span class="st">&quot;ADG&quot;</span>],</span>
-<span id="cb34-49"><a href="joint-distributions.html#cb34-49" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Feed Intake (kg/day)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Average Daily Gain (kg/day)&quot;</span>,</span>
-<span id="cb34-50"><a href="joint-distributions.html#cb34-50" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Joint Distribution of Feed Intake and ADG&quot;</span>,</span>
-<span id="cb34-51"><a href="joint-distributions.html#cb34-51" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="joint-distributions.html#cb24-1" tabindex="-1"></a><span class="co"># Set random seed for reproducibility</span></span>
+<span id="cb24-2"><a href="joint-distributions.html#cb24-2" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb24-3"><a href="joint-distributions.html#cb24-3" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="joint-distributions.html#cb24-4" tabindex="-1"></a><span class="co"># Parameters for bivariate normal distribution (based on typical livestock data)</span></span>
+<span id="cb24-5"><a href="joint-distributions.html#cb24-5" tabindex="-1"></a>mu_fi <span class="ot">&lt;-</span> <span class="fl">6.0</span>    <span class="co"># Mean feed intake (kg/day)</span></span>
+<span id="cb24-6"><a href="joint-distributions.html#cb24-6" tabindex="-1"></a>mu_adg <span class="ot">&lt;-</span> <span class="fl">0.8</span>   <span class="co"># Mean average daily gain (kg/day)</span></span>
+<span id="cb24-7"><a href="joint-distributions.html#cb24-7" tabindex="-1"></a>sigma_fi <span class="ot">&lt;-</span> <span class="fl">1.0</span> <span class="co"># Standard deviation for feed intake</span></span>
+<span id="cb24-8"><a href="joint-distributions.html#cb24-8" tabindex="-1"></a>sigma_adg <span class="ot">&lt;-</span> <span class="fl">0.2</span> <span class="co"># Standard deviation for ADG</span></span>
+<span id="cb24-9"><a href="joint-distributions.html#cb24-9" tabindex="-1"></a>rho <span class="ot">&lt;-</span> <span class="fl">0.7</span>      <span class="co"># Correlation coefficient (positive correlation between FI and ADG)</span></span>
+<span id="cb24-10"><a href="joint-distributions.html#cb24-10" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="joint-distributions.html#cb24-11" tabindex="-1"></a><span class="co"># Function to sample from conditional distribution of feed intake (FI) given ADG</span></span>
+<span id="cb24-12"><a href="joint-distributions.html#cb24-12" tabindex="-1"></a>sample_fi_given_adg <span class="ot">&lt;-</span> <span class="cf">function</span>(adg, mu_fi, mu_adg, sigma_fi, sigma_adg, rho) {</span>
+<span id="cb24-13"><a href="joint-distributions.html#cb24-13" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> mu_fi <span class="sc">+</span> rho <span class="sc">*</span> (sigma_fi <span class="sc">/</span> sigma_adg) <span class="sc">*</span> (adg <span class="sc">-</span> mu_adg)</span>
+<span id="cb24-14"><a href="joint-distributions.html#cb24-14" tabindex="-1"></a>  variance <span class="ot">&lt;-</span> sigma_fi<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> rho<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb24-15"><a href="joint-distributions.html#cb24-15" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="dv">1</span>, mean, <span class="fu">sqrt</span>(variance))</span>
+<span id="cb24-16"><a href="joint-distributions.html#cb24-16" tabindex="-1"></a>}</span>
+<span id="cb24-17"><a href="joint-distributions.html#cb24-17" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="joint-distributions.html#cb24-18" tabindex="-1"></a><span class="co"># Function to sample from conditional distribution of ADG given feed intake (FI)</span></span>
+<span id="cb24-19"><a href="joint-distributions.html#cb24-19" tabindex="-1"></a>sample_adg_given_fi <span class="ot">&lt;-</span> <span class="cf">function</span>(fi, mu_fi, mu_adg, sigma_fi, sigma_adg, rho) {</span>
+<span id="cb24-20"><a href="joint-distributions.html#cb24-20" tabindex="-1"></a>  mean <span class="ot">&lt;-</span> mu_adg <span class="sc">+</span> rho <span class="sc">*</span> (sigma_adg <span class="sc">/</span> sigma_fi) <span class="sc">*</span> (fi <span class="sc">-</span> mu_fi)</span>
+<span id="cb24-21"><a href="joint-distributions.html#cb24-21" tabindex="-1"></a>  variance <span class="ot">&lt;-</span> sigma_adg<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> rho<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb24-22"><a href="joint-distributions.html#cb24-22" tabindex="-1"></a>  <span class="fu">rnorm</span>(<span class="dv">1</span>, mean, <span class="fu">sqrt</span>(variance))</span>
+<span id="cb24-23"><a href="joint-distributions.html#cb24-23" tabindex="-1"></a>}</span>
+<span id="cb24-24"><a href="joint-distributions.html#cb24-24" tabindex="-1"></a></span>
+<span id="cb24-25"><a href="joint-distributions.html#cb24-25" tabindex="-1"></a><span class="co"># Gibbs sampler function</span></span>
+<span id="cb24-26"><a href="joint-distributions.html#cb24-26" tabindex="-1"></a>gibbs_sampler <span class="ot">&lt;-</span> <span class="cf">function</span>(n_samples, mu_fi, mu_adg, sigma_fi, sigma_adg, rho) {</span>
+<span id="cb24-27"><a href="joint-distributions.html#cb24-27" tabindex="-1"></a>  samples <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow =</span> n_samples, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb24-28"><a href="joint-distributions.html#cb24-28" tabindex="-1"></a>  fi <span class="ot">&lt;-</span> mu_fi   <span class="co"># Initial value for feed intake</span></span>
+<span id="cb24-29"><a href="joint-distributions.html#cb24-29" tabindex="-1"></a>  adg <span class="ot">&lt;-</span> mu_adg <span class="co"># Initial value for ADG</span></span>
+<span id="cb24-30"><a href="joint-distributions.html#cb24-30" tabindex="-1"></a></span>
+<span id="cb24-31"><a href="joint-distributions.html#cb24-31" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_samples) {</span>
+<span id="cb24-32"><a href="joint-distributions.html#cb24-32" tabindex="-1"></a>    fi <span class="ot">&lt;-</span> <span class="fu">sample_fi_given_adg</span>(adg, mu_fi, mu_adg, sigma_fi, sigma_adg, rho)</span>
+<span id="cb24-33"><a href="joint-distributions.html#cb24-33" tabindex="-1"></a>    adg <span class="ot">&lt;-</span> <span class="fu">sample_adg_given_fi</span>(fi, mu_fi, mu_adg, sigma_fi, sigma_adg, rho)</span>
+<span id="cb24-34"><a href="joint-distributions.html#cb24-34" tabindex="-1"></a>    samples[i, ] <span class="ot">&lt;-</span> <span class="fu">c</span>(fi, adg)</span>
+<span id="cb24-35"><a href="joint-distributions.html#cb24-35" tabindex="-1"></a>  }</span>
+<span id="cb24-36"><a href="joint-distributions.html#cb24-36" tabindex="-1"></a></span>
+<span id="cb24-37"><a href="joint-distributions.html#cb24-37" tabindex="-1"></a>  <span class="fu">return</span>(samples)</span>
+<span id="cb24-38"><a href="joint-distributions.html#cb24-38" tabindex="-1"></a>}</span>
+<span id="cb24-39"><a href="joint-distributions.html#cb24-39" tabindex="-1"></a></span>
+<span id="cb24-40"><a href="joint-distributions.html#cb24-40" tabindex="-1"></a><span class="co"># Run the Gibbs sampler</span></span>
+<span id="cb24-41"><a href="joint-distributions.html#cb24-41" tabindex="-1"></a>n_samples <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb24-42"><a href="joint-distributions.html#cb24-42" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">gibbs_sampler</span>(n_samples, mu_fi, mu_adg, sigma_fi, sigma_adg, rho)</span>
+<span id="cb24-43"><a href="joint-distributions.html#cb24-43" tabindex="-1"></a></span>
+<span id="cb24-44"><a href="joint-distributions.html#cb24-44" tabindex="-1"></a><span class="co"># Name the columns for clarity</span></span>
+<span id="cb24-45"><a href="joint-distributions.html#cb24-45" tabindex="-1"></a><span class="fu">colnames</span>(samples) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Feed_Intake&quot;</span>, <span class="st">&quot;ADG&quot;</span>)</span>
+<span id="cb24-46"><a href="joint-distributions.html#cb24-46" tabindex="-1"></a></span>
+<span id="cb24-47"><a href="joint-distributions.html#cb24-47" tabindex="-1"></a><span class="co"># Plot the joint distribution (scatter plot)</span></span>
+<span id="cb24-48"><a href="joint-distributions.html#cb24-48" tabindex="-1"></a><span class="fu">plot</span>(samples[, <span class="st">&quot;Feed_Intake&quot;</span>], samples[, <span class="st">&quot;ADG&quot;</span>],</span>
+<span id="cb24-49"><a href="joint-distributions.html#cb24-49" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Feed Intake (kg/day)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Average Daily Gain (kg/day)&quot;</span>,</span>
+<span id="cb24-50"><a href="joint-distributions.html#cb24-50" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">&quot;Joint Distribution of Feed Intake and ADG&quot;</span>,</span>
+<span id="cb24-51"><a href="joint-distributions.html#cb24-51" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="fu">rgb</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>))</span></code></pre></div>
 <p><img src="_main_files/figure-html/MCMCsample-1.png" width="672" /></p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="joint-distributions.html#cb35-1" tabindex="-1"></a><span class="co"># Plot marginal distributions</span></span>
-<span id="cb35-2"><a href="joint-distributions.html#cb35-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Set up a 1x2 plot layout</span></span>
-<span id="cb35-3"><a href="joint-distributions.html#cb35-3" tabindex="-1"></a></span>
-<span id="cb35-4"><a href="joint-distributions.html#cb35-4" tabindex="-1"></a><span class="co"># Marginal distribution of Feed Intake</span></span>
-<span id="cb35-5"><a href="joint-distributions.html#cb35-5" tabindex="-1"></a><span class="fu">hist</span>(samples[, <span class="st">&quot;Feed_Intake&quot;</span>], <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">main =</span> <span class="st">&quot;Marginal Distribution of Feed Intake&quot;</span>,</span>
-<span id="cb35-6"><a href="joint-distributions.html#cb35-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Feed Intake (kg/day)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb35-7"><a href="joint-distributions.html#cb35-7" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(samples[, <span class="st">&quot;Feed_Intake&quot;</span>]), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb35-8"><a href="joint-distributions.html#cb35-8" tabindex="-1"></a></span>
-<span id="cb35-9"><a href="joint-distributions.html#cb35-9" tabindex="-1"></a><span class="co"># Marginal distribution of ADG</span></span>
-<span id="cb35-10"><a href="joint-distributions.html#cb35-10" tabindex="-1"></a><span class="fu">hist</span>(samples[, <span class="st">&quot;ADG&quot;</span>], <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">main =</span> <span class="st">&quot;Marginal Distribution of ADG&quot;</span>,</span>
-<span id="cb35-11"><a href="joint-distributions.html#cb35-11" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Average Daily Gain (kg/day)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb35-12"><a href="joint-distributions.html#cb35-12" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(samples[, <span class="st">&quot;ADG&quot;</span>]), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb35-13"><a href="joint-distributions.html#cb35-13" tabindex="-1"></a></span>
-<span id="cb35-14"><a href="joint-distributions.html#cb35-14" tabindex="-1"></a><span class="co"># Reset plot layout</span></span>
-<span id="cb35-15"><a href="joint-distributions.html#cb35-15" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
-<span id="cb35-16"><a href="joint-distributions.html#cb35-16" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="cn">NULL</span>, <span class="fu">aes</span>(<span class="at">x=</span>samples[,<span class="st">&quot;Feed_Intake&quot;</span>], <span class="at">y=</span>samples[,<span class="st">&quot;ADG&quot;</span>]))<span class="sc">+</span></span>
-<span id="cb35-17"><a href="joint-distributions.html#cb35-17" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
-<span id="cb35-18"><a href="joint-distributions.html#cb35-18" tabindex="-1"></a><span class="co"># ggMarginal(data = NULL, p = p, x=samples[,&quot;Feed_Intake&quot;], y=samples[,&quot;ADG&quot;], type = &quot;histogram&quot; )</span></span>
-<span id="cb35-19"><a href="joint-distributions.html#cb35-19" tabindex="-1"></a><span class="fu">ggMarginal</span>(<span class="at">data =</span> <span class="cn">NULL</span>, <span class="at">p =</span> p, <span class="at">x=</span>samples[,<span class="st">&quot;Feed_Intake&quot;</span>], <span class="at">y=</span>samples[,<span class="st">&quot;ADG&quot;</span>], <span class="at">type =</span> <span class="st">&quot;densigram&quot;</span>, <span class="at">color =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">fill =</span> <span class="st">&#39;grey&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="joint-distributions.html#cb25-1" tabindex="-1"></a><span class="co"># Plot marginal distributions</span></span>
+<span id="cb25-2"><a href="joint-distributions.html#cb25-2" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="co"># Set up a 1x2 plot layout</span></span>
+<span id="cb25-3"><a href="joint-distributions.html#cb25-3" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="joint-distributions.html#cb25-4" tabindex="-1"></a><span class="co"># Marginal distribution of Feed Intake</span></span>
+<span id="cb25-5"><a href="joint-distributions.html#cb25-5" tabindex="-1"></a><span class="fu">hist</span>(samples[, <span class="st">&quot;Feed_Intake&quot;</span>], <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">main =</span> <span class="st">&quot;Marginal Distribution of Feed Intake&quot;</span>,</span>
+<span id="cb25-6"><a href="joint-distributions.html#cb25-6" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Feed Intake (kg/day)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightblue&quot;</span>, <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-7"><a href="joint-distributions.html#cb25-7" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(samples[, <span class="st">&quot;Feed_Intake&quot;</span>]), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb25-8"><a href="joint-distributions.html#cb25-8" tabindex="-1"></a></span>
+<span id="cb25-9"><a href="joint-distributions.html#cb25-9" tabindex="-1"></a><span class="co"># Marginal distribution of ADG</span></span>
+<span id="cb25-10"><a href="joint-distributions.html#cb25-10" tabindex="-1"></a><span class="fu">hist</span>(samples[, <span class="st">&quot;ADG&quot;</span>], <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">main =</span> <span class="st">&quot;Marginal Distribution of ADG&quot;</span>,</span>
+<span id="cb25-11"><a href="joint-distributions.html#cb25-11" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Average Daily Gain (kg/day)&quot;</span>, <span class="at">col =</span> <span class="st">&quot;lightgreen&quot;</span>, <span class="at">probability =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb25-12"><a href="joint-distributions.html#cb25-12" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">density</span>(samples[, <span class="st">&quot;ADG&quot;</span>]), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb25-13"><a href="joint-distributions.html#cb25-13" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="joint-distributions.html#cb25-14" tabindex="-1"></a><span class="co"># Reset plot layout</span></span>
+<span id="cb25-15"><a href="joint-distributions.html#cb25-15" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb25-16"><a href="joint-distributions.html#cb25-16" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="cn">NULL</span>, <span class="fu">aes</span>(<span class="at">x=</span>samples[,<span class="st">&quot;Feed_Intake&quot;</span>], <span class="at">y=</span>samples[,<span class="st">&quot;ADG&quot;</span>]))<span class="sc">+</span></span>
+<span id="cb25-17"><a href="joint-distributions.html#cb25-17" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb25-18"><a href="joint-distributions.html#cb25-18" tabindex="-1"></a><span class="co"># ggMarginal(data = NULL, p = p, x=samples[,&quot;Feed_Intake&quot;], y=samples[,&quot;ADG&quot;], type = &quot;histogram&quot; )</span></span>
+<span id="cb25-19"><a href="joint-distributions.html#cb25-19" tabindex="-1"></a><span class="fu">ggMarginal</span>(<span class="at">data =</span> <span class="cn">NULL</span>, <span class="at">p =</span> p, <span class="at">x=</span>samples[,<span class="st">&quot;Feed_Intake&quot;</span>], <span class="at">y=</span>samples[,<span class="st">&quot;ADG&quot;</span>], <span class="at">type =</span> <span class="st">&quot;densigram&quot;</span>, <span class="at">color =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">fill =</span> <span class="st">&#39;grey&#39;</span>)</span></code></pre></div>
 <pre><code>## Warning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.
 ## ℹ Please use `after_stat(density)` instead.
 ## ℹ The deprecated feature was likely used in the ggExtra package.

@@ -5,20 +5,20 @@
 ### Conditional Probability  
 
 ```{r condprob, echo=F, fig.cap=''}
-knitr::include_graphics('figures/03-ConditionalProbability.png')
+knitr::include_graphics('docs/figures/03-ConditionalProbability.png')
 ```
 
 ### Total Probability  
 
 ```{r totprob, echo=F, fig.cap=''}
-knitr::include_graphics('figures/03-TotalProbability.png')
+knitr::include_graphics('docs/figures/03-TotalProbability.png')
 ```
 
 ### Chain Rule of Probability  
 
 
 ```{r chainprob, echo=F, fig.cap=''}
-knitr::include_graphics('figures/03-ChainProbability.png')
+knitr::include_graphics('docs/figures/03-ChainProbability.png')
 ``` 
 
 ## Establishing inference
@@ -181,7 +181,7 @@ cat("Posterior Variance: ", round(posterior_variance, 3), "\n")
 The joint distribution results from the conjugation of two or more posterior distributions of multiple factors or parameters from the model. There are two ways of finding this conjugated distribution. The moments of the two distributions can be matched using calculus **If they hold these moments in common**. However, this is not always a given, and many times the distributions may not hold moments in common. This is where the computational intensity of Bayesian statistics comes into play. We will utilize a Monte Carlo simulation model to create a simulation of the conjugated distribtution model. We will implement it using a gibbs sampler, typical of the one illustrated below. 
 
 ```{r jointprob, echo=F, fig.cap=''}
-knitr::include_graphics('figures/03-JointProb.png')
+knitr::include_graphics('docs/figures/03-JointProb.png')
 ```
 
 ## Marcov Monte Carlo

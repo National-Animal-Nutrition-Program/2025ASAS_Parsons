@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 1 Introduction | NANP Bayesian Workbook</title>
   <meta name="description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
-  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 1 Introduction | NANP Bayesian Workbook" />
   <meta property="og:type" content="book" />
@@ -23,7 +23,7 @@
 <meta name="author" content="Ira L. Parsons" />
 
 
-<meta name="date" content="2025-07-06" />
+<meta name="date" content="2026-01-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -239,7 +239,7 @@ div.csl-indent {
 </blockquote>
 <p>Scientists major challenge is to create a logical line of inference extending from what we know about a system in light of our observations and create new insight tempered by some uncertainty. Using the scientific method, mathematical modeling and statistics have gone to great lengths to establish this domain of truth, resulting in the dramatic leaps forward in scientific knowledge and the with the availability of statistical software has pioneered a scientific revolution in technological progress.</p>
 <div class="figure"><span style="display:block;" id="fig:scimethod"></span>
-<img src="figures/01-ScientificMethod.png" alt="The scientific method is the cornerstone of scientific research, and when paired with mathematics and modern statistical methods, has revolutionized the rate of discovery." width="492" />
+<img src="docs/figures/01-ScientificMethod.png" alt="The scientific method is the cornerstone of scientific research, and when paired with mathematics and modern statistical methods, has revolutionized the rate of discovery." width="492" />
 <p class="caption">
 Figure 1.1: The scientific method is the cornerstone of scientific research, and when paired with mathematics and modern statistical methods, has revolutionized the rate of discovery.
 </p>
@@ -248,7 +248,7 @@ Figure 1.1: The scientific method is the cornerstone of scientific research, and
 <p>Additional training should increase comfort with functional modeling and a deeper perspective of natural stochastic and modeling probability in complex ecological systems. The overarching goal of this class is to both increase scientists comfort with writing mathematical process models which describe their system, and basic statistical principles needed to describe the probability inherent to their system. There are many technical aspects surrounding this methodology, and my belief is that no matter whether you consider yourself a Frequentist, Bayesian, or Pragmatic statistitian, that their is tremendous value in pursuing deeper intelectual knowledge of system stoichasticiy and probability which will inevitably increase the intellectual satisfaction we take from our work.</p>
 <div id="install-jags" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Install Jags<a href="intro.html#install-jags" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Before installing rjags, we have to install Jags for it to interface with. Refer to <a href="https://mcmc-jags.sourceforge.io">mcmc-jags.sourceforge.io</a> and download the appropriate files for your machine type and install.</p>
+<p>Before installing rjags, we have to install Jags for it to interface with. Refer to <a href="https://mcmc-jags.sourceforge.io">mcmc-jags.sourceforge.io</a> and download the appropriate files for your machine type and install. Also, refer to the <a href="https://sourceforge.net/projects/mcmc-jags/">Jags user manual</a> to understand how JAGS works.</p>
 </div>
 <div id="install-these-packages" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> Install these packages<a href="intro.html#install-these-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -268,44 +268,11 @@ Figure 1.1: The scientific method is the cornerstone of scientific research, and
 <span id="cb1-14"><a href="intro.html#cb1-14" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="intro.html#cb1-15" tabindex="-1"></a><span class="co"># Apply the function to each package in the list</span></span>
 <span id="cb1-16"><a href="intro.html#cb1-16" tabindex="-1"></a><span class="fu">lapply</span>(packages, install_if_missing)</span></code></pre></div>
-<pre><code>## Loading required package: data.table</code></pre>
-<pre><code>## data.table 1.17.4 using 8 threads (see ?getDTthreads).  Latest news: r-datatable.com</code></pre>
-<pre><code>## Package data.table is already installed.</code></pre>
-<pre><code>## Loading required package: tidyverse
-## ── Attaching core tidyverse packages ─────────────────────────────────────────────── tidyverse 2.0.0 ──
-## ✔ dplyr     1.1.4     ✔ readr     2.1.5
-## ✔ forcats   1.0.0     ✔ stringr   1.5.1
-## ✔ ggplot2   3.5.2     ✔ tibble    3.2.1
-## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-## ✔ purrr     1.0.4     ── Conflicts ───────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::between()     masks data.table::between()
-## ✖ dplyr::filter()      masks stats::filter()
-## ✖ dplyr::first()       masks data.table::first()
-## ✖ lubridate::hour()    masks data.table::hour()
-## ✖ lubridate::isoweek() masks data.table::isoweek()
-## ✖ dplyr::lag()         masks stats::lag()
-## ✖ dplyr::last()        masks data.table::last()
-## ✖ lubridate::mday()    masks data.table::mday()
-## ✖ lubridate::minute()  masks data.table::minute()
-## ✖ lubridate::month()   masks data.table::month()
-## ✖ lubridate::quarter() masks data.table::quarter()
-## ✖ lubridate::second()  masks data.table::second()
-## ✖ purrr::transpose()   masks data.table::transpose()
-## ✖ lubridate::wday()    masks data.table::wday()
-## ✖ lubridate::week()    masks data.table::week()
-## ✖ lubridate::yday()    masks data.table::yday()
-## ✖ lubridate::year()    masks data.table::year()
-## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<pre><code>## Package tidyverse is already installed.</code></pre>
-<pre><code>## Loading required package: rjags
-## Loading required package: coda
-## Linked to JAGS 4.3.2
-## Loaded modules: basemod,bugs</code></pre>
-<pre><code>## Package rjags is already installed.</code></pre>
-<pre><code>## Loading required package: MCMCvis</code></pre>
-<pre><code>## Package MCMCvis is already installed.</code></pre>
-<pre><code>## Loading required package: ggExtra</code></pre>
-<pre><code>## Package ggExtra is already installed.</code></pre>
+<pre><code>## Package data.table is already installed.
+## Package tidyverse is already installed.
+## Package rjags is already installed.
+## Package MCMCvis is already installed.
+## Package ggExtra is already installed.</code></pre>
 <pre><code>## [[1]]
 ## NULL
 ## 
@@ -320,15 +287,15 @@ Figure 1.1: The scientific method is the cornerstone of scientific research, and
 ## 
 ## [[5]]
 ## NULL</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="intro.html#cb14-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;irap93/Bayesdemo&quot;) # Uncomment out this line install for data </span></span>
-<span id="cb14-2"><a href="intro.html#cb14-2" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="intro.html#cb14-3" tabindex="-1"></a><span class="co"># Libraries</span></span>
-<span id="cb14-4"><a href="intro.html#cb14-4" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
-<span id="cb14-5"><a href="intro.html#cb14-5" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb14-6"><a href="intro.html#cb14-6" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb14-7"><a href="intro.html#cb14-7" tabindex="-1"></a><span class="fu">library</span>(rjags)</span>
-<span id="cb14-8"><a href="intro.html#cb14-8" tabindex="-1"></a><span class="fu">library</span>(MCMCvis)</span>
-<span id="cb14-9"><a href="intro.html#cb14-9" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="intro.html#cb4-1" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;irap93/Bayesdemo&quot;) # Uncomment out this line install for data </span></span>
+<span id="cb4-2"><a href="intro.html#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="intro.html#cb4-3" tabindex="-1"></a><span class="co"># Libraries</span></span>
+<span id="cb4-4"><a href="intro.html#cb4-4" tabindex="-1"></a><span class="fu">library</span>(Bayesdemo)</span>
+<span id="cb4-5"><a href="intro.html#cb4-5" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb4-6"><a href="intro.html#cb4-6" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb4-7"><a href="intro.html#cb4-7" tabindex="-1"></a><span class="fu">library</span>(rjags)</span>
+<span id="cb4-8"><a href="intro.html#cb4-8" tabindex="-1"></a><span class="fu">library</span>(MCMCvis)</span>
+<span id="cb4-9"><a href="intro.html#cb4-9" tabindex="-1"></a><span class="fu">library</span>(ggExtra)</span></code></pre></div>
 
 </div>
 </div>
