@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Modeling | NANP Bayesian Workbook</title>
+  <title>Chapter 6 Modeling | NANP Bayesian Workbook</title>
   <meta name="description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Modeling | NANP Bayesian Workbook" />
+  <meta property="og:title" content="Chapter 6 Modeling | NANP Bayesian Workbook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Modeling | NANP Bayesian Workbook" />
+  <meta name="twitter:title" content="Chapter 6 Modeling | NANP Bayesian Workbook" />
   
   <meta name="twitter:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   
@@ -225,7 +225,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="model" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">6</span> Modeling<a href="model.html#model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Chapter 6</span> Modeling<a href="model.html#model" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="libraries" class="section level2 hasAnchor" number="6.1">
 <h2><span class="header-section-number">6.1</span> Libraries<a href="model.html#libraries" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="model.html#cb26-1" tabindex="-1"></a><span class="co"># Libraries to install</span></span>
@@ -384,9 +384,9 @@ div.csl-indent {
 <p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="model.html#cb47-1" tabindex="-1"></a><span class="fu">quantile</span>(beta0chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code></pre></div>
 <pre><code>##     2.5%    97.5% 
-## 1.074299 1.335093</code></pre>
+## 1.119955 1.340623</code></pre>
 <div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="model.html#cb49-1" tabindex="-1"></a><span class="fu">mean</span>(beta0chain)</span></code></pre></div>
-<pre><code>## [1] 1.247424</code></pre>
+<pre><code>## [1] 1.255459</code></pre>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="model.html#cb51-1" tabindex="-1"></a>beta1chain <span class="ot">=</span> <span class="fu">MCMCchains</span>(samples, <span class="at">params =</span> <span class="st">&#39;beta1&#39;</span>)</span>
 <span id="cb51-2"><a href="model.html#cb51-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(beta1chain), <span class="at">main =</span> <span class="st">&#39;beta1chain&#39;</span>)</span>
 <span id="cb51-3"><a href="model.html#cb51-3" tabindex="-1"></a><span class="fu">rug</span>(beta1chain, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
@@ -394,7 +394,7 @@ div.csl-indent {
 <p><img src="_main_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="model.html#cb52-1" tabindex="-1"></a><span class="fu">quantile</span>(beta1chain, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>))</span></code></pre></div>
 <pre><code>##       2.5%      97.5% 
-## -0.9952038 -0.4128096</code></pre>
+## -0.9963800 -0.5232937</code></pre>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="model.html#cb54-1" tabindex="-1"></a>y <span class="ot">=</span> <span class="fu">MCMCpstr</span>(samples, <span class="at">params =</span> <span class="st">&#39;y&#39;</span>)</span>
 <span id="cb54-2"><a href="model.html#cb54-2" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(y<span class="sc">$</span>y), <span class="at">main =</span> <span class="st">&#39;y&#39;</span>)</span>
 <span id="cb54-3"><a href="model.html#cb54-3" tabindex="-1"></a><span class="fu">rug</span>(y<span class="sc">$</span>y, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>)</span>
@@ -559,7 +559,7 @@ div.csl-indent {
 <span id="cb78-4"><a href="model.html#cb78-4" tabindex="-1"></a><span class="co"># Calculate probability that Treatment B has higher ADG than A (delta &gt; 0)</span></span>
 <span id="cb78-5"><a href="model.html#cb78-5" tabindex="-1"></a>prob_B_greater <span class="ot">&lt;-</span> <span class="fu">mean</span>(delta_samples <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
 <span id="cb78-6"><a href="model.html#cb78-6" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;Probability that Treatment B has higher ADG than Treatment A:&quot;</span>, prob_B_greater, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
-<pre><code>## Probability that Treatment B has higher ADG than Treatment A: 0.3272</code></pre>
+<pre><code>## Probability that Treatment B has higher ADG than Treatment A: 0.3328</code></pre>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="model.html#cb80-1" tabindex="-1"></a><span class="co"># Create a density plot with shaded area for delta &gt; 0</span></span>
 <span id="cb80-2"><a href="model.html#cb80-2" tabindex="-1"></a>delta_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">delta =</span> delta_samples)</span>
 <span id="cb80-3"><a href="model.html#cb80-3" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(delta_df<span class="sc">$</span>delta))</span></code></pre></div>

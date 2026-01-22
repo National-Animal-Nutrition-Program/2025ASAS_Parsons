@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Joint Distributions | NANP Bayesian Workbook</title>
+  <title>Chapter 5 Joint Distributions | NANP Bayesian Workbook</title>
   <meta name="description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Joint Distributions | NANP Bayesian Workbook" />
+  <meta property="og:title" content="Chapter 5 Joint Distributions | NANP Bayesian Workbook" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Joint Distributions | NANP Bayesian Workbook" />
+  <meta name="twitter:title" content="Chapter 5 Joint Distributions | NANP Bayesian Workbook" />
   
   <meta name="twitter:description" content="This is a workbook written to accompany the Bayesian Seminar and Workshop presented by Dr. Ira Parsons and the 2025 National Animal Nutrition Program presymposium for the American Society of Animal Scientists, held in Hollywood Florida." />
   
@@ -225,7 +225,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="joint-distributions" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Joint Distributions<a href="joint-distributions.html#joint-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Chapter 5</span> Joint Distributions<a href="joint-distributions.html#joint-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The joint distribution results from the conjugation of two or more posterior distributions of multiple factors or parameters from the model. There are two ways of finding this conjugated distribution. The moments of the two distributions can be matched using calculus <strong>If they hold these moments in common</strong>. However, this is not always a given, and many times the distributions may not hold moments in common. This is where the computational intensity of Bayesian statistics comes into play. We will utilize a Monte Carlo simulation model to create a simulation of the conjugated distribtution model. We will implement it using a gibbs sampler, typical of the one illustrated below.</p>
 <p><img src="figures/03-JointProb.png" width="1172" /></p>
 <div id="marcov-monte-carlo" class="section level2 hasAnchor" number="5.1">
