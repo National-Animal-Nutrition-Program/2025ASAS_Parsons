@@ -225,10 +225,14 @@ gibbs_sampler <- function(n_samples, mu_fi, mu_adg, sigma_fi, sigma_adg, rho) {
 
   return(samples)
 }
+samples
 
 # Run the Gibbs sampler
 n_samples <- 10000
 samples <- gibbs_sampler(n_samples, mu_fi, mu_adg, sigma_fi, sigma_adg, rho)
+
+plot(1:nrow(samples), samples[,1], type = 'l', col = 'blue', main = 'Feed Intake')
+plot(1:nrow(samples), samples[,2], type = 'l', col = 'blue', main = 'ADG')
 
 # Name the columns for clarity
 colnames(samples) <- c("Feed_Intake", "ADG")

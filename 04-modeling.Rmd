@@ -34,13 +34,47 @@ library(ggExtra)
 ## Data
 We have a dataset representing heifer performance, feeding behavior, and dry matter intake over a 56 day back grounding period. Heifers were assigned to a 2x2 crossover design to test a feed additives effect on animal behavior, performance, and morbidity during weaning.
 
+
+### Feed intake
+First, lets show what dry matter intake (DMI) looks like over the course of the feeding study.
+
+```{r intake}
+data("intake")
+head(intake)
+summary(intake)
+
+intake %>% 
+  ggplot(aes(x=date_relative, y = DMI, color = factor(VID)))+
+  geom_line()+
+  labs(x = 'Trial day',
+       y = 'DMI, kg')+
+  theme_minimal()+
+  theme(legend.position = 'none')
+
+```
+
+
 ```{r heifer}
 data(heifer)
 head(heifer)
 summary(heifer)
 ```
 
+
 ## Excercise 1  
+
+First, lets run summary statistics on the variables of interest.
+
+```{r}
+names(heifer)
+# Variables we're interested in uDMI, sdDMI, Day56_ADG, Day56_Residual
+par(mfrow = c(2,2))
+hist(heifer$uDMI, main = 'Average DMI, kg', xlab = 'DMI, kg', ylab = '')
+hist(heifer$sdDMI, main = 'Standard Deviation DMI, kg', xlab = 'SD DMI, kg', ylab = '')
+hist(heifer$Day56_ADG, main = 'Average Daily Gain, kg', xlab = 'ADG, kg', ylab = '')
+hist(heifer$Day56_Residual, main = 'Residual Feed Intake', xlab = 'RFI', ylab = '')
+```
+
 
 ### Heifer data  
 ```{r heiferdata}

@@ -23,7 +23,7 @@
 <meta name="author" content="Ira L. Parsons" />
 
 
-<meta name="date" content="2026-01-22" />
+<meta name="date" content="2026-01-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -195,7 +195,10 @@ div.csl-indent {
 <li class="chapter" data-level="6" data-path="model.html"><a href="model.html"><i class="fa fa-check"></i><b>6</b> Modeling</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="model.html"><a href="model.html#libraries"><i class="fa fa-check"></i><b>6.1</b> Libraries</a></li>
-<li class="chapter" data-level="6.2" data-path="model.html"><a href="model.html#data"><i class="fa fa-check"></i><b>6.2</b> Data</a></li>
+<li class="chapter" data-level="6.2" data-path="model.html"><a href="model.html#data"><i class="fa fa-check"></i><b>6.2</b> Data</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="model.html"><a href="model.html#feed-intake"><i class="fa fa-check"></i><b>6.2.1</b> Feed intake</a></li>
+</ul></li>
 <li class="chapter" data-level="6.3" data-path="model.html"><a href="model.html#excercise-1"><i class="fa fa-check"></i><b>6.3</b> Excercise 1</a>
 <ul>
 <li class="chapter" data-level="6.3.1" data-path="model.html"><a href="model.html#heifer-data"><i class="fa fa-check"></i><b>6.3.1</b> Heifer data</a></li>
@@ -329,18 +332,18 @@ div.csl-indent {
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -5.9499 -3.3986 -0.2898  1.9094  8.9823 
+## -6.1930 -1.2713  0.1458  1.2155  7.1561 
 ## 
 ## Coefficients:
 ##             Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)   2.9948     2.7464   1.090    0.301    
-## x             2.9695     0.3732   7.958 1.23e-05 ***
+## (Intercept)   2.9541     2.5044    1.18    0.265    
+## x             2.7595     0.3403    8.11 1.04e-05 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 4.462 on 10 degrees of freedom
-## Multiple R-squared:  0.8636, Adjusted R-squared:   0.85 
-## F-statistic: 63.33 on 1 and 10 DF,  p-value: 1.233e-05</code></pre>
+## Residual standard error: 4.069 on 10 degrees of freedom
+## Multiple R-squared:  0.868,  Adjusted R-squared:  0.8548 
+## F-statistic: 65.77 on 1 and 10 DF,  p-value: 1.045e-05</code></pre>
 </div>
 <div id="observation-model" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> Observation model<a href="probs.html#observation-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -358,11 +361,11 @@ div.csl-indent {
 <span id="cb13-7"><a href="probs.html#cb13-7" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;heifer&quot;</span>)</span>
 <span id="cb13-8"><a href="probs.html#cb13-8" tabindex="-1"></a></span>
 <span id="cb13-9"><a href="probs.html#cb13-9" tabindex="-1"></a><span class="fu">hist</span>(heifer<span class="sc">$</span>Day56_InitialBW)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="probs.html#cb14-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(heifer<span class="sc">$</span>Day56_InitialBW))</span>
 <span id="cb14-2"><a href="probs.html#cb14-2" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(heifer<span class="sc">$</span>Day56_InitialBW, <span class="fu">c</span>(.<span class="dv">025</span>, .<span class="dv">975</span>)), <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb14-3"><a href="probs.html#cb14-3" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> <span class="fu">quantile</span>(heifer<span class="sc">$</span>Day56_InitialBW, <span class="fu">c</span>(<span class="fl">0.75</span>)), <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-2.png" width="672" /></p>
 </div>
 </div>
 <h3>References</h3>
